@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "UScAmxsVMhj75r/ZENtB79HMdIrcRsGYidN4LIAhqt35SCYUUzHZep7QF3gWIpi92yiw1pd4SpbMvFAP+YQkSQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\amcclain\\source\\repos\\HousePlantz\\LibraryServices.Data\\LibraryServices.Data.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\amcclain\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\amcclain\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
