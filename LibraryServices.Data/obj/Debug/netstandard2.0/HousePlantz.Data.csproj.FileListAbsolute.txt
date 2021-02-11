@@ -1,0 +1,9 @@
+C:\Users\amcclain\source\repos\HousePlantz\LibraryServices.Data\bin\Debug\netstandard2.0\HousePlantz.Data.deps.json
+C:\Users\amcclain\source\repos\HousePlantz\LibraryServices.Data\bin\Debug\netstandard2.0\HousePlantz.Data.dll
+C:\Users\amcclain\source\repos\HousePlantz\LibraryServices.Data\bin\Debug\netstandard2.0\HousePlantz.Data.pdb
+C:\Users\amcclain\source\repos\HousePlantz\LibraryServices.Data\obj\Debug\netstandard2.0\HousePlantz.Data.csprojAssemblyReference.cache
+C:\Users\amcclain\source\repos\HousePlantz\LibraryServices.Data\obj\Debug\netstandard2.0\HousePlantz.Data.AssemblyInfoInputs.cache
+C:\Users\amcclain\source\repos\HousePlantz\LibraryServices.Data\obj\Debug\netstandard2.0\HousePlantz.Data.AssemblyInfo.cs
+C:\Users\amcclain\source\repos\HousePlantz\LibraryServices.Data\obj\Debug\netstandard2.0\HousePlantz.Data.csproj.CoreCompileInputs.cache
+C:\Users\amcclain\source\repos\HousePlantz\LibraryServices.Data\obj\Debug\netstandard2.0\HousePlantz.Data.dll
+C:\Users\amcclain\source\repos\HousePlantz\LibraryServices.Data\obj\Debug\netstandard2.0\HousePlantz.Data.pdb

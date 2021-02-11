@@ -1,4 +1,6 @@
-﻿using HousePlantz.Models;
+﻿using HousePlantz.Data.Interfaces;
+using HousePlantz.Data.Models;
+using HousePlantz.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,27 +15,21 @@ namespace HousePlantz.Controllers
     [ApiController]
     public class PlantsController : ControllerBase
     {
-
-        public List<Plant> plants = new List<Plant>()
-        {
-            new Plant {Id = 1, Name = "Peperomia Change", Sun = "/light/low-med.png",  Image = "/plant-images/peperomia.PNG", Water = "Allow to Dry", Notes = "Poisonous"},
-            new Plant {Id = 2, Name = "Chinese Evergreen", Sun = "/light/low-med.png",  Image = "/plant-images/chinese-evergreen.PNG", Water = "Keep Evenly Moist", Notes = "Poisonous"},
-            new Plant {Id = 3, Name = "Grape Ivy", Sun = "/light/med.png",  Image = "/plant-images/grape-ivy.PNG", Water = "Keep Evenly Moist", Notes = "Trailing"},
-            new Plant {Id = 4, Name = "Norfolk Island Pine", Sun = "/light/bright.png",  Image = "/plant-images/norfolk-island-pine.PNG", Water = "Allow to Dry", Notes = "Festive"}
-        };
+        private IPlantRepository plants = new PlantRepository();
+        
 
         // GET: api/<PlantsController>
         [HttpGet]
         public IEnumerable<Plant> Get()
         {
-            return plants;
+            return plants.GetAllPlants();
         }
 
         // GET api/<PlantsController>/5
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult Get(long id)
         {
-            var plant = plants.FirstOrDefault(x => x.Id == id);
+            var plant = plants.GetPlantById(id);
             if(plant == null)
             {
                 return NotFound();

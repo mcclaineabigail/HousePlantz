@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HousePlantz", "HousePlantz\HousePlantz.csproj", "{CC595008-4DBD-4ABD-99D0-C85D63A3BE45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryServices.Data", "LibraryServices.Data\LibraryServices.Data.csproj", "{F6303D61-98E4-4702-924F-27F835E91071}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HousePlantz.Data", "LibraryServices.Data\HousePlantz.Data.csproj", "{F6303D61-98E4-4702-924F-27F835E91071}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -27,3 +27,5 @@ C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\obj\Debug\net5.0\HousePla
 C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\obj\Debug\net5.0\ref\HousePlantz.dll
 C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\obj\Debug\net5.0\HousePlantz.pdb
 C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\obj\Debug\net5.0\HousePlantz.genruntimeconfig.cache
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\bin\Debug\net5.0\HousePlantz.Data.dll
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\bin\Debug\net5.0\HousePlantz.Data.pdb

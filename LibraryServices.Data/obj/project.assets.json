@@ -185,9 +185,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\amcclain\\source\\repos\\HousePlantz\\LibraryServices.Data\\LibraryServices.Data.csproj",
-      "projectName": "LibraryServices.Data",
-      "projectPath": "C:\\Users\\amcclain\\source\\repos\\HousePlantz\\LibraryServices.Data\\LibraryServices.Data.csproj",
+      "projectUniqueName": "C:\\Users\\amcclain\\source\\repos\\HousePlantz\\LibraryServices.Data\\HousePlantz.Data.csproj",
+      "projectName": "HousePlantz.Data",
+      "projectPath": "C:\\Users\\amcclain\\source\\repos\\HousePlantz\\LibraryServices.Data\\HousePlantz.Data.csproj",
       "packagesPath": "C:\\Users\\amcclain\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\amcclain\\source\\repos\\HousePlantz\\LibraryServices.Data\\obj\\",
       "projectStyle": "PackageReference",

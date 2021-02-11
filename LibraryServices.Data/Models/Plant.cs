@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LibraryServices.Data.Models
+namespace HousePlantz.Data.Models
 {
     public class Plant
     {
