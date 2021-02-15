@@ -64,7 +64,7 @@ namespace HousePlantz.Controllers
         public IActionResult Get(string type)
         {
             Byte[] b;
-            b = System.IO.File.ReadAllBytes("LibraryServices.Data\\Images\\plant-images\\pothos.png");
+            b = System.IO.File.ReadAllBytes("..\\..\\LibraryServices.Data\\Images\\plant-images\\pothos.png");
          
             //if (type == null)
             //{
