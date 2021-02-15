@@ -4,4 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\light\" />
+    <Folder Include="Images\plant-images\" />
+  </ItemGroup>
+
 </Project>
