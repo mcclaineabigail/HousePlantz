@@ -29,3 +29,6 @@ C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\obj\Debug\net5.0\HousePla
 C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\obj\Debug\net5.0\HousePlantz.genruntimeconfig.cache
 C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\bin\Debug\net5.0\HousePlantz.Data.dll
 C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\bin\Debug\net5.0\HousePlantz.Data.pdb
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\bin\Debug\net5.0\System.Drawing.Common.dll
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
