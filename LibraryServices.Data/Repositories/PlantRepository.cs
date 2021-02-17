@@ -12,7 +12,7 @@ namespace HousePlantz.Data.Repositories
 
         public List<Plant> plants = new List<Plant>()
         {
-            new Plant {Id = 1, Name = "Peperomia test 7", Sun = "/light/low-med.png",  Image = "/plant-images/peperomia.PNG", Water = "Allow to Dry", Notes = "Poisonous"},
+            new Plant {Id = 1, Name = "Peperomia test 8", Sun = "/light/low-med.png",  Image = "/plant-images/peperomia.PNG", Water = "Allow to Dry", Notes = "Poisonous"},
             new Plant {Id = 2, Name = "Chinese Evergreen", Sun = "/light/low-med.png",  Image = "/plant-images/chinese-evergreen.PNG", Water = "Keep Evenly Moist", Notes = "Poisonous"},
             new Plant {Id = 3, Name = "Grape Ivy", Sun = "/light/med.png",  Image = "/plant-images/grape-ivy.PNG", Water = "Keep Evenly Moist", Notes = "Trailing"},
             new Plant {Id = 4, Name = "Norfolk Island Pine", Sun = "/light/bright.png",  Image = "/plant-images/norfolk-island-pine.PNG", Water = "Allow to Dry", Notes = "Festive"},
