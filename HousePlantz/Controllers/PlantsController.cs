@@ -64,8 +64,13 @@ namespace HousePlantz.Controllers
         public IActionResult Get(string type)
         {
             Byte[] b;
-            b = System.IO.File.ReadAllBytes("..\\..\\LibraryServices.Data\\Images\\plant-images\\pothos.png");
-         
+            b = System.IO.File.ReadAllBytes("..\\..main\\blob\\LibraryServices.Data\\Images\\plant-images\\pothos.png");
+            //b = System.IO.File.ReadAllBytes("c:\\users\\amcclain\\source\\repos\\HousePlantz\\LibraryServices.Data\\Images\\plant-images\\pothos.png");
+        
+        /*https://github.com/mcclaineabigail/PlantCatalog/blob/main/LibraryServices.Data/Images/plant-images/pothos.PNG?raw=true     
+        https://github.com/mcclaineabigail/PlantCatalog/blob/main/HousePlantz/Controllers/PlantsController.cs */
+
+
             //if (type == null)
             //{
             //    return Content("Hi there is no type value given. Please enter picturefromtext or hostedimagefile in type parameter in url");
