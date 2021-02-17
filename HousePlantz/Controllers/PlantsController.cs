@@ -64,7 +64,7 @@ namespace HousePlantz.Controllers
         public IActionResult Get(string type)
         {
             Byte[] b;
-            b = System.IO.File.ReadAllBytes("..\\..main\\blob\\LibraryServices.Data\\Images\\plant-images\\pothos.png");
+            b = System.IO.File.ReadAllBytes("..\\..\\main\\blob\\LibraryServices.Data\\Images\\plant-images\\pothos.png");
             //b = System.IO.File.ReadAllBytes("c:\\users\\amcclain\\source\\repos\\HousePlantz\\LibraryServices.Data\\Images\\plant-images\\pothos.png");
         
         /*https://github.com/mcclaineabigail/PlantCatalog/blob/main/LibraryServices.Data/Images/plant-images/pothos.PNG?raw=true     
