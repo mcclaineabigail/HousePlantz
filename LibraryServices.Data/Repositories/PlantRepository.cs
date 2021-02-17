@@ -12,11 +12,11 @@ namespace HousePlantz.Data.Repositories
 
         public List<Plant> plants = new List<Plant>()
         {
-            new Plant {Id = 1, Name = "Peperomia test 8", Sun = "/light/low-med.png",  Image = "/plant-images/peperomia.PNG", Water = "Allow to Dry", Notes = "Poisonous"},
-            new Plant {Id = 2, Name = "Chinese Evergreen", Sun = "/light/low-med.png",  Image = "/plant-images/chinese-evergreen.PNG", Water = "Keep Evenly Moist", Notes = "Poisonous"},
-            new Plant {Id = 3, Name = "Grape Ivy", Sun = "/light/med.png",  Image = "/plant-images/grape-ivy.PNG", Water = "Keep Evenly Moist", Notes = "Trailing"},
-            new Plant {Id = 4, Name = "Norfolk Island Pine", Sun = "/light/bright.png",  Image = "/plant-images/norfolk-island-pine.PNG", Water = "Allow to Dry", Notes = "Festive"},
-            new Plant {Id = 5, Name = "Dieffenbachia", Sun = "/light/low-med.png",  Image = "/plant-images/", Water = "Keep Evenly Moist", Notes = "Poisonous"},  
+            new Plant {Id = 1, Name = "Peperomia test 9", Sun = "/light/low-med.png",  Image = "https://github.com/mcclaineabigail/PlantCatalog/blob/main/LibraryServices.Data/Images/plant-images/peperomia.PNG?raw=true", Water = "Allow to Dry", Notes = "Poisonous"},
+            new Plant {Id = 2, Name = "Chinese Evergreen", Sun = "/light/low-med.png",  Image = "https://github.com/mcclaineabigail/PlantCatalog/blob/main/LibraryServices.Data/Images/plant-images/chinese-evergreen.PNG?raw=true", Water = "Keep Evenly Moist", Notes = "Poisonous"},
+            new Plant {Id = 3, Name = "Grape Ivy", Sun = "/light/med.png",  Image = "https://github.com/mcclaineabigail/PlantCatalog/blob/main/LibraryServices.Data/Images/plant-images/grape-ivy.PNG?raw=true", Water = "Keep Evenly Moist", Notes = "Trailing"},
+            new Plant {Id = 4, Name = "Norfolk Island Pine", Sun = "/light/bright.png",  Image = "https://github.com/mcclaineabigail/PlantCatalog/blob/main/LibraryServices.Data/Images/plant-images/norfolk-island-pine.PNG?raw=true", Water = "Allow to Dry", Notes = "Festive"},
+            new Plant {Id = 5, Name = "Dieffenbachia", Sun = "/light/low-med.png",  Image = "https://github.com/mcclaineabigail/PlantCatalog/blob/main/LibraryServices.Data/Images/plant-images/dieffenbachia.PNG?raw=true", Water = "Keep Evenly Moist", Notes = "Poisonous"},  
             new Plant {Id = 6, Name = "Snake Plant", Sun = "/light/any.png",  Image = "/plant-images/", Water = "Allow to Dry", Notes = "Beautiful Vertical Shape"},                                   
             new Plant {Id = 7, Name = "Philodendron", Sun = "/light/any.png",  Image = "/plant-images/", Water = "Allow to Dry", Notes = "Poisonous"},                      
             new Plant {Id = 8, Name = "English Ivy", Sun = "/light/med-bright.png",  Image = "/plant-images/", Water = "Keep Evenly Moist", Notes = "Poisonous"},
