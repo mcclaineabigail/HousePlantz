@@ -36,27 +36,7 @@ namespace HousePlantz.Data.Repositories
             new Plant {Id = 22, Name = "Columnea", Sun = "https://github.com/mcclaineabigail/PlantCatalog/blob/main/LibraryServices.Data/Images/light/bright.png?raw=true",  Image = "https://github.com/mcclaineabigail/PlantCatalog/blob/main/LibraryServices.Data/Images/plant-images/columnea.PNG?raw=true", Water = "Keep Slighty Moist", Notes = "Bright Orange Flowers"},
             new Plant {Id = 23, Name = "Kalanchoe", Sun = "https://github.com/mcclaineabigail/PlantCatalog/blob/main/LibraryServices.Data/Images/light/bright.png?raw=true",  Image = "https://github.com/mcclaineabigail/PlantCatalog/blob/main/LibraryServices.Data/Images/plant-images/kalanchoe.PNG?raw=true", Water = "Allow to Dry", Notes = "Bright Flowers"}
 
-        };
-        				
-				
-				
-				
-				
-    			
-				
-				
-				
-				
-				
-			
-				
-				
-				
-				
-				
-				
-				
-
+        };        				
 
         public List<Plant> GetAllPlants()
         {
