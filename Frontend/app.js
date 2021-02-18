@@ -26,7 +26,7 @@ const displayPlants = function(plants) {
         plantName.classList.add("plant-name");
         plantName.innerText = plant.name;
         let sun = document.createElement("img");
-        sun.src = plant.Sun;
+        sun.src = plant.sun;
         sun.alt= "light needs";
         sun.classList.add("sun");
         titleAside.appendChild(plantName);
