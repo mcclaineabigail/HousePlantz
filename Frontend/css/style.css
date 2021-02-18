@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+:root {
+    --font: antiquewhite;
+    --background: rgb(255, 250, 242);
+    --dark-background: rgb(227, 216, 197);
+    --main-color: rgb(123, 145, 179);
+    --deep-color: rgb(95, 116, 149);
+    --dark-color: rgb(47, 68, 101);
+    --border-width: 20px;
+}
+
+.container {
+    padding-bottom: 200px;
+}
+
+header {
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+    border-style: double;
+    padding: 10px;
+    background-color: var(--main-color);
+    box-shadow: -5px 5px var(--deep-color);
+}
+
+body {
+    max-width: 100%;
+    margin: 0px;
+    background-color: var(--background);
+    font-family: 'Courgette', cursive;
+    color: var(--font);
+}
+
+#owned {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    grid-gap: 50px;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.wanted {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.plant {
+    justify-items: center;
+    border-style: double;
+    padding: 10px;
+    background-color: var(--main-color);
+    box-shadow: -5px 5px var(--deep-color);
+}
+
+.plant-header {
+    display: grid;
+    grid-template-columns: 7fr 4fr;
+    align-items: center;
+    height: 25%;
+}
+
+.plant-info {
+    display: grid;
+    justify-items: center;
+}
+
+
+.image {
+    width: 80%;
+    border: 5px dotted var(--dark-color);
+}
+
+.sun {
+    width: 100%;
+    display: flex;
+    justify-self: start;
+}
+
+
+/*Page Border--------------------------------------------*/
+
+.border {
+    background: var(--deep-color);
+    position: fixed;
+}
+
+#left {
+    top: 0;
+    bottom: 0;
+    width: var(--border-width);
+    left: 0;
+}
+
+#right {
+    top: 0;
+    bottom: 0;
+    width: var(--border-width);
+    right: 0;
+}
+
+#top {
+    left: 0;
+    right: 0;
+    height: var(--border-width);
+    top: 0;
+}
+
+#bottom {
+    left: 0;
+    right: 0;
+    height: var(--border-width);
+    bottom: 0;
+}
+
+/*Add Plant--------------------------------*/
+
+
+.dropdown {
+    display: inline-block;
+}
+
+
+#dropdown {
+    background-color: var(--main-color);
+    color: var(--font);
+}
+
+#add {
+    width: 30px;
+}
+
+#submit {
+    background-color: var(--background);
+    border-color: var(--dark-color);
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: -5px 5px var(--deep-color);
+    margin-left: 10px;
+}
