@@ -31,8 +31,26 @@ const displayPlants = function(plants) {
         sun.classList.add("sun");
         titleAside.appendChild(plantName);
         titleAside.appendChild(sun);
+
+        let infoAside = document.createElement("aside");
+        infoAside.classList.add("plant-info");
+        let photo = document.createElement("img");
+        photo.classList.add("image");
+        photo.alt= ("Plant Image");
+        photo.src = plant.image;
+        let water = document.createElement("p")
+        water.classList.add("water");
+        water.innerText= plant.water;
+        let notes = document.createElement("p")
+        notes.classList.add("notes");
+        notes.innerText= plant.notes;
+        infoAside.appendChild(photo);
+        infoAside.appendChild(water);
+        infoAside.appendChild(notes);
+
         
         card.appendChild(titleAside);
+        card.appendChild(infoAside);
         ownedSection.appendChild(card);
     });
 

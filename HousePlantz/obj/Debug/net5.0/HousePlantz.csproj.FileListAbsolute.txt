@@ -45,3 +45,10 @@ C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\obj\Debug\net5.0\Razor\Vi
 C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\obj\Debug\net5.0\HousePlantz.RazorTargetAssemblyInfo.cs
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\bin\Debug\net5.0\PlantzMVC.exe
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\bin\Debug\net5.0\HousePlantz.StaticWebAssets.xml
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\bin\Debug\net5.0\HousePlantz.Views.dll
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\bin\Debug\net5.0\HousePlantz.Views.pdb
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\bin\Debug\net5.0\PlantzMVC.dll
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\bin\Debug\net5.0\PlantzMVC.pdb
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz\obj\Debug\net5.0\HousePlantz.Views.pdb

@@ -26,6 +26,7 @@
       "HousePlantz/1.0.0": {
         "dependencies": {
           "HousePlantz.Data": "1.0.0",
+          "PlantzMVC": "1.0.0",
           "Swashbuckle.AspNetCore": "5.6.3",
           "System.Drawing.Common": "5.0.1",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
@@ -418,6 +419,14 @@
         },
         "compile": {
           "HousePlantz.Data.dll": {}
+        }
+      },
+      "PlantzMVC/1.0.0": {
+        "runtime": {
+          "PlantzMVC.dll": {}
+        },
+        "compile": {
+          "PlantzMVC.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/5.0.0.0": {
@@ -2190,6 +2199,11 @@
       "hashPath": "system.drawing.common.5.0.1.nupkg.sha512"
     },
     "HousePlantz.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PlantzMVC/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
