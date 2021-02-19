@@ -27,6 +27,11 @@ namespace HousePlantz.Data.Repositories
             return plant;
         }
 
+        public void AddPlant(Plant plantToAdd)
+        {
+            plantCatalog.Add(plantToAdd);
+        }
+
        
     }
 }

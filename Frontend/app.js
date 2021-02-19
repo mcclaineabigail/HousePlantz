@@ -1,4 +1,4 @@
-fetch("https://plantcatalog.azurewebsites.net/api/plants", {
+fetch("https://plantcatalog.azurewebsites.net/api/catalog", {
         method: "GET",
         
         headers: {
@@ -19,6 +19,8 @@ fetch("https://plantcatalog.azurewebsites.net/api/plants", {
 .then((response) => response.json())
 .then((plantOptions) => fillDropDown(plantOptions))
 .catch((error) => console.log(error));
+
+
 
 
 
@@ -68,27 +70,57 @@ const displayPlants = function(plants) {
     return ownedSection;
 }
 
-// const fillDropDown = function(plantOptions){
-//     let dropdown = document.getElementById("dropdown");
-    
-//     plantOptions.forEach((plant) =>{
-//     let option = document.createElement("option");
-//     option.classList.add("choose-plant");
-//     option.innerText= plant.name;
-//     dropdown.appendChild(option);
-//     }); 
-//     return dropdown;
-// }
+const dropdown = document.getElementById("dropdown");
 
 const fillDropDown = function(plants) {
-    let dropdown = document.getElementById("dropdown");
 
     plants.forEach((plant) => {
         let option = document.createElement("option");
-    option.classList.add("choose-plant");
-    option.innerText= plant.name;
-    dropdown.appendChild(option);
+        option.classList.add("choose-plant");
+        option.innerText= plant.name;
+        option.value = plant.id;
+        dropdown.appendChild(option);
     });
 
     return dropdown;
 }
+
+const button = document.getElementById("submit")
+
+
+button.addEventListener("click", () => {
+    
+fetch(`https://plantcatalog.azurewebsites.net/api/plants/${dropdown.value}`, {
+        method: "GET",
+        
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+.then((response) => response.json())
+.then((plant) => addPlantToCatalog(plant))
+.catch((error) => console.log(error));
+});
+
+
+const addPlantToCatalog = function(plant){
+    
+    const postJson = {
+        "name" : plant.name,
+        "sun" : plant.sun,
+        "image" : plant.image,
+        "water" : plant.water,
+        "notes" : plant.notes
+    }
+    fetch("https://plantcatalog.azurewebsites.net/api/catalog", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(postJson)
+        })
+        .then(response => response.json())
+        .catch(err => console.error(err))
+        .then(location.reload());
+};
+
