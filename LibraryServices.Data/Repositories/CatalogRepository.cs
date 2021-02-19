@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using HousePlantz.Data.Interfaces;
 using HousePlantz.Data.Models;
-using HousePlantz.Data.Repositories;
 
 namespace HousePlantz.Data.Repositories
 
