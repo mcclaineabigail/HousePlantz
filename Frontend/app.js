@@ -1,6 +1,5 @@
 fetch("https://plantcatalog.azurewebsites.net/api/catalog", {
         method: "GET",
-        
         headers: {
             "Content-Type": "application/json",
         },
@@ -11,7 +10,6 @@ fetch("https://plantcatalog.azurewebsites.net/api/catalog", {
 
 fetch("https://plantcatalog.azurewebsites.net/api/plants", {
         method: "GET",
-        
         headers: {
             "Content-Type": "application/json",
         },
@@ -90,38 +88,35 @@ const button = document.getElementById("submit")
 
 button.addEventListener("click", () => {
     console.log("click, before fetch")
-fetch(`https://plantcatalog.azurewebsites.net/api/plants/${dropdown.value}`, {
+    
+    fetch(`https://plantcatalog.azurewebsites.net/api/plants/${dropdown.value}`, {
         method: "GET",
-        
         headers: {
             "Content-Type": "application/json",
         },
     })
 .then((response) => response.json())
-.then((plant) => addPlantToCatalog(plant))
+.then((chosenPlant) => addPlantToCatalog(chosenPlant))
 .catch((error) => console.log(error));
 
-console.log("click, after fetch")
+console.log(`click, after fetch ${dropdown.value}`)
 });
 
 
-const addPlantToCatalog = function(plant){
+const addPlantToCatalog = function(chosenPlant){
     console.log("addPlant Method initialization")
 
     const postJson = {
-        "name" : plant.name,
-        "sun" : plant.sun,
-        "image" : plant.image,
-        "water" : plant.water,
-        "notes" : plant.notes
-    }
+        "id" : chosenPlant.id,
+        "name" : chosenPlant.name,
+        "sun" : chosenPlant.sun,
+        "image" : chosenPlant.image,
+        "water" : chosenPlant.water,
+        "notes" : chosenPlant.notes
+    };
 
-    console.log("create json")
-    console.log(`"name" : ${plant.name},
-    "sun" : ${plant.sun},
-    "image" : ${plant.image},
-    "water" : ${plant.water},
-    "notes" : ${plant.notes}`)
+
+
 
     fetch("https://plantcatalog.azurewebsites.net/api/catalog", {
             method: 'POST',
@@ -131,10 +126,25 @@ const addPlantToCatalog = function(plant){
             body: JSON.stringify(postJson)
         })
         .then(response => response.json())
+        .then(postJson => displayPlants(postJson))
         .catch(err => console.error(err))
-        // .then(location.reload());
+        //.then(location.reload());
+
+    console.log("create json");
 
 
-        
+//     fetch("https://plantcatalog.azurewebsites.net/api/catalog", {
+//         method: "GET",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//     })
+// .then((response) => response.json())
+// .then((plants) => displayPlants(plants))
+// .catch((error) => console.log(error));
+   
 };
+
+
+
 

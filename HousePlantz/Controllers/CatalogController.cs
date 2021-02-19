@@ -34,10 +34,9 @@ namespace HousePlantz.Controllers
 
         // POST api/<PlantListController>
         [HttpPost]
-        public IEnumerable<Plant> PostPlantToCatalog([FromBody] Plant plantToAdd)
-        {
-            plantCatalog.AddPlant(plantToAdd);
-            return plantCatalog.GetAllPlants();
+        public IActionResult PostPlantToCatalog([FromBody] Plant plantToAdd)
+        { 
+            return Ok(plantCatalog.AddPlant(plantToAdd));
         }
 
         // PUT api/<PlantListController>/5
