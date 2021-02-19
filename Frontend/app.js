@@ -89,7 +89,7 @@ const button = document.getElementById("submit")
 
 
 button.addEventListener("click", () => {
-    
+    console.log("click, before fetch")
 fetch(`https://plantcatalog.azurewebsites.net/api/plants/${dropdown.value}`, {
         method: "GET",
         
@@ -100,11 +100,14 @@ fetch(`https://plantcatalog.azurewebsites.net/api/plants/${dropdown.value}`, {
 .then((response) => response.json())
 .then((plant) => addPlantToCatalog(plant))
 .catch((error) => console.log(error));
+
+console.log("click, after fetch")
 });
 
 
 const addPlantToCatalog = function(plant){
-    
+    console.log("addPlant Method initialization")
+
     const postJson = {
         "name" : plant.name,
         "sun" : plant.sun,
@@ -112,6 +115,14 @@ const addPlantToCatalog = function(plant){
         "water" : plant.water,
         "notes" : plant.notes
     }
+
+    console.log("create json")
+    console.log(`"name" : ${plant.name},
+    "sun" : ${plant.sun},
+    "image" : ${plant.image},
+    "water" : ${plant.water},
+    "notes" : ${plant.notes}`)
+
     fetch("https://plantcatalog.azurewebsites.net/api/catalog", {
             method: 'POST',
             headers: {
@@ -121,6 +132,9 @@ const addPlantToCatalog = function(plant){
         })
         .then(response => response.json())
         .catch(err => console.error(err))
-        .then(location.reload());
+        // .then(location.reload());
+
+
+        
 };
 
