@@ -48,5 +48,12 @@ namespace HousePlantz.Data.Repositories
             var plant = plants.FirstOrDefault(x => x.Id == id);
             return plant;
         }
+
+
+        //public Plant GetPlantByName(string name)
+        //{
+            
+        //    return
+        //}
     }
 }

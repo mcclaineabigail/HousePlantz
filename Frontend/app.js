@@ -9,10 +9,21 @@ fetch("https://plantcatalog.azurewebsites.net/api/plants", {
 .then((plants) => displayPlants(plants))
 .catch((error) => console.log(error));
 
+fetch("https://plantcatalog.azurewebsites.net/api/plants", {
+        method: "GET",
+        
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+.then((response) => response.json())
+.then((plantOptions) => fillDropDown(plantOptions))
+.catch((error) => console.log(error));
+
 
 
 const displayPlants = function(plants) {
-    const ownedSection = document.getElementById("owned")
+    const ownedSection = document.getElementById("owned");
 
     plants.forEach((plant) => {
         let card = document.createElement("div");
@@ -55,4 +66,29 @@ const displayPlants = function(plants) {
     });
 
     return ownedSection;
+}
+
+// const fillDropDown = function(plantOptions){
+//     let dropdown = document.getElementById("dropdown");
+    
+//     plantOptions.forEach((plant) =>{
+//     let option = document.createElement("option");
+//     option.classList.add("choose-plant");
+//     option.innerText= plant.name;
+//     dropdown.appendChild(option);
+//     }); 
+//     return dropdown;
+// }
+
+const fillDropDown = function(plants) {
+    let dropdown = document.getElementById("dropdown");
+
+    plants.forEach((plant) => {
+        let option = document.createElement("option");
+    option.classList.add("choose-plant");
+    option.innerText= plant.name;
+    dropdown.appendChild(option);
+    });
+
+    return dropdown;
 }

@@ -4,13 +4,18 @@ using System.Text;
 
 namespace HousePlantz.Data.Models
 {
-    class PlantList
+    public class PlantList
     {
-        public List<Plant> List { get; set; }
+        public List<Plant> Catalog { get; set; }
 
         public PlantList()
         {
-            this.List = new List<Plant>();
+            this.Catalog = new List<Plant>();
+        }
+
+        public void addPlant(Plant plantToAdd)
+        {
+            Catalog.Add(plantToAdd);
         }
     }
 }

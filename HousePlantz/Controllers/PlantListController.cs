@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HousePlantz.Data.Interfaces;
+using HousePlantz.Data.Models;
+using HousePlantz.Data.Repositories;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +16,13 @@ namespace HousePlantz.Controllers
     public class PlantListController : ControllerBase
     {
 
-        private IPlantListRepository plantList = new IPlantListRepository();
+        private IPlantRepository plantCatalog = new CatalogRepository();
 
         // GET: api/<PlantListController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Plant> Get()
         {
-            return new string[] { "value1", "value2" };
+            return plantCatalog.GetAllPlants();
         }
 
         // GET api/<PlantListController>/5
