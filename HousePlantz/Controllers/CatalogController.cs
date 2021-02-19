@@ -13,7 +13,7 @@ namespace HousePlantz.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PlantListController : ControllerBase
+    public class CatalogController : ControllerBase
     {
 
         private IPlantRepository plantCatalog = new CatalogRepository();
