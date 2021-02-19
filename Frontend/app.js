@@ -61,14 +61,12 @@ let makeCard = function(plant){
 }
 
 
-
 const displayPlants = function(plants) {
     plants.forEach((plant) => {
         makeCard(plant);
     });
     return ownedSection;
 }
-
 
 
 const fillDropDown = function(plants) {
@@ -86,8 +84,6 @@ const fillDropDown = function(plants) {
 
 
 button.addEventListener("click", () => {
-    console.log("click, before fetch")
-    
     fetch(`https://plantcatalog.azurewebsites.net/api/plants/${dropdown.value}`, {
         method: "GET",
         headers: {
@@ -97,14 +93,10 @@ button.addEventListener("click", () => {
 .then((response) => response.json())
 .then((chosenPlant) => addPlantToCatalog(chosenPlant))
 .catch((error) => console.log(error));
-
-console.log(`click, after fetch ${dropdown.value}`)
 });
 
 
 const addPlantToCatalog = function(chosenPlant){
-    console.log("addPlant Method initialization")
-
     const postJson = {
         "id" : chosenPlant.id,
         "name" : chosenPlant.name,
@@ -113,9 +105,6 @@ const addPlantToCatalog = function(chosenPlant){
         "water" : chosenPlant.water,
         "notes" : chosenPlant.notes
     };
-
-
-
 
     fetch("https://plantcatalog.azurewebsites.net/api/catalog", {
             method: 'POST',
@@ -127,9 +116,6 @@ const addPlantToCatalog = function(chosenPlant){
         .then(response => response.json())
         .then(postJson => makeCard(postJson))
         .catch(err => console.error(err));
-        
-
-    console.log("create json");
 };
 
 
