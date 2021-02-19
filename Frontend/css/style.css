@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 
 :root {
-    --font: antiquewhite;
+    --font: rgb(56, 8, 20);
     --background: rgb(255, 250, 242);
     --dark-background: rgb(227, 216, 197);
-    --main-color: rgb(123, 145, 179);
-    --deep-color: rgb(95, 116, 149);
-    --dark-color: rgb(47, 68, 101);
+    --main-color: rgba(155, 56, 56, 0.185);
+    --deep-color: rgb(105, 24, 24);
+    --dark-color: rgb(63, 7, 19);
+    --transparent: rgba(0, 0, 0, 0);
     --border-width: 20px;
+    --box-shadow:-5px 5px var(--deep-color);
 }
 
 .container {
@@ -20,15 +22,17 @@ header {
     justify-content: center;
     border-style: double;
     padding: 10px;
+    border-radius: 10px;
     background-color: var(--main-color);
-    box-shadow: -5px 5px var(--deep-color);
+    box-shadow: var(--box-shadow);
 }
 
 body {
     max-width: 100%;
     margin: 0px;
     margin-bottom: 200px;
-    background-color: var(--background);
+    background-image: url(/background.jpg);
+    background-size: cover;
     font-family: 'Courgette', cursive;
     color: var(--font);
 }
@@ -45,14 +49,18 @@ body {
     display: flex;
     justify-content: center;
     align-content: center;
+    height: 50px;
+    
+
 }
 
 .plant {
     justify-items: center;
     border-style: double;
+    border-radius: 10px;
     padding: 10px;
     background-color: var(--main-color);
-    box-shadow: -5px 5px var(--deep-color);
+    box-shadow: var(--box-shadow);
 }
 
 .plant-header {
@@ -117,9 +125,15 @@ body {
 
 /*Add Plant--------------------------------*/
 
-
-.dropdown {
+select {
     display: inline-block;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    width: 250px;
+    width: 250px;
+    font-size: large;
+    font-family: 'Courgette', cursive;
+    padding-left: 10px;
 }
 
 
@@ -133,10 +147,12 @@ body {
 }
 
 #submit {
-    background-color: var(--background);
+    background-color: var(--transparent);
     border-color: var(--dark-color);
+    font-family: 'Courgette', cursive;
     padding: 5px;
     border-radius: 5px;
-    box-shadow: -5px 5px var(--deep-color);
+    box-shadow: var(--box-shadow);
     margin-left: 10px;
+    font-size: large;
 }
