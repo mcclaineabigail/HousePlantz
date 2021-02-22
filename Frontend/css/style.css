@@ -42,16 +42,7 @@ body {
     grid-template-columns: repeat(auto-fit, 300px);
     grid-gap: 50px;
     justify-content: center;
-    margin-bottom: 50px;
-}
-
-.wanted {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    height: 50px;
-    
-
+    margin-bottom: 150px;
 }
 
 .plant {
@@ -88,42 +79,15 @@ body {
 }
 
 
-/*Page Border--------------------------------------------*/
+/*DropDowns--------------------------------*/
 
-.border {
-    background: var(--deep-color);
-    position: fixed;
+.selection {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 50px;
+    margin-top: 50px;
 }
-
-#left {
-    top: 0;
-    bottom: 0;
-    width: var(--border-width);
-    left: 0;
-}
-
-#right {
-    top: 0;
-    bottom: 0;
-    width: var(--border-width);
-    right: 0;
-}
-
-#top {
-    left: 0;
-    right: 0;
-    height: var(--border-width);
-    top: 0;
-}
-
-#bottom {
-    left: 0;
-    right: 0;
-    height: var(--border-width);
-    bottom: 0;
-}
-
-/*Add Plant--------------------------------*/
 
 select {
     display: inline-block;
@@ -137,16 +101,14 @@ select {
 }
 
 
-#dropdown {
+.dropdown {
     background-color: var(--main-color);
     color: var(--font);
 }
 
-#add {
-    width: 30px;
-}
 
-#submit {
+
+.button {
     background-color: var(--transparent);
     border-color: var(--dark-color);
     font-family: 'Courgette', cursive;
@@ -155,4 +117,5 @@ select {
     box-shadow: var(--box-shadow);
     margin-left: 10px;
     font-size: large;
+    width: 80px;
 }
