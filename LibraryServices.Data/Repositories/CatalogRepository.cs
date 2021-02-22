@@ -33,6 +33,12 @@ namespace HousePlantz.Data.Repositories
             return plantToAdd;
         }
 
+        public void DeletePlantById(long id)
+        {
+            var plant = plantCatalog.FirstOrDefault(x => x.Id == id);
+            plantCatalog.Remove(plant);
+        }
+
        
     }
 }

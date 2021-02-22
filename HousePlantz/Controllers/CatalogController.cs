@@ -47,8 +47,9 @@ namespace HousePlantz.Controllers
 
         // DELETE api/<PlantListController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(long id)
         {
+            plantCatalog.DeletePlantById(id);
         }
     }
 }

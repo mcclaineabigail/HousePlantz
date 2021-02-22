@@ -1,10 +1,12 @@
 import { addPlantToCatalog} from "/js/dynamics.js"
 
+const addDropdown = document.getElementById("add-dropdown");
 
+const addButton = document.getElementById("submit")
+const deleteButton = document.getElementById("delete")
 
-const button = document.getElementById("submit")
-button.addEventListener("click", () => {
-    fetch(`https://plantcatalog.azurewebsites.net/api/plants/${dropdown.value}`, {
+addButton.addEventListener("click", () => {
+    fetch(`https://plantcatalog.azurewebsites.net/api/plants/${addDropdown.value}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -14,6 +16,12 @@ button.addEventListener("click", () => {
 .then((chosenPlant) => addPlantToCatalog(chosenPlant))
 .catch((error) => console.log(error));
 });
+
+deleteButton.addEventListener("click", () => {
+
+});
+
+
 
 
 

@@ -1,5 +1,6 @@
 const ownedSection = document.getElementById("owned");
-const dropdown = document.getElementById("dropdown");
+const addDropdown = document.getElementById("add-dropdown");
+const deleteDropdown = document.getElementById("delete-dropdown");
 
 
 fetch("https://plantcatalog.azurewebsites.net/api/catalog", {
@@ -12,6 +13,16 @@ fetch("https://plantcatalog.azurewebsites.net/api/catalog", {
 .then((plants) => displayPlants(plants))
 .catch((error) => console.log(error));
 
+fetch("https://plantcatalog.azurewebsites.net/api/catalog", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+.then((response) => response.json())
+.then((plants2) => fillDeleteDropDown(plants2))
+.catch((error) => console.log(error));
+
 fetch("https://plantcatalog.azurewebsites.net/api/plants", {
         method: "GET",
         headers: {
@@ -19,7 +30,7 @@ fetch("https://plantcatalog.azurewebsites.net/api/plants", {
         },
     })
 .then((response) => response.json())
-.then((plantOptions) => fillDropDown(plantOptions))
+.then((plantOptions) => fillAddDropDown(plantOptions))
 .catch((error) => console.log(error));
 
 const displayPlants = function(plants) {
@@ -33,9 +44,11 @@ const displayPlants = function(plants) {
 let makeCard = function(plant){
     let card = document.createElement("div");
     card.classList.add("plant");
-        
+    card.classList.add(plant.id);
+
     let titleAside = document.createElement("aside");
     titleAside.classList.add("plant-header")
+    
 
     let plantName = document.createElement("h2");
     plantName.classList.add("plant-name");
@@ -68,15 +81,26 @@ let makeCard = function(plant){
     ownedSection.appendChild(card);
 }
 
-const fillDropDown = function(plants) {
+const fillAddDropDown = function(plants) {
     plants.forEach((plant) => {
         let option = document.createElement("option");
         option.classList.add("choose-plant");
         option.innerText= plant.name;
         option.value = plant.id;
-        dropdown.appendChild(option);
+        addDropdown.appendChild(option);
     });
-    return dropdown;
+    return addDropdown;
 }
 
-    export { makeCard , fillDropDown, displayPlants}
+const fillDeleteDropDown = function(plants2) {
+    plants2.forEach((plant2) => {
+        let option = document.createElement("option");
+        option.classList.add("choose-plant");
+        option.innerText= plant2.name;
+        option.value = plant2.id;
+        deleteDropdown.appendChild(option);
+    });
+    return deleteDropdown;
+}
+
+    export { makeCard , fillAddDropDown, fillDeleteDropDown, displayPlants}
