@@ -7,7 +7,7 @@
     --main-color: rgba(218, 167, 167, 0.842);
     --deep-color: rgb(105, 24, 24);
     --dark-color: rgb(63, 7, 19);
-    --transparent: rgba(0, 0, 0, 0);
+    --translucent: rgba(255, 255, 255, 0.726);
     --border-width: 20px;
     --box-shadow:-5px 5px var(--deep-color);
 }
@@ -109,7 +109,7 @@ select {
 
 
 .button {
-    background-color: var(--transparent);
+    background-color: var(--translucent);
     border-color: var(--dark-color);
     font-family: 'Courgette', cursive;
     padding: 5px;

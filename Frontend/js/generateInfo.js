@@ -1,3 +1,7 @@
+const ownedSection = document.getElementById("owned");
+const dropdown = document.getElementById("dropdown");
+
+
 fetch("https://plantcatalog.azurewebsites.net/api/catalog", {
         method: "GET",
         headers: {
@@ -18,9 +22,13 @@ fetch("https://plantcatalog.azurewebsites.net/api/plants", {
 .then((plantOptions) => fillDropDown(plantOptions))
 .catch((error) => console.log(error));
 
-const ownedSection = document.getElementById("owned");
-const dropdown = document.getElementById("dropdown");
-const button = document.getElementById("submit")
+const displayPlants = function(plants) {
+    plants.forEach((plant) => {
+        makeCard(plant);
+    });
+    return ownedSection;
+}
+
 
 let makeCard = function(plant){
     let card = document.createElement("div");
@@ -60,15 +68,6 @@ let makeCard = function(plant){
     ownedSection.appendChild(card);
 }
 
-
-const displayPlants = function(plants) {
-    plants.forEach((plant) => {
-        makeCard(plant);
-    });
-    return ownedSection;
-}
-
-
 const fillDropDown = function(plants) {
     plants.forEach((plant) => {
         let option = document.createElement("option");
@@ -80,44 +79,4 @@ const fillDropDown = function(plants) {
     return dropdown;
 }
 
-
-
-
-button.addEventListener("click", () => {
-    fetch(`https://plantcatalog.azurewebsites.net/api/plants/${dropdown.value}`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    })
-.then((response) => response.json())
-.then((chosenPlant) => addPlantToCatalog(chosenPlant))
-.catch((error) => console.log(error));
-});
-
-
-const addPlantToCatalog = function(chosenPlant){
-    const postJson = {
-        "id" : chosenPlant.id,
-        "name" : chosenPlant.name,
-        "sun" : chosenPlant.sun,
-        "image" : chosenPlant.image,
-        "water" : chosenPlant.water,
-        "notes" : chosenPlant.notes
-    };
-
-    fetch("https://plantcatalog.azurewebsites.net/api/catalog", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(postJson)
-        })
-        .then(response => response.json())
-        .then(postJson => makeCard(postJson))
-        .catch(err => console.error(err));
-};
-
-
-
-
+    export { makeCard , fillDropDown, displayPlants}
