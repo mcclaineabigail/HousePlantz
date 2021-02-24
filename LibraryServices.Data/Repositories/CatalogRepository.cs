@@ -30,6 +30,7 @@ namespace HousePlantz.Data.Repositories
         public Plant AddPlant(Plant plantToAdd)
         {
             plantCatalog.Add(plantToAdd);
+
             return plantToAdd;
         }
 

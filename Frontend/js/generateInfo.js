@@ -2,8 +2,8 @@ const ownedSection = document.getElementById("owned");
 const addDropdown = document.getElementById("add-dropdown");
 const deleteDropdown = document.getElementById("delete-dropdown");
 
-
-fetch("https://plantcatalog.azurewebsites.net/api/catalog", {
+fetch("https://localhost:44313/api/text", {
+// fetch("https://plantcatalog.azurewebsites.net/api/catalog", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -13,7 +13,8 @@ fetch("https://plantcatalog.azurewebsites.net/api/catalog", {
 .then((plants) => displayPlants(plants))
 .catch((error) => console.log(error));
 
-fetch("https://plantcatalog.azurewebsites.net/api/catalog", {
+fetch("https://localhost:44313/api/text", {
+// fetch("https://plantcatalog.azurewebsites.net/api/catalog", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

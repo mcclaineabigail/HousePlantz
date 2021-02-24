@@ -28,6 +28,14 @@ namespace HousePlantz
         {
 
             services.AddControllers();
+            services.AddCors(options => {
+                options.AddDefaultPolicy(builder => { 
+                builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                });
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HousePlantz", Version = "v1" });
@@ -47,6 +55,8 @@ namespace HousePlantz
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 

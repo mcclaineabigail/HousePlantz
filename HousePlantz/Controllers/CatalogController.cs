@@ -18,38 +18,41 @@ namespace HousePlantz.Controllers
 
         private CatalogRepository plantCatalog = new CatalogRepository();
 
-        // GET: api/<PlantListController>
+        // GET: api/<Catalog>
         [HttpGet]
         public IEnumerable<Plant> GetAllPlants()
         {
             return plantCatalog.GetAllPlants();
         }
 
-        // GET api/<PlantListController>/5
+        // GET api/<Catalog>/5
         [HttpGet("{id}")]
-        public string GetAPlant(int id)
+        public string GetAPlant(long id)
         {
             return "value";
         }
 
-        // POST api/<PlantListController>
+        // POST api/<Catalog>
         [HttpPost]
         public IActionResult PostPlantToCatalog([FromBody] Plant plantToAdd)
-        { 
+        {
             return Ok(plantCatalog.AddPlant(plantToAdd));
         }
 
-        // PUT api/<PlantListController>/5
+        // PUT api/<Catalog>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<PlantListController>/5
+        // DELETE api/<Catalog>/5
         [HttpDelete("{id}")]
         public void Delete(long id)
         {
             plantCatalog.DeletePlantById(id);
         }
+
+
+        
     }
 }

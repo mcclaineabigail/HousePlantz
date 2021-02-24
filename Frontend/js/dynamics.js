@@ -15,7 +15,8 @@ const addPlantToCatalog = function(chosenPlant){
         "notes" : chosenPlant.notes
     };
 
-    fetch("https://plantcatalog.azurewebsites.net/api/catalog", {
+    fetch("https://localhost:44313/api/text", {
+    // fetch("https://plantcatalog.azurewebsites.net/api/catalog", {   Local Host sample with text file
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -17,9 +17,10 @@ addButton.addEventListener("click", () => {
 .catch((error) => console.log(error));
 });
 
-deleteButton.addEventListener("click", () => {
 
-});
+
+
+
 
 
 

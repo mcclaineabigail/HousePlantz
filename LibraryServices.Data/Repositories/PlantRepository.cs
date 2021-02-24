@@ -50,10 +50,6 @@ namespace HousePlantz.Data.Repositories
         }
 
 
-        //public Plant GetPlantByName(string name)
-        //{
-            
-        //    return
-        //}
+        
     }
 }
