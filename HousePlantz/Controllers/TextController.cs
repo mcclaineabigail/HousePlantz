@@ -18,7 +18,7 @@ namespace HousePlantz.Controllers
         [HttpGet]
         public string GetText()
         {
-            return System.IO.File.ReadAllText(@"C:\Users\amcclain\source\repos\HousePlantz\LibraryServices.Data\Text\CatalogText.txt");
+            return System.IO.File.ReadAllText(@"C:\Users\amcclain\source\repos\HousePlantz\LibraryServices.Data\Text\CatalogText.txt"); // Need to find how to reference file locally.
         }
 
         [HttpPost]
@@ -28,7 +28,7 @@ namespace HousePlantz.Controllers
             var plantList = JsonConvert.DeserializeObject<List<Plant>>(allText);
             plantList.Add(plantToAdd);
 
-            var newText = System.Text.Json.JsonSerializer.Serialize(plantList);
+            var newText = System.Text.Json.JsonSerializer.Serialize(plantList, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
 
             string allPath = @"C:\Users\amcclain\source\repos\HousePlantz\LibraryServices.Data\Text\CatalogText.txt";
 

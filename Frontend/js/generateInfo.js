@@ -3,7 +3,7 @@ const addDropdown = document.getElementById("add-dropdown");
 const deleteDropdown = document.getElementById("delete-dropdown");
 
 fetch("https://localhost:44313/api/text", {
-// fetch("https://plantcatalog.azurewebsites.net/api/catalog", {
+//fetch("https://plantcatalog.azurewebsites.net/api/text", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -14,7 +14,7 @@ fetch("https://localhost:44313/api/text", {
 .catch((error) => console.log(error));
 
 fetch("https://localhost:44313/api/text", {
-// fetch("https://plantcatalog.azurewebsites.net/api/catalog", {
+//fetch("https://plantcatalog.azurewebsites.net/api/text", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

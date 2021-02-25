@@ -16,7 +16,7 @@ const addPlantToCatalog = function(chosenPlant){
     };
 
     fetch("https://localhost:44313/api/text", {
-    // fetch("https://plantcatalog.azurewebsites.net/api/catalog", {   Local Host sample with text file
+    //fetch("https://plantcatalog.azurewebsites.net/api/text", {   
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -34,11 +34,11 @@ const addPlantToCatalog = function(chosenPlant){
             deleteDropdown.appendChild(option);
 };
 
-const deletePlantFromCatalog = function(chosenPlant){
+const deleteCard = function(deletedPlant){
 
 }
 
 
 
 
-export { addPlantToCatalog, deletePlantFromCatalog }
+export { addPlantToCatalog, deleteCard }
