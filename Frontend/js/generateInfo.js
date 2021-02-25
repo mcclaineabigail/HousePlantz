@@ -45,7 +45,7 @@ const displayPlants = function(plants) {
 let makeCard = function(plant){
     let card = document.createElement("div");
     card.classList.add("plant");
-    card.classList.add(plant.id);
+    card.id = (plant.id);
 
     let titleAside = document.createElement("aside");
     titleAside.classList.add("plant-header")

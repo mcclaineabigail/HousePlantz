@@ -13,21 +13,20 @@ addButton.addEventListener("click", () => {
             "Content-Type": "application/json",
         },
     })
-.then(response => response.json())
-.then(chosenPlant => addPlantToCatalog(chosenPlant))
-.catch(error => console.log(error));
+    .then(response => response.json())
+    .then(chosenPlant => addPlantToCatalog(chosenPlant))
+    .catch(error => console.log(error));
 });
 
 deleteButton.addEventListener("click", () => {
-    fetch(`https://plantcatalog.azurewebsites.net/api/plants/${deleteDropdown.value}`,{
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-        },
+    let plantToDelete = deleteDropdown.value
+    
+    fetch(`https://localhost:44313/api/text/${plantToDelete}`,{
+        method: 'DELETE'
     })
     .then(response => response.json())
-    .then(deletedPlant => deleteCard(deletedPlant))
-    .catch(error => console.console.log(error));
+    .then(deleteCard(plantToDelete))
+    .catch(error => console.log(error));
 })
 
 

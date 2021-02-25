@@ -51,7 +51,7 @@ namespace HousePlantz.Controllers
 
             var plantToRemove = plantList.FirstOrDefault(x => x.Id == id);
             plantList.Remove(plantToRemove);
-            var newText = System.Text.Json.JsonSerializer.Serialize(plantList);
+            var newText = System.Text.Json.JsonSerializer.Serialize(plantList, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
 
             string allPath = @"C:\Users\amcclain\source\repos\HousePlantz\LibraryServices.Data\Text\CatalogText.txt";
 

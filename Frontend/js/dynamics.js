@@ -34,8 +34,9 @@ const addPlantToCatalog = function(chosenPlant){
             deleteDropdown.appendChild(option);
 };
 
-const deleteCard = function(deletedPlant){
-
+const deleteCard = function(deletedPlantId){
+var cardToDelete = document.querySelector(deletedPlantId);
+cardToDelete.remove();
 }
 
 
