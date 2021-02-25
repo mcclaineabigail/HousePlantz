@@ -24,10 +24,13 @@ namespace HousePlantz.Controllers
         [HttpPost]
         public Plant PostLineToTextFile([FromBody] Plant plantToAdd)
         {
-            var jsonText = System.Text.Json.JsonSerializer.Serialize(plantToAdd, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+            var allText = GetText();
+            var plantList = JsonConvert.DeserializeObject<List<Plant>>(allText);
+            plantList.Add(plantToAdd);
+
+            var newText = System.Text.Json.JsonSerializer.Serialize(plantList);
+
             string allPath = @"C:\Users\amcclain\source\repos\HousePlantz\LibraryServices.Data\Text\CatalogText.txt";
-            string startingText = System.IO.File.ReadAllText(allPath);
-            string newText = startingText + "," + jsonText; //Get rid of Shotty Code ya newb
 
             using var sw = new StreamWriter(allPath);
             sw.WriteLine(newText);
@@ -44,7 +47,6 @@ namespace HousePlantz.Controllers
         public void Delete(long id)
         {
             var allText = GetText();
-
             var plantList = JsonConvert.DeserializeObject<List<Plant>>(allText);
 
             var plantToRemove = plantList.FirstOrDefault(x => x.Id == id);

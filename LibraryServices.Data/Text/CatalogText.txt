@@ -1,1 +1,1 @@
-[{"Id":1,"Name":"Peperomia","Sun":"low-medium","Image":"peperomia","Water":"Allow to Dry","Notes":"Poisonous"},{"Id":2,"Name":"Chinese Evergreen","Sun":"low-medium","Image":"chinese-evergreen","Water":"Keep Evenly Moist","Notes":"Poisonous"}]
+[{"Id":13,"Name":"Rubber Tree","Sun":"https://github.com/mcclaineabigail/PlantCatalog/blob/main/LibraryServices.Data/Images/light/med-bright.png?raw=true","Image":"https://github.com/mcclaineabigail/PlantCatalog/blob/main/LibraryServices.Data/Images/plant-images/rubber-tree.PNG?raw=true","Water":"Allow to Dry","Notes":"Latex Allergy"}]
