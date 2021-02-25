@@ -14,6 +14,12 @@
 
 .container {
     padding-bottom: 200px;
+    width: 100%;
+}
+
+body, select, input {
+    font-family: 'Courgette', cursive;
+    color: var(--font);
 }
 
 header {
@@ -27,14 +33,15 @@ header {
     box-shadow: var(--box-shadow);
 }
 
+
 body {
     max-width: 100%;
     margin: 0px;
     margin-bottom: 200px;
     background-image: url(/background.jpg);
     background-size: cover;
-    font-family: 'Courgette', cursive;
-    color: var(--font);
+    /* font-family: 'Courgette', cursive;
+    color: var(--font); */
 }
 
 #owned {
@@ -96,14 +103,14 @@ select {
     width: 250px;
     width: 250px;
     font-size: large;
-    font-family: 'Courgette', cursive;
+    /* font-family: 'Courgette', cursive; */
     padding-left: 10px;
 }
 
 
 .dropdown {
     background-color: var(--main-color);
-    color: var(--font);
+    /* color: var(--font); */
 }
 
 
