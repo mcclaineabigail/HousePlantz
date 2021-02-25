@@ -1,1 +1,1 @@
-{"Id":1,"Name":"Peperomia","Sun":"low-medium","Image":"peperomia","Water":"Allow to Dry","Notes":"Poisonous"}
+[{"Id":1,"Name":"Peperomia","Sun":"low-medium","Image":"peperomia","Water":"Allow to Dry","Notes":"Poisonous"},{"Id":2,"Name":"Chinese Evergreen","Sun":"low-medium","Image":"chinese-evergreen","Water":"Keep Evenly Moist","Notes":"Poisonous"}]
