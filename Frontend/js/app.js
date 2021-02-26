@@ -19,14 +19,19 @@ submitButton.addEventListener("click", () => {
 });
 
 deleteButton.addEventListener("click", () => {
-    let plantToDelete = deleteDropdown.value
-    
+    let plantToDelete = deleteDropdown.value;
+    console.log("choose-plant" + plantToDelete);
+    let optionToDelete = document.getElementById("choose-plant" + plantToDelete);
+    optionToDelete.remove();
+
     fetch(`https://localhost:44313/api/text/${plantToDelete}`,{
         method: 'DELETE'
     })
     .then(response => response.json())
     .then(deleteCard(plantToDelete))
     .catch(error => console.log(error));
+
+    
 })
 
 

@@ -19,10 +19,10 @@
                         <div class="middle" id="middle-add">
                             <span class="close" id="close-add">&times;</span>
                             <div class="inner" id="inner-add">
-                                <p id="add-text">Please add a room that you will be keeping your plants in. Then choose a color that you will want to color coordinate with.</p>
+                                <p class="text" id="add-text">Please add a room that you will be keeping your plants in. Then choose a color that you will want to color coordinate with.</p>
                                 <label for="room"></label>
-                                <input type="text" id="room" placeholder="Name of Room"> 
-                                <select class="dropdown" id="add-room" size="1" placeholder="Select Card Color">
+                                <input type="text" id="new-room-input" placeholder="Name of Room"> 
+                                <select class="dropdown" id="room-color" size="1" placeholder="Select Card Color">
                                     <option class="choose-room" value="" disabled selected>Select Color</option>
                                     <option class="choose-room" value="red" >Red</option>
                                     <option class="choose-room" value="orange" >Orange</option>
@@ -32,7 +32,7 @@
                                     <option class="choose-room" value="purple" >Purple</option>
                                     <option class="choose-room" value="gray" >Gray</option>
                                 </select>
-                                <button id="room-button">Submit</button>
+                                <button class="menu-button" id="add-room-button">Submit</button>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,16 @@
                         <div class="middle" id="middle-change">
                             <span class="close" id="close-change">&times;</span>
                             <div class="inner" id="inner-change">
-                            Modal Content 
+                                <p  class="text" id="change-text">If you would like to change the room that a plant is in, select it from the drop down and assign a new room placement. If there are no room placements, please return to the menu and create a room.</p> 
+                                <div id="change-dropdowns">
+                                    <select class="dropdown" id="change-dropdown-plant" size="1" placeholder="Select Plant">
+                                        <option class="choose-plant" value="" disabled selected>Select Plant</option>
+                                    </select>
+                                    <select class="dropdown" id="change-dropdown-room" size="1" placeholder="Select Room">
+                                        <option class="choose-plant" value="" disabled selected>SelectNew Room</option>
+                                    </select>
+                                    <button class="menu-button" id="change-room-button">Submit</button>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -31,12 +31,14 @@ const addPlantToCatalog = function(chosenPlant){
             option.classList.add("choose-plant");
             option.innerText= chosenPlant.name;
             option.value = chosenPlant.id;
+            option.value = plant.id;
             deleteDropdown.appendChild(option);
 };
 
 const deleteCard = function(deletedPlantId){
-var cardToDelete = document.querySelector(deletedPlantId);
-cardToDelete.remove();
+    console.log(deletedPlantId)
+    var cardToDelete = document.getElementById(deletedPlantId);
+    cardToDelete.remove();
 }
 
 

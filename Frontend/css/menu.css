@@ -100,17 +100,17 @@
   }
 
   /* Indvidual Modals ---------------------------------------------------*/
-  #inner-add{
+  .inner{
       display: grid;
       row-gap: 20px;
   }
 
-  #add-text{
-      padding-left: 50px;
-      padding-right: 50px;
+  .text{
+      padding-left: 150px;
+      padding-right: 150px;
   }
 
-  #room {
+  #new-room-input {
       width: 250px;
       font-size: medium;
       border-radius: 5px;
@@ -118,12 +118,12 @@
       padding-left: 10px;
   }
 
-  #add-room {
+  #room-color {
       border-radius: 10px;
       font-size: medium;
   }
 
-  #room-button{
+  .menu-button{
     background-color: var(--translucent);
     border-color: var(--dark-color);
     font-family: 'Courgette', cursive;
@@ -133,6 +133,10 @@
     margin-bottom: 30px;
     font-size: medium;
     width: 60px;
+  }
+
+  #change-dropdowns > select{
+    margin: 10px;
   }
 
 

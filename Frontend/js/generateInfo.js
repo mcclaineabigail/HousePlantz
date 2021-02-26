@@ -1,6 +1,7 @@
 const ownedSection = document.getElementById("owned");
 const addDropdown = document.getElementById("add-dropdown");
 const deleteDropdown = document.getElementById("delete-dropdown");
+const changeRoomDropdown = document.getElementById("change-dropdown-plant")
 
 fetch("https://localhost:44313/api/text", {
 //fetch("https://plantcatalog.azurewebsites.net/api/text", {
@@ -13,6 +14,8 @@ fetch("https://localhost:44313/api/text", {
 .then((plants) => displayPlants(plants))
 .catch((error) => console.log(error));
 
+
+
 fetch("https://localhost:44313/api/text", {
 //fetch("https://plantcatalog.azurewebsites.net/api/text", {
         method: "GET",
@@ -24,6 +27,21 @@ fetch("https://localhost:44313/api/text", {
 .then((plants2) => fillDeleteDropDown(plants2))
 .catch((error) => console.log(error));
 
+
+
+fetch("https://localhost:44313/api/text", {
+//fetch("https://plantcatalog.azurewebsites.net/api/text", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+.then((response) => response.json())
+.then((plants3) => fillChangeRoomDropDown(plants3))
+.catch((error) => console.log(error));
+
+
+
 fetch("https://plantcatalog.azurewebsites.net/api/plants", {
         method: "GET",
         headers: {
@@ -33,6 +51,8 @@ fetch("https://plantcatalog.azurewebsites.net/api/plants", {
 .then((response) => response.json())
 .then((plantOptions) => fillAddDropDown(plantOptions))
 .catch((error) => console.log(error));
+
+
 
 const displayPlants = function(plants) {
     plants.forEach((plant) => {
@@ -99,9 +119,21 @@ const fillDeleteDropDown = function(plants2) {
         option.classList.add("choose-plant");
         option.innerText= plant2.name;
         option.value = plant2.id;
+        option.id = "choose-plant"+ plant2.id;
         deleteDropdown.appendChild(option);
     });
     return deleteDropdown;
+}
+
+const fillChangeRoomDropDown = function(plants3) {
+    plants3.forEach((plant3) => {
+        let option = document.createElement("option");
+        option.classList.add("choose-plant");
+        option.innerText= plant3.name;
+        option.value = plant3.id;
+        changeRoomDropdown.appendChild(option);
+    });
+    return changeRoomDropdown;
 }
 
     export { makeCard , fillAddDropDown, fillDeleteDropDown, displayPlants}
