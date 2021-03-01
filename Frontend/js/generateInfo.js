@@ -67,6 +67,8 @@ let makeCard = function(plant){
     card.classList.add(plant.color);
     card.id = (plant.id);
 
+    console.log(plant.color)
+
     let titleAside = document.createElement("aside");
     titleAside.classList.add("plant-header")
     
