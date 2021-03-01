@@ -1,26 +1,14 @@
-/* :root {
-    --font: rgb(56, 8, 20);
-    --background: rgb(255, 250, 242);
-    --dark-background: rgb(227, 216, 197);
-    --main-color: rgba(218, 167, 167, 0.842);
-    --deep-color: rgb(105, 24, 24);
-    --dark-color: rgb(63, 7, 19);
-    --translucent: rgba(255, 255, 255, 0.726);
-    --border-width: 20px;
-    --box-shadow:-5px 5px var(--deep-color);
-} */
- 
- .dropdown-menu {
-    position: absolute;
-    left: 100px;
-    display: inline-block;
-  }
+.dropdown-menu {
+  position: absolute;
+  left: 100px;
+  display: inline-block;
+}
 
   .elipses{
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 5px;
-  }
+}
 
   .elipses:hover {
       background-color: var(--deep-color);
@@ -194,37 +182,42 @@
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
-  }
+}
   
   /* Rounded sliders */
   .slider.round {
     border-radius: 34px;
-  }
+}
   
   .slider.round:before {
     border-radius: 50%;
-  }
+}
 
+/*-----------------------------------------------*/
+li{
+  padding:8px;
+  margin: 5px;
+  border-radius: 5px;
+}
 
-  /*Menu Colors------------------------------------*/
   .red{
-    color: rgb(151, 24, 24);
-  }
-  .orange{
-    color: rgb(187, 78, 6);
-  }
-  .yellow{
-    color: rgb(231, 192, 16);
-  }
-  .green{
-    color: rgb(16, 134, 36);
-  }
-  .blue{
-    color: rgb(63, 84, 199);
-  }
-  .purple{
-    color: rgb(130, 24, 151);
-  }
-  .gray{
-    color: rgb(112, 112, 112);
-  }
+    background-color: var(--red);
+}
+.orange{
+    background-color: var(--orange);
+}
+.yellow{
+    background-color: var(--yellow);
+}
+.green{
+    background-color: var(--green);
+}
+.blue{
+    background-color: var(--blue);
+}
+.purple, .standard{
+    background-color: var(--purple);
+}
+.gray{
+    background-color: var(--purple);
+}

@@ -1,10 +1,4 @@
-import { fillAddDropDown, 
-    fillDeleteDropDown, 
-    makeCard
-} from "/js/generateInfo.js"
-
-const deleteDropdown = document.getElementById("delete-dropdown");
-
+import { makeCard } from "/js/generateInfo.js"
 
 const addPlantToCatalog = function(chosenPlant){
     const postJson = {
@@ -27,13 +21,6 @@ const addPlantToCatalog = function(chosenPlant){
         .then(response => response.json())
         .then(postJson => makeCard(postJson))
         .catch(err => console.error(err));
-
-            let option = document.createElement("option");
-            option.classList.add("choose-plant");
-            option.innerText= chosenPlant.name;
-            option.value = chosenPlant.id;
-            option.value = chosenPlant.id;
-            deleteDropdown.appendChild(option);
 };
 
 const deleteCard = function(deletedPlantId){

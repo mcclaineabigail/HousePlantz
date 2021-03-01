@@ -14,32 +14,12 @@
     --orange: rgba(230, 120, 30, 0.842);
     --yellow: rgba(230, 210, 30, 0.842);
     --green: rgba(49, 179, 81, 0.842);
-    --blue: rgba(111, 103, 231, 0.842);
+    --blue: rgba(106, 183, 255, 0.842);
     --purple: rgba(161, 146, 172, 0.842);
     --gray: rgba(112, 109, 109, 0.842);
 }
 
-.red{
-    background-color: var(--red);
-}
-.orange{
-    background-color: var(--orange);
-}
-.yellow{
-    background-color: var(--yellow);
-}
-.green{
-    background-color: var(--green);
-}
-.blue{
-    background-color: var(--blue);
-}
-.purple, .standard{
-    background-color: var(--purple);
-}
-.gray{
-    background-color: var(--purple);
-}
+
 
 body, select, input {
     font-family: 'Courgette', cursive;

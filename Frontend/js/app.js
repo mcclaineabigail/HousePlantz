@@ -1,11 +1,10 @@
-import { addPlantToCatalog, deleteCard} from "/js/dynamics.js"
+import { addPlantToCatalog, deleteCard} from "/js/addPlant.js"
 import { toggle } from "/js/menu.js"
 import { Room } from "/js/room.js"
 
+
 const addDropdown = document.getElementById("add-dropdown");
-const deleteDropdown = document.getElementById("delete-dropdown");
-const submitButton = document.getElementById("submit")
-const deleteButton = document.getElementById("delete")
+const submitButton = document.getElementById("submit");
 
 submitButton.addEventListener("click", () => {
     fetch(`https://plantcatalog.azurewebsites.net/api/plants/${addDropdown.value}`, {
@@ -18,6 +17,9 @@ submitButton.addEventListener("click", () => {
     .then(chosenPlant => addPlantToCatalog(chosenPlant))
     .catch(error => console.log(error));
 });
+
+const deleteDropdown = document.getElementById("delete-dropdown");
+const deleteButton = document.getElementById("delete");
 
 deleteButton.addEventListener("click", () => {
     let plantToDelete = deleteDropdown.value;
@@ -78,19 +80,52 @@ const rooms = [];
 const roomDD = document.getElementById("room-name");
 const colorDD = document.getElementById("room-color");
 const roomList = document.getElementById("rooms-list");
+const roomsChange = document.getElementById("change-dropdown-room");
 
 const addRoomButton = document.getElementById("add-room-button");
 addRoomButton.addEventListener("click", () => {
 let newRoom = new Room(roomDD.value, colorDD.value);
 rooms.push(newRoom);
-console.log(rooms);
 let addedRoom = document.createElement("li");
 addedRoom.innerText = roomDD.value;
 addedRoom.classList.add(colorDD.value);
 roomList.appendChild(addedRoom);
+let roomToAdd = document.createElement("option");
+roomToAdd.innerText= roomDD.value;
+roomToAdd.value = colorDD.value;
+roomsChange.appendChild(roomToAdd);
 let optionToRemove = document.getElementById(roomDD.value);
 optionToRemove.remove();
-})
+});
+
+const changeRoomButton = document.getElementById("change-room-button");
+let plantToChange = document.getElementById("change-dropdown-plant");
+let roomToChange = document.getElementById("change-dropdown-room");
+
+changeRoomButton.addEventListener("click", () => {
+  const postJson = [{
+    "path": "/color",
+    "op": "replace",
+    "value": roomToChange.value
+}];
+
+  fetch(`https://localhost:44313/api/text/${plantToChange.value}`,{
+        method: 'PATCH',
+        body: JSON.stringify(postJson),
+        headers: {
+          'Content-Type': 'application/json-patch+json'
+        }
+        
+    })
+    .then(response => response.json())
+    .catch(error => console.log(error));   
+
+    let changedCard = document.getElementById(plantToChange.value)
+    changedCard.className = '';
+    changedCard.classList.add(roomToChange.value)
+
+  });
+
 
 
 
