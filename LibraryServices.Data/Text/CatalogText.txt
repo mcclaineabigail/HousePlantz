@@ -1,1 +1,1 @@
-[{"id":1,"name":"Arrowhead Vine","sun":"https://github.com/mcclaineabigail/PlantCatalog/blob/main/LibraryServices.Data/Images/light/low-medium.png?raw=true","image":"https://github.com/mcclaineabigail/PlantCatalog/blob/main/LibraryServices.Data/Images/plant-images/arrowhead-vine.PNG?raw=true","water":"Keep Evenly Moist","notes":"Trailing","color":null}]
+[]
