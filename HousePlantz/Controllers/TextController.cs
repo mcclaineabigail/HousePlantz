@@ -38,9 +38,10 @@ namespace HousePlantz.Controllers
             return plantToAdd;
         }
 
-        private object SerializableAttribute(Plant plantToAdd)
+        
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
         {
-            throw new NotImplementedException();
         }
 
         [HttpDelete("{id}")]
@@ -61,40 +62,3 @@ namespace HousePlantz.Controllers
     }
 }
 
-
-
-// This version is able to handle one Plant, possibly try to split up the string by , if the deserialize object doesn't work.
-
-//[HttpDelete("{id}")]
-//public void Delete(long id)
-//{
-//    var allText = GetText();
-
-//    var plant = JsonSerializer.Deserialize<Plant>(allText);
-//    var plantList = new List<Plant> { plant };
-
-//    var plantToRemove = plantList.FirstOrDefault(x => x.Id == id);
-//    plantList.Remove(plantToRemove);
-//    var newText = JsonSerializer.Serialize(plantList);
-
-//    string allPath = @"C:\Users\amcclain\source\repos\HousePlantz\LibraryServices.Data\Text\CatalogText.txt";
-
-//    using var sw = new StreamWriter(allPath);
-//    sw.WriteLine(newText);
-
-
-
-
-// Original code
-
-//var allText = GetText();
-//var plantList = JsonSerializer.Deserialize<List<Plant>>(allText);
-
-//var plantToRemove = plantList.FirstOrDefault(x => x.Id == id);
-//plantList.Remove(plantToRemove);
-//var newText = JsonSerializer.Serialize(plantList);
-
-//string allPath = @"C:\Users\amcclain\source\repos\HousePlantz\LibraryServices.Data\Text\CatalogText.txt";
-
-//using var sw = new StreamWriter(allPath);
-//sw.WriteLine(newText);

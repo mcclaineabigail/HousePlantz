@@ -1,0 +1,9 @@
+.body-darkMode{
+    background-image: url(/background-negative.jpg);
+    background-size: cover;  
+}
+
+.color-switch{
+    background-color: var(--font);
+    color: antiquewhite;
+}

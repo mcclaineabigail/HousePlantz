@@ -5,6 +5,7 @@ import { fillAddDropDown,
 
 const deleteDropdown = document.getElementById("delete-dropdown");
 
+
 const addPlantToCatalog = function(chosenPlant){
     const postJson = {
         "id" : chosenPlant.id,
@@ -31,7 +32,7 @@ const addPlantToCatalog = function(chosenPlant){
             option.classList.add("choose-plant");
             option.innerText= chosenPlant.name;
             option.value = chosenPlant.id;
-            option.value = plant.id;
+            option.value = chosenPlant.id;
             deleteDropdown.appendChild(option);
 };
 

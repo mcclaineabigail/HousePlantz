@@ -1,21 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 
 :root {
-    --font: rgb(56, 8, 20);
+    --font: rgb(32, 23, 34);
     --background: rgb(255, 250, 242);
     --dark-background: rgb(227, 216, 197);
-    --main-color: rgba(218, 167, 167, 0.842);
-    --deep-color: rgb(105, 24, 24);
-    --dark-color: rgb(63, 7, 19);
+    --main-color: rgba(161, 146, 172, 0.842);
+    --deep-color: rgb(88, 62, 94);
+    --dark-color: rgb(71, 52, 71);
     --translucent: rgba(255, 255, 255, 0.726);
     --border-width: 20px;
     --box-shadow:-5px 5px var(--deep-color);
 }
 
-.container {
+/* .container {
     padding-bottom: 200px;
     width: 100%;
-}
+} */
 
 body, select, input {
     font-family: 'Courgette', cursive;
@@ -52,7 +52,7 @@ body {
     margin-bottom: 150px;
 }
 
-.plant {
+figure {
     justify-items: center;
     border-style: double;
     border-radius: 10px;
