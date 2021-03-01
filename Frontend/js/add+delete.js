@@ -27,6 +27,9 @@ const deleteCard = function(deletedPlantId){
     console.log(deletedPlantId)
     var cardToDelete = document.getElementById(deletedPlantId);
     cardToDelete.remove();
+    let changePlantOption = document.getElementById("change-room-" + deletedPlantId);
+    changePlantOption.remove(); 
+    console.log(changePlantOption.id);
 }
 
 

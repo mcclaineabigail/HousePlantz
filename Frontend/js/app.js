@@ -1,4 +1,4 @@
-import { addPlantToCatalog, deleteCard} from "/js/addPlant.js"
+import { addPlantToCatalog, deleteCard} from "/js/add+delete.js"
 import { toggle } from "/js/menu.js"
 import { Room } from "/js/room.js"
 

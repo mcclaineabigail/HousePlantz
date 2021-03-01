@@ -79,6 +79,7 @@ let makeCard = function(plant){
         addOption.classList.add("choose-plant");
         addOption.innerText= plant.name;
         addOption.value = plant.id;
+        addOption.id = "change-room-" + plant.id;
         changeRoomDropdown.appendChild(addOption);
 
     //Fill Delete Plant Dropdown-------------------
