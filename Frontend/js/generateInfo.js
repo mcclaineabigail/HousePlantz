@@ -64,6 +64,7 @@ const displayPlants = function(plants) {
 
 let makeCard = function(plant){
     let card = document.createElement("figure");
+    card.classList.add(plant.color);
     card.id = (plant.id);
 
     let titleAside = document.createElement("aside");

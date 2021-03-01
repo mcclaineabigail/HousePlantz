@@ -1,6 +1,7 @@
 ﻿using HousePlantz.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.JsonPatch;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -39,9 +40,26 @@ namespace HousePlantz.Controllers
         }
 
         
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPatch("{id}")]
+        public IActionResult Patch(int id, [FromBody] JsonPatchDocument<Plant> patchEntity)
         {
+            var allText = GetText();
+            var plantList = JsonConvert.DeserializeObject<List<Plant>>(allText);
+
+            var entity = plantList.FirstOrDefault(x => x.Id == id);
+            if (entity == null)
+            { return NotFound(); }
+
+            patchEntity.ApplyTo(entity, ModelState);
+
+            var newText = System.Text.Json.JsonSerializer.Serialize(plantList, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+
+            string allPath = @"C:\Users\amcclain\source\repos\HousePlantz\LibraryServices.Data\Text\CatalogText.txt";
+
+            using var sw = new StreamWriter(allPath);
+            sw.WriteLine(newText);
+
+            return Ok(entity);
         }
 
         [HttpDelete("{id}")]
