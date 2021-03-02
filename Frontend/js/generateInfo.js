@@ -36,8 +36,15 @@ const displayPlants = function(plants) {
 
 
 let makeCard = function(plant){
+    let flipCardOuter = document.createElement("div");
+    flipCardOuter.classList.add("flip-card");
+    let flipCardInner = document.createElement("div");
+    flipCardInner.classList.add("flip-card-inner")
+
+
     let card = document.createElement("figure");
     card.classList.add(plant.color);
+    card.classList.add("flip-card-front")
     card.id = (plant.id);
 
     let titleAside = document.createElement("aside");
@@ -68,10 +75,16 @@ let makeCard = function(plant){
     infoAside.appendChild(photo);
     infoAside.appendChild(water);
     infoAside.appendChild(notes);
-       
+
+    let cardBack = document.createElement("div");
+    cardBack.classList.add("flip-card-back");
+    
     card.appendChild(titleAside);
     card.appendChild(infoAside);
-    ownedSection.appendChild(card);
+    flipCardInner.appendChild(card);
+    flipCardInner.appendChild(cardBack);
+    flipCardOuter.appendChild(flipCardInner);
+    ownedSection.appendChild(flipCardOuter);
 
 
     //Change Room Dropdown--------------------------
