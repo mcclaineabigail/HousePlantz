@@ -1,4 +1,4 @@
-import { addPlantToCatalog, deleteCard} from "/js/add+delete.js"
+import { addPlantToCatalog, deleteCard, fetchAddPlant} from "/js/add+delete.js"
 import { toggleDark} from "/js/menu.js"
 import { Room } from "/js/room.js"
 
@@ -6,32 +6,26 @@ import { Room } from "/js/room.js"
 const addDropdown = document.getElementById("add-dropdown");
 const submitButton = document.getElementById("submit");
 
+
 submitButton.addEventListener("click", () => {
-  fetch(`https://plantcatalog.azurewebsites.net/api/plants/${addDropdown.value}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-  .then(response => response.json())
-  .then(chosenPlant => addPlantToCatalog(chosenPlant))
-  .catch(error => console.log(error));
+  let nickName = document.getElementById("add-input").value
+  fetchAddPlant(addDropdown.value, nickName);
 });
 
 const deleteDropdown = document.getElementById("delete-dropdown");
 const deleteButton = document.getElementById("delete");
 
 deleteButton.addEventListener("click", () => {
-    let plantToDelete = deleteDropdown.value;
-    console.log("choose-plant" + plantToDelete);
-    let optionToDelete = document.getElementById("choose-plant" + plantToDelete);
+    let plantToDeleteNickName = deleteDropdown.value;  // = Nickname
+    console.log("plantToDeleteId: " + plantToDeleteNickName);
+    let optionToDelete = document.getElementById("delete-" + plantToDeleteNickName);
     optionToDelete.remove();
 
-    fetch(`https://localhost:44313/api/text/${plantToDelete}`,{
+    fetch(`https://localhost:44313/api/text/${plantToDeleteNickName}`,{
         method: 'DELETE'
     })
     .then(response => response.json())
-    .then(deleteCard(plantToDelete))
+    .then(plantToDelete => deleteCard(plantToDelete))
     .catch(error => console.log(error));   
 })
 

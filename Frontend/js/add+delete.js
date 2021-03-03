@@ -1,17 +1,18 @@
 import { makeCard } from "/js/generateInfo.js"
 
-const addPlantToCatalog = function(chosenPlant){
+const addPlantToCatalog = function(chosenPlant, nickname){
     const postJson = {
         "id" : chosenPlant.id,
         "name" : chosenPlant.name,
         "sun" : chosenPlant.sun,
         "image" : chosenPlant.image,
         "water" : chosenPlant.water,
-        "notes" : chosenPlant.notes
+        "notes" : chosenPlant.notes, 
+        "color" : "standard",
+        "nickName" : nickname
     };
 
-    fetch("https://localhost:44313/api/text", {
-    //fetch("https://plantcatalog.azurewebsites.net/api/text", {   
+    fetch("https://localhost:44313/api/text", {  
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -23,16 +24,28 @@ const addPlantToCatalog = function(chosenPlant){
         .catch(err => console.error(err));
 };
 
-const deleteCard = function(deletedPlantId){
-    console.log(deletedPlantId)
-    var cardToDelete = document.getElementById(deletedPlantId);
+const fetchAddPlant = function(plantId, nickName){
+    fetch(`https://plantcatalog.azurewebsites.net/api/plants/${plantId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  .then(response => response.json())
+  .then(chosenPlant => addPlantToCatalog(chosenPlant, nickName))
+  .catch(error => console.log(error));
+};
+
+const deleteCard = function(deletedPlant){
+    console.log("deletedPlant: " + deletedPlant)
+    var cardToDelete = document.getElementById(deletedPlant.nickName);
     cardToDelete.remove();
-    let changePlantOption = document.getElementById("change-room-" + deletedPlantId);
+    let changePlantOption = document.getElementById("change-room-" + deletedPlant.id);
     changePlantOption.remove(); 
-    console.log(changePlantOption.id);
+    console.log("changePlantOption.id: " + changePlantOption.id);
 }
 
 
 
 
-export { addPlantToCatalog, deleteCard }
+export { addPlantToCatalog, deleteCard, fetchAddPlant }

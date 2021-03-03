@@ -46,6 +46,7 @@ const displayPlants = function(plants) {
 let makeCard = function(plant){
     let flipCardOuter = document.createElement("div");
     flipCardOuter.classList.add("flip-card");
+    flipCardOuter.id = plant.nickName;
     let flipCardInner = document.createElement("div");
     flipCardInner.classList.add("flip-card-inner")
 
@@ -56,15 +57,21 @@ let makeCard = function(plant){
     
     let titleAside = document.createElement("aside");
     titleAside.classList.add("plant-header")
-    
+    let names = document.createElement("div")
+        names.id = "names"
     let plantName = document.createElement("h2");
         plantName.classList.add("plant-name");
-        plantName.innerText = plant.name;
+        plantName.innerText = plant.nickName;
+    let plantType = document.createElement("h4");
+        plantType.classList.add("plant-name");
+        plantType.innerText = "(" + plant.name + ")";
     let sun = document.createElement("img");
         sun.src = plant.sun;
         sun.alt= "light needs";
         sun.classList.add("sun");
-    titleAside.appendChild(plantName);
+    names.appendChild(plantName);
+    names.appendChild(plantType);
+    titleAside.appendChild(names);
     titleAside.appendChild(sun);
 
     let infoAside = document.createElement("aside");
@@ -119,16 +126,16 @@ let addOption = document.createElement("option");
         addOption.classList.add("choose-plant");
         addOption.innerText= plant.name;
         addOption.value = plant.id;
-        addOption.id = "change-room-" + plant.id;
+        addOption.id = ("change-room-" + plant.id);
         changeRoomDropdown.appendChild(addOption);    
 }
 
 const fillDeletePlantDropdown = function(plant){
     let deleteOption = document.createElement("option");
     deleteOption.classList.add("choose-plant");
-    deleteOption.innerText= plant.name;
-    deleteOption.value = plant.id;
-    deleteOption.id = "choose-plant"+ plant.id;
+    deleteOption.innerText= plant.nickName;
+    deleteOption.value = plant.nickName;
+    deleteOption.id = ("delete-" + plant.nickName);
     deleteDropdown.appendChild(deleteOption);
 }
 
