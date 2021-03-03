@@ -1,3 +1,5 @@
+import { toggleFlip } from "/js/menu.js";
+
 const ownedSection = document.getElementById("owned");
 const addDropdown = document.getElementById("add-dropdown");
 const deleteDropdown = document.getElementById("delete-dropdown");
@@ -14,7 +16,6 @@ fetch("https://localhost:44313/api/text", {
 .then((plants) => displayPlants(plants))
 .catch((error) => console.log(error));
 
-
 fetch("https://plantcatalog.azurewebsites.net/api/plants", {
         method: "GET",
         headers: {
@@ -25,6 +26,16 @@ fetch("https://plantcatalog.azurewebsites.net/api/plants", {
 .then((plantOptions) => fillAddDropDown(plantOptions))
 .catch((error) => console.log(error));
 
+const fillAddDropDown = function(plants) {
+    plants.forEach((plant) => {
+        let option = document.createElement("option");
+        option.classList.add("choose-plant");
+        option.innerText= plant.name;
+        option.value = plant.id;
+        addDropdown.appendChild(option);
+    });
+    return addDropdown;
+}
 
 
 const displayPlants = function(plants) {
@@ -34,19 +45,19 @@ const displayPlants = function(plants) {
     return ownedSection;
 }
 
-
 let makeCard = function(plant){
     let flipCardOuter = document.createElement("div");
     flipCardOuter.classList.add("flip-card");
+    
+    
     let flipCardInner = document.createElement("div");
     flipCardInner.classList.add("flip-card-inner")
 
-
-    let card = document.createElement("figure");
-    card.classList.add(plant.color);
-    card.classList.add("flip-card-front")
-    card.id = (plant.id);
-
+    let cardFront = document.createElement("div");
+    cardFront.classList.add("flip-card-front")
+    cardFront.classList.add(plant.color);
+    cardFront.id = (plant.id);
+    
     let titleAside = document.createElement("aside");
     titleAside.classList.add("plant-header")
     
@@ -79,42 +90,38 @@ let makeCard = function(plant){
     let cardBack = document.createElement("div");
     cardBack.classList.add("flip-card-back");
     
-    card.appendChild(titleAside);
-    card.appendChild(infoAside);
-    flipCardInner.appendChild(card);
+    cardFront.appendChild(titleAside);
+    cardFront.appendChild(infoAside);
+    flipCardInner.appendChild(cardFront);
     flipCardInner.appendChild(cardBack);
     flipCardOuter.appendChild(flipCardInner);
     ownedSection.appendChild(flipCardOuter);
 
+    fillChangeRoomDropdown(plant)
+    fillDeletePlantDropdown(plant)
+    
+    flipCardOuter.addEventListener("click", () =>{
+        flipCardOuter.classList.toggle("clicked")
+    });
+}
 
-    //Change Room Dropdown--------------------------
-    let addOption = document.createElement("option");
+const fillChangeRoomDropdown = function(plant){
+let addOption = document.createElement("option");
         addOption.classList.add("choose-plant");
         addOption.innerText= plant.name;
         addOption.value = plant.id;
         addOption.id = "change-room-" + plant.id;
-        changeRoomDropdown.appendChild(addOption);
+        changeRoomDropdown.appendChild(addOption);    
+}
 
-    //Fill Delete Plant Dropdown-------------------
+const fillDeletePlantDropdown = function(plant){
     let deleteOption = document.createElement("option");
-        deleteOption.classList.add("choose-plant");
-        deleteOption.innerText= plant.name;
-        deleteOption.value = plant.id;
-        deleteOption.id = "choose-plant"+ plant.id;
-        deleteDropdown.appendChild(deleteOption);
-}
-
-const fillAddDropDown = function(plants) {
-    plants.forEach((plant) => {
-        let option = document.createElement("option");
-        option.classList.add("choose-plant");
-        option.innerText= plant.name;
-        option.value = plant.id;
-        addDropdown.appendChild(option);
-    });
-    return addDropdown;
+    deleteOption.classList.add("choose-plant");
+    deleteOption.innerText= plant.name;
+    deleteOption.value = plant.id;
+    deleteOption.id = "choose-plant"+ plant.id;
+    deleteDropdown.appendChild(deleteOption);
 }
 
 
-
-    export { makeCard , fillAddDropDown, displayPlants}
+export { makeCard , fillAddDropDown, displayPlants}

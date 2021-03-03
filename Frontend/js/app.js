@@ -1,5 +1,5 @@
 import { addPlantToCatalog, deleteCard} from "/js/add+delete.js"
-import { toggle } from "/js/menu.js"
+import { toggleDark} from "/js/menu.js"
 import { Room } from "/js/room.js"
 
 
@@ -7,15 +7,15 @@ const addDropdown = document.getElementById("add-dropdown");
 const submitButton = document.getElementById("submit");
 
 submitButton.addEventListener("click", () => {
-    fetch(`https://plantcatalog.azurewebsites.net/api/plants/${addDropdown.value}`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    })
-    .then(response => response.json())
-    .then(chosenPlant => addPlantToCatalog(chosenPlant))
-    .catch(error => console.log(error));
+  fetch(`https://plantcatalog.azurewebsites.net/api/plants/${addDropdown.value}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  .then(response => response.json())
+  .then(chosenPlant => addPlantToCatalog(chosenPlant))
+  .catch(error => console.log(error));
 });
 
 const deleteDropdown = document.getElementById("delete-dropdown");
@@ -72,7 +72,7 @@ window.onclick = function(event) {
 
 const slider = document.getElementById("slider");
 slider.addEventListener("change", () => {
-    toggle();
+  toggleDark();
 });
 
 
@@ -109,22 +109,23 @@ changeRoomButton.addEventListener("click", () => {
     "value": roomToChange.value
 }];
 
-  fetch(`https://localhost:44313/api/text/${plantToChange.value}`,{
-        method: 'PATCH',
-        body: JSON.stringify(postJson),
-        headers: {
-          'Content-Type': 'application/json-patch+json'
-        }
-        
-    })
-    .then(response => response.json())
-    .catch(error => console.log(error));   
+fetch(`https://localhost:44313/api/text/${plantToChange.value}`,{
+  method: 'PATCH',
+  body: JSON.stringify(postJson),
+  headers: {
+    'Content-Type': 'application/json-patch+json'
+  }   
+})
+  .then(response => response.json())
+  .catch(error => console.log(error));   
 
-    let changedCard = document.getElementById(plantToChange.value)
-    changedCard.className = '';
-    changedCard.classList.add(roomToChange.value)
+  let changedCard = document.getElementById(plantToChange.value)
+  changedCard.className = '';
+  changedCard.classList.add("flip-card-front")
+  changedCard.classList.add(roomToChange.value)
+});
 
-  });
+
 
 
 
