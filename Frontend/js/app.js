@@ -10,6 +10,8 @@ const submitButton = document.getElementById("submit");
 submitButton.addEventListener("click", () => {
   let nickName = document.getElementById("add-input").value
   fetchAddPlant(addDropdown.value, nickName);
+  let submitInput = document.getElementById("add-input");
+  submitInput.value= "";
 });
 
 const deleteDropdown = document.getElementById("delete-dropdown");

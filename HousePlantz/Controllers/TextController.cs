@@ -40,13 +40,13 @@ namespace HousePlantz.Controllers
         }
 
         
-        [HttpPatch("{id}")]
-        public IActionResult Patch(int id, [FromBody] JsonPatchDocument<Plant> patchEntity)
+        [HttpPatch("{NickName}")]
+        public IActionResult Patch(string nickName, [FromBody] JsonPatchDocument<Plant> patchEntity)
         {
             var allText = GetText();
             var plantList = JsonConvert.DeserializeObject<List<Plant>>(allText);
 
-            var entity = plantList.FirstOrDefault(x => x.Id == id);
+            var entity = plantList.FirstOrDefault(x => x.NickName == nickName);
             if (entity == null)
             { return NotFound(); }
 
@@ -62,13 +62,13 @@ namespace HousePlantz.Controllers
             return Ok(entity);
         }
 
-        [HttpDelete("{id}")]
-        public void Delete(long id)
+        [HttpDelete("{NickName}")]
+        public Plant Delete(string nickName)
         {
             var allText = GetText();
             var plantList = JsonConvert.DeserializeObject<List<Plant>>(allText);
 
-            var plantToRemove = plantList.FirstOrDefault(x => x.Id == id);
+            var plantToRemove = plantList.FirstOrDefault(x => x.NickName == nickName);
             plantList.Remove(plantToRemove);
             var newText = System.Text.Json.JsonSerializer.Serialize(plantList, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
 
@@ -76,6 +76,8 @@ namespace HousePlantz.Controllers
 
             using var sw = new StreamWriter(allPath);
             sw.WriteLine(newText);
+
+            return plantToRemove;
         }
     }
 }
