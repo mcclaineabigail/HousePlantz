@@ -48,8 +48,6 @@ const displayPlants = function(plants) {
 let makeCard = function(plant){
     let flipCardOuter = document.createElement("div");
     flipCardOuter.classList.add("flip-card");
-    
-    
     let flipCardInner = document.createElement("div");
     flipCardInner.classList.add("flip-card-inner")
 
@@ -83,12 +81,22 @@ let makeCard = function(plant){
     let notes = document.createElement("p")
         notes.classList.add("notes");
         notes.innerText= plant.notes;
+    let flipIcon = document.createElement("img");
+        flipIcon.src = ("https://static.thenounproject.com/png/267318-200.png");
+        flipIcon.alt = ("flip card");
+        flipIcon.classList.add("flip-icon");
     infoAside.appendChild(photo);
     infoAside.appendChild(water);
     infoAside.appendChild(notes);
+    infoAside.appendChild(flipIcon);
 
     let cardBack = document.createElement("div");
     cardBack.classList.add("flip-card-back");
+    let flipIcon2 = document.createElement("img");
+        flipIcon2.src = ("https://static.thenounproject.com/png/267318-200.png");
+        flipIcon2.alt = ("flip card");
+        flipIcon2.classList.add("flip-icon");
+    cardBack.appendChild(flipIcon2);
     
     cardFront.appendChild(titleAside);
     cardFront.appendChild(infoAside);
@@ -100,7 +108,10 @@ let makeCard = function(plant){
     fillChangeRoomDropdown(plant)
     fillDeletePlantDropdown(plant)
     
-    flipCardOuter.addEventListener("click", () =>{
+    flipIcon.addEventListener("click", () =>{
+        flipCardOuter.classList.toggle("clicked")
+    });
+    flipIcon2.addEventListener("click", () =>{
         flipCardOuter.classList.toggle("clicked")
     });
 }
