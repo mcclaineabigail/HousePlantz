@@ -48,22 +48,22 @@ let makeCard = function(plant){
     flipCardOuter.classList.add("flip-card");
     flipCardOuter.id = plant.nickName;
     let flipCardInner = document.createElement("div");
-    flipCardInner.classList.add("flip-card-inner")
+    flipCardInner.classList.add("flip-card-inner");
 
     let cardFront = document.createElement("div");
     cardFront.classList.add("flip-card-front")
     cardFront.classList.add(plant.color);
-    cardFront.id = (plant.id);
+    cardFront.id = ("card-front-" + plant.nickName);
     
     let titleAside = document.createElement("aside");
     titleAside.classList.add("plant-header")
     let names = document.createElement("div")
-        names.id = "names"
+        names.classList.add("names");
     let plantName = document.createElement("h2");
         plantName.classList.add("plant-name");
         plantName.innerText = plant.nickName;
-    let plantType = document.createElement("h4");
-        plantType.classList.add("plant-name");
+    let plantType = document.createElement("p");
+        plantType.classList.add("plant-type");
         plantType.innerText = "(" + plant.name + ")";
     let sun = document.createElement("img");
         sun.src = plant.sun;
@@ -124,8 +124,8 @@ let makeCard = function(plant){
 const fillChangeRoomDropdown = function(plant){
 let addOption = document.createElement("option");
         addOption.classList.add("choose-plant");
-        addOption.innerText= plant.name;
-        addOption.value = plant.id;
+        addOption.innerText= plant.nickName;
+        addOption.value = plant.nickName;
         addOption.id = ("change-room-" + plant.id);
         changeRoomDropdown.appendChild(addOption);    
 }

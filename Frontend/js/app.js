@@ -104,15 +104,15 @@ changeRoomButton.addEventListener("click", () => {
 }];
   patch(plantToChange.value, colorPatch);
 
-  let changedCard = document.getElementById(plantToChange.value)
+  let changedCard = document.getElementById("card-front-" + plantToChange.value)
   changedCard.className = '';
   changedCard.classList.add("flip-card-front")
   changedCard.classList.add(roomToChange.value)
 });
 
 
-const patch = function(patchPlantId, patchJson){
-  fetch(`https://localhost:44313/api/text/${patchPlantId}`,{
+const patch = function(patchPlantNickName, patchJson){
+  fetch(`https://localhost:44313/api/text/${patchPlantNickName}`,{
   method: 'PATCH',
   body: JSON.stringify(patchJson),
   headers: {

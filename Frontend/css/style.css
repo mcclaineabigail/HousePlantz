@@ -64,6 +64,21 @@ body {
     height: 25%;
 }
 
+.names{
+    display: inline-block;
+}
+
+.names h2{
+    margin-bottom: 5px;
+    padding: o;
+} 
+
+.plant-type{
+    text-align: end;
+    padding-right: 15px;
+    margin-top: 0;
+}
+
 .plant-info {
     display: grid;
     justify-items: center;
@@ -151,7 +166,6 @@ select, #add-input {
     justify-items: center;
     border-style: double;
     border-radius: 10px;
-    background-color: var(--main-color);
     box-shadow: var(--box-shadow);
   }
   
@@ -160,8 +174,6 @@ select, #add-input {
   }   */
   
   .flip-card-back {
-    background-color: dodgerblue;
-    color: white;
     transform: rotateY(180deg);
   }
 
