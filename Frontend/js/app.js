@@ -103,21 +103,12 @@ let plantToChange = document.getElementById("change-dropdown-plant");
 let roomToChange = document.getElementById("change-dropdown-room");
 
 changeRoomButton.addEventListener("click", () => {
-  const postJson = [{
+  const colorPatch = [{
     "path": "/color",
     "op": "replace",
     "value": roomToChange.value
 }];
-
-fetch(`https://localhost:44313/api/text/${plantToChange.value}`,{
-  method: 'PATCH',
-  body: JSON.stringify(postJson),
-  headers: {
-    'Content-Type': 'application/json-patch+json'
-  }   
-})
-  .then(response => response.json())
-  .catch(error => console.log(error));   
+  patch(plantToChange.value, colorPatch);
 
   let changedCard = document.getElementById(plantToChange.value)
   changedCard.className = '';
@@ -126,6 +117,17 @@ fetch(`https://localhost:44313/api/text/${plantToChange.value}`,{
 });
 
 
+const patch = function(patchPlantId, patchJson){
+  fetch(`https://localhost:44313/api/text/${patchPlantId}`,{
+  method: 'PATCH',
+  body: JSON.stringify(patchJson),
+  headers: {
+    'Content-Type': 'application/json-patch+json'
+  }   
+})
+  .then(response => response.json())
+  .catch(error => console.log(error));   
+}
 
 
 

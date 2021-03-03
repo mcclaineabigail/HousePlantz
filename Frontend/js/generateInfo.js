@@ -1,5 +1,3 @@
-import { toggleFlip } from "/js/menu.js";
-
 const ownedSection = document.getElementById("owned");
 const addDropdown = document.getElementById("add-dropdown");
 const deleteDropdown = document.getElementById("delete-dropdown");

@@ -5,7 +5,6 @@ const modal3 = document.getElementById("middle-display");
 const menu = document.getElementById("menu-content");
 
 
-
 const toggleDark = function(){
     body.classList.toggle("body-darkMode");
     modal1.classList.toggle("color-switch");
@@ -14,9 +13,4 @@ const toggleDark = function(){
     menu.classList.toggle("color-switch")
 }
 
-const toggleFlip = function(flipcard){
-  flipcard.classList.toggle("clicked");  
-}
-
-
-export {toggleDark, toggleFlip};
+export {toggleDark};
