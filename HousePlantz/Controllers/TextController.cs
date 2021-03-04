@@ -19,7 +19,7 @@ namespace HousePlantz.Controllers
         [HttpGet]
         public string GetText()
         {
-            return System.IO.File.ReadAllText(@"C:\Users\amcclain\source\repos\HousePlantz\LibraryServices.Data\Text\CatalogText.txt"); // Need to find how to reference file locally.
+            return System.IO.File.ReadAllText(@"C:\Users\amcclain\source\repos\HousePlantz\HousePlantz.Data\Text\CatalogText.txt"); // Need to find how to reference file locally.
         }
 
         [HttpPost]
@@ -31,7 +31,7 @@ namespace HousePlantz.Controllers
 
             var newText = System.Text.Json.JsonSerializer.Serialize(plantList, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
 
-            string allPath = @"C:\Users\amcclain\source\repos\HousePlantz\LibraryServices.Data\Text\CatalogText.txt";
+            string allPath = @"C:\Users\amcclain\source\repos\HousePlantz\HousePlantz.Data\Text\CatalogText.txt";
 
             using var sw = new StreamWriter(allPath);
             sw.WriteLine(newText);
@@ -54,7 +54,7 @@ namespace HousePlantz.Controllers
 
             var newText = System.Text.Json.JsonSerializer.Serialize(plantList, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
 
-            string allPath = @"C:\Users\amcclain\source\repos\HousePlantz\LibraryServices.Data\Text\CatalogText.txt";
+            string allPath = @"C:\Users\amcclain\source\repos\HousePlantz\HousePlantz.Data\Text\CatalogText.txt";
 
             using var sw = new StreamWriter(allPath);
             sw.WriteLine(newText);
@@ -72,7 +72,7 @@ namespace HousePlantz.Controllers
             plantList.Remove(plantToRemove);
             var newText = System.Text.Json.JsonSerializer.Serialize(plantList, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
 
-            string allPath = @"C:\Users\amcclain\source\repos\HousePlantz\LibraryServices.Data\Text\CatalogText.txt";
+            string allPath = @"C:\Users\amcclain\source\repos\HousePlantz\HousePlantz.Data\Text\CatalogText.txt";
 
             using var sw = new StreamWriter(allPath);
             sw.WriteLine(newText);

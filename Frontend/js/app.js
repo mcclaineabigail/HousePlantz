@@ -18,8 +18,7 @@ const deleteDropdown = document.getElementById("delete-dropdown");
 const deleteButton = document.getElementById("delete");
 
 deleteButton.addEventListener("click", () => {
-    let plantToDeleteNickName = deleteDropdown.value;  // = Nickname
-    console.log("plantToDeleteId: " + plantToDeleteNickName);
+    let plantToDeleteNickName = deleteDropdown.value;
     let optionToDelete = document.getElementById("delete-" + plantToDeleteNickName);
     optionToDelete.remove();
 

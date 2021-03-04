@@ -1,0 +1,12 @@
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz.Data\bin\Debug\net5.0\HousePlantz.Data.deps.json
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz.Data\bin\Debug\net5.0\HousePlantz.Data.dll
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz.Data\bin\Debug\net5.0\ref\HousePlantz.Data.dll
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz.Data\bin\Debug\net5.0\HousePlantz.Data.pdb
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz.Data\obj\Debug\net5.0\HousePlantz.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz.Data\obj\Debug\net5.0\HousePlantz.Data.AssemblyInfoInputs.cache
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz.Data\obj\Debug\net5.0\HousePlantz.Data.AssemblyInfo.cs
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz.Data\obj\Debug\net5.0\HousePlantz.Data.csproj.CoreCompileInputs.cache
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz.Data\obj\Debug\net5.0\HousePlantz.Data.dll
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz.Data\obj\Debug\net5.0\ref\HousePlantz.Data.dll
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz.Data\obj\Debug\net5.0\HousePlantz.Data.pdb
+C:\Users\amcclain\source\repos\HousePlantz\HousePlantz.Data\obj\Debug\net5.0\HousePlantz.Data.csprojAssemblyReference.cache

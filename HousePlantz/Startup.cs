@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HousePlantz.Data.Models;
 
 namespace HousePlantz
 {
@@ -29,6 +30,7 @@ namespace HousePlantz
 
             services.AddControllers()
                     .AddNewtonsoftJson();
+            services.AddDbContext<PlantCatalogContext>();
             services.AddCors(options => {
                 options.AddDefaultPolicy(builder => { 
                 builder.AllowAnyOrigin()
