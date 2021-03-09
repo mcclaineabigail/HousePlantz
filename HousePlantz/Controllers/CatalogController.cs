@@ -1,11 +1,11 @@
-﻿using HousePlantz.Data.Interfaces;
-using HousePlantz.Data.Models;
-using HousePlantz.Data.Repositories;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using HousePlantz.Data.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,27 +16,57 @@ namespace HousePlantz.Controllers
     public class CatalogController : ControllerBase
     {
 
-        private CatalogRepository plantCatalog = new CatalogRepository();
+        private readonly PlantCatalogContext _context;
+
+        public CatalogController(PlantCatalogContext context)
+        {
+            _context = context;
+        }
 
         // GET: api/<Catalog>
         [HttpGet]
-        public IEnumerable<Plant> GetAllPlants()
+        public async Task<ActionResult<IEnumerable<PlantCatalog>>> GetPlantCatalogs()
         {
-            return plantCatalog.GetAllPlants();
+            return await _context.PlantCatalogs.ToListAsync();
         }
 
         // GET api/<Catalog>/5
         [HttpGet("{id}")]
-        public string GetAPlant(long id)
+        public async Task<IActionResult> PutCatalog(int id, PlantCatalog catalog)
         {
-            return "value";
+            if (id != catalog.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(catalog).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!PlantCatalogExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return NoContent();
         }
 
         // POST api/<Catalog>
         [HttpPost]
-        public IActionResult PostPlantToCatalog([FromBody] Plant plantToAdd)
+        public async Task<ActionResult<Plant>> PostPlantCatalog(PlantCatalog catalog)
         {
-            return Ok(plantCatalog.AddPlant(plantToAdd));
+            _context.PlantCatalogs.Add(catalog);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetPlantCatalog", new { id = catalog.Id }, catalog);
         }
 
         // PUT api/<Catalog>/5
@@ -47,12 +77,24 @@ namespace HousePlantz.Controllers
 
         // DELETE api/<Catalog>/5
         [HttpDelete("{id}")]
-        public void Delete(long id)
+        public async Task<IActionResult> DeletePlantCatalog(int id)
         {
-            plantCatalog.DeletePlantById(id);
+            var catalog = await _context.PlantCatalogs.FindAsync(id);
+            if (catalog == null)
+            {
+                return NotFound();
+            }
+
+            _context.PlantCatalogs.Remove(catalog);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
 
+        private bool PlantCatalogExists(int id)
+        {
+            return _context.Plants.Any(e => e.Id == id);
+        }
 
-        
     }
 }

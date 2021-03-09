@@ -1,15 +1,12 @@
-﻿using HousePlantz.Data.Interfaces;
-using HousePlantz.Data.Models;
-using HousePlantz.Data.Repositories;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
-using System.IO;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using HousePlantz.Data.Models;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace HousePlantz.Controllers
 {
@@ -17,44 +14,97 @@ namespace HousePlantz.Controllers
     [ApiController]
     public class PlantsController : ControllerBase
     {
-        private IPlantRepository plants = new PlantRepository();
-        
+        private readonly PlantCatalogContext _context;
 
-        // GET: api/<PlantsController>
-        [HttpGet]
-        public IEnumerable<Plant> Get()
+        public PlantsController(PlantCatalogContext context)
         {
-            return plants.GetAllPlants();
+            _context = context;
         }
 
-        // GET api/<PlantsController>/5
-        [HttpGet("{id}")]
-        public IActionResult Get(long id)
+
+
+        // GET: api/Plants1
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Plant>>> GetPlants()
         {
-            var plant = plants.GetPlantById(id);
-            if(plant == null)
+            return await _context.Plants.ToListAsync();
+        }
+
+        // GET: api/Plants1/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Plant>> GetPlant(int id)
+        {
+            var plant = await _context.Plants.FindAsync(id);
+
+            if (plant == null)
             {
                 return NotFound();
             }
-            return Ok(plant);
+
+            return plant;
         }
 
-        // POST api/<PlantsController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<PlantsController>/5
+        // PUT: api/Plants1/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> PutPlant(int id, Plant plant)
         {
+            if (id != plant.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(plant).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!PlantExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
         }
 
-        // DELETE api/<PlantsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        // POST: api/Plants1
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<Plant>> PostPlant(Plant plant)
         {
+            _context.Plants.Add(plant);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetPlant", new { id = plant.Id }, plant);
+        }
+
+        // DELETE: api/Plants1/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePlant(int id)
+        {
+            var plant = await _context.Plants.FindAsync(id);
+            if (plant == null)
+            {
+                return NotFound();
+            }
+
+            _context.Plants.Remove(plant);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        private bool PlantExists(int id)
+        {
+            return _context.Plants.Any(e => e.Id == id);
         }
 
 
@@ -66,7 +116,7 @@ namespace HousePlantz.Controllers
         //    Byte[] b;
         //    b = System.IO.File.ReadAllBytes("..\\LibraryServices.Data\\Images\\plant-images\\pothos.png?raw=true");
         //    //b = System.IO.File.ReadAllBytes("c:\\users\\amcclain\\source\\repos\\HousePlantz\\LibraryServices.Data\\Images\\plant-images\\pothos.png");
-        
+
         ///*https://github.com/mcclaineabigail/PlantCatalog/blob/main/LibraryServices.Data/Images/plant-images/pothos.PNG?raw=true     
         //https://github.com/mcclaineabigail/PlantCatalog/blob/main/HousePlantz/Controllers/PlantsController.cs */
 
@@ -91,7 +141,7 @@ namespace HousePlantz.Controllers
         //    return File(b, "image/jpeg");
         //}
 
-  
+
 
         //public Image DrawText(String text, Font font, Color textColor, Color backColor)
         //{
