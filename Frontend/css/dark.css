@@ -4,6 +4,11 @@
 }
 
 .color-switch{
-    background-color: var(--font);
-    color: antiquewhite;
+    background-color: var(--dark-font);
+    color: var(--light-font);
+}
+
+.dark-accent{
+    background-color: var(--dark-color);
+    color: var(--light-font);
 }

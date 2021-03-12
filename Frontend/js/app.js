@@ -1,4 +1,4 @@
-import { addPlantToCatalog, deleteCard, fetchAddPlant} from "/js/add+delete.js"
+import { deleteCard, fetchPlantFromRepository, patch} from "/js/dynamic.js"
 import { toggleDark} from "/js/menu.js"
 import { Room } from "/js/room.js"
 
@@ -9,7 +9,7 @@ const submitButton = document.getElementById("submit");
 
 submitButton.addEventListener("click", () => {
   let nickName = document.getElementById("add-input").value
-  fetchAddPlant(addDropdown.value, nickName);
+  fetchPlantFromRepository(addDropdown.value, nickName);
   let submitInput = document.getElementById("add-input");
   submitInput.value= "";
 });
@@ -78,51 +78,53 @@ const roomList = document.getElementById("rooms-list");
 const roomsChange = document.getElementById("change-dropdown-room");
 
 const addRoomButton = document.getElementById("add-room-button");
-addRoomButton.addEventListener("click", () => {
-let newRoom = new Room(roomDD.value, colorDD.value);
-rooms.push(newRoom);
-let addedRoom = document.createElement("li");
-addedRoom.innerText = roomDD.value;
-addedRoom.classList.add(colorDD.value);
-roomList.appendChild(addedRoom);
-let roomToAdd = document.createElement("option");
-roomToAdd.innerText= roomDD.value;
-roomToAdd.value = colorDD.value;
-roomsChange.appendChild(roomToAdd);
-let optionToRemove = document.getElementById(roomDD.value);
-optionToRemove.remove();
-});
+
+
+const addRoom = function() {
+  let newRoom = new Room(roomDD.value, roomDD.value, colorDD.value);
+  rooms.push(newRoom);
+  let addedRoom = document.createElement("li");
+  addedRoom.innerText = roomDD.value;
+  addedRoom.classList.add(colorDD.value);
+  roomList.appendChild(addedRoom);
+  let roomToAdd = document.createElement("option");
+  roomToAdd.innerText= roomDD.value;
+  roomToAdd.id= roomDD.value;
+  roomToAdd.value = roomDD.value + "-" + colorDD.value;
+  roomsChange.appendChild(roomToAdd);
+  let optionToRemove = document.getElementById(roomDD.value);
+  optionToRemove.remove();
+}
+
+addRoomButton.addEventListener("click", addRoom);
 
 const changeRoomButton = document.getElementById("change-room-button");
-let plantToChange = document.getElementById("change-dropdown-plant");
-let roomToChange = document.getElementById("change-dropdown-room");
+const plantToChange = document.getElementById("change-dropdown-plant");
+var roomToChange = document.getElementById("change-dropdown-room");
 
 changeRoomButton.addEventListener("click", () => {
+  let roomArray = roomToChange.value.split("-");
+  let room = roomArray[0]
+  let color = roomArray[1]
+
+  console.log(room + " + " + color );
   const colorPatch = [{
     "path": "/color",
     "op": "replace",
-    "value": roomToChange.value
+    "value": color
 }];
   patch(plantToChange.value, colorPatch);
+  console.log(plantToChange.value);
 
-  let changedCard = document.getElementById("card-front-" + plantToChange.value)
+  let changedCard = document.getElementById("card-front-" + plantToChange.value);
   changedCard.className = '';
-  changedCard.classList.add("flip-card-front")
-  changedCard.classList.add(roomToChange.value)
+  changedCard.classList.add("flip-card-front");
+  changedCard.classList.add(color);
+  let roomIcon = document.getElementById("room-icon-" + plantToChange.value);
+    roomIcon.src = ("/rooms/" + room + "-" + color + ".png")
 });
 
 
-const patch = function(patchPlantNickName, patchJson){
-  fetch(`https://localhost:44313/api/text/${patchPlantNickName}`,{
-  method: 'PATCH',
-  body: JSON.stringify(patchJson),
-  headers: {
-    'Content-Type': 'application/json-patch+json'
-  }   
-})
-  .then(response => response.json())
-  .catch(error => console.log(error));   
-}
 
 
 

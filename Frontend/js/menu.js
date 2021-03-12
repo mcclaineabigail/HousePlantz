@@ -1,16 +1,26 @@
 const body = document.getElementById("container");
-const modal1 = document.getElementById("middle-add");
-const modal2 = document.getElementById("middle-change");
-const modal3 = document.getElementById("middle-display");
 const menu = document.getElementById("menu-content");
+const modals = document.getElementsByClassName("middle")
+const inputs = document.getElementsByTagName("INPUT");
+const selects = document.getElementsByTagName("SELECT");
 
+var _body = "body-darkMode"
+var _switch = "color-switch"
+var _accent = "dark-accent"
 
 const toggleDark = function(){
-    body.classList.toggle("body-darkMode");
-    modal1.classList.toggle("color-switch");
-    modal2.classList.toggle("color-switch");
-    modal3.classList.toggle("color-switch");
-    menu.classList.toggle("color-switch")
+    body.classList.toggle(_body);
+    menu.classList.toggle(_switch)
+    tagNameLoop(inputs, _accent);
+    tagNameLoop(selects, _accent);
+    tagNameLoop(modals, _switch);
+    
+}
+
+const tagNameLoop = function(elements, _color){
+    for (var i=0; i<elements.length; i++){
+        elements[i].classList.toggle(_color)
+        };
 }
 
 export {toggleDark};

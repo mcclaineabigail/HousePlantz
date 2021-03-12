@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 
 :root {
-    --font: rgb(32, 23, 34);
+    --dark-font: rgb(32, 23, 34);
+    --light-font: antiquewhite;
     --background: rgb(255, 250, 242);
-    --dark-background: rgb(227, 216, 197);
     --main-color: rgba(190, 141, 224, 0.842);
     --deep-color: rgb(88, 62, 94);
     --dark-color: rgb(71, 52, 71);
     --translucent: rgba(255, 255, 255, 0.726);
     --border-width: 20px;
-    --box-shadow:-5px 5px var(--deep-color);
+    --box-shadow:-5px 5px rgba(0, 0, 0, 0.253);
     --red: rgba(255, 95, 74, 0.842);
     --orange: rgba(255, 176, 111, 0.842);
     --yellow: rgba(253, 251, 131, 0.842);
@@ -21,9 +21,9 @@
 
 
 
-body, select, input {
+body, select, input, button {
     font-family: 'Courgette', cursive;
-    color: var(--font);
+    color: var(--dark-font);
 }
 
 header {
@@ -124,7 +124,6 @@ select, #add-input {
 .button {
     background-color: var(--translucent);
     border-color: var(--dark-color);
-    font-family: 'Courgette', cursive;
     padding: 5px;
     border-radius: 5px;
     box-shadow: var(--box-shadow);
@@ -142,44 +141,73 @@ select, #add-input {
     width: 100%;
     height: 450px;
     perspective: 1000px;  
-  }
+}
   
-  .flip-card-inner {
+.flip-card-inner {
     position: relative;
     width: 100%;
-    height: 475px;
+    height: 480px;
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
-  }
+    border-radius: 10px;
+}
   
-  .clicked .flip-card-inner {
+.clicked .flip-card-inner {
     transform: rotateY(180deg);
-  }
+}
   
-  .flip-card-front, .flip-card-back {
+.flip-card-front, .flip-card-back {
     position: absolute;
     width: 100%;
-    height: 475px;
+    height: 480px;
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden;
     justify-items: center;
     border-style: double;
     border-radius: 10px;
     box-shadow: var(--box-shadow);
-  }
+}
   
 /* .flip-card-front {
     padding: 10px;
   }   */
   
-  .flip-card-back {
+.flip-card-back {
     transform: rotateY(180deg);
-  }
+    background-color: rgba(212, 212, 212, 0.466);
+}
 
-  .flip-icon{
-      position: absolute;
-      bottom: 15px;
-      right: 15px;
-      width: 30px;
-  }
+.back-div{
+      display: grid;
+}
+
+.back-div label{
+    margin: 30px 0px 5px 0px;
+    font-size: large;
+}
+
+.back-div input{
+  text-align: center;
+  font-size: medium;
+  margin: 0 20px 0 20px;
+}
+
+.back-div button{
+    justify-self: center;
+    margin: 30px;
+    font-size: medium;}
+
+.flip-icon{
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 30px;
+}
+
+.room-icon{
+    width: 150px;
+    position: absolute;
+    bottom: 50px;
+    right: 80px;
+}

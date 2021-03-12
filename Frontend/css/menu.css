@@ -219,9 +219,13 @@ li{
 .blue{
   background-color: var(--blue);
 }
-.purple, .standard, .null{
+.purple{
   background-color: var(--purple);
 }
 .gray{
   background-color: var(--gray);
+}
+
+.standard, .null{
+  background-color: var(--translucent);
 }
