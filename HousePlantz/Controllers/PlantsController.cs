@@ -107,6 +107,26 @@ namespace HousePlantz.Controllers
             return _context.Plants.Any(e => e.Id == id);
         }
 
+        public List<Plant> plants = new List<Plant>()
+        {
+           
+        };
+
+        private async Task SeedData()
+        {
+            foreach (var plant in plants)
+            {
+                _context.Plants.Add(plant);
+            }
+            await _context.SaveChangesAsync();
+        }
+
+
+        [HttpGet("seed")]
+        public async Task SeedLeDatabase()
+        {
+            await SeedData();
+        }
 
 
         //// Retreive Plant image by plant id

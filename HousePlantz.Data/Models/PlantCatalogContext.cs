@@ -9,7 +9,8 @@ namespace HousePlantz.Data.Models
     public class PlantCatalogContext : DbContext
     {
         public DbSet<Plant> Plants { get; set; }
-        public DbSet<PlantCatalog> PlantCatalogs { get; set; }
+        public DbSet<Catalog> Catalogs { get; set; }
+        public DbSet<Room> Rooms { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

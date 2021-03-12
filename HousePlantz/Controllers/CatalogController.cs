@@ -25,14 +25,14 @@ namespace HousePlantz.Controllers
 
         // GET: api/<Catalog>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PlantCatalog>>> GetPlantCatalogs()
+        public async Task<ActionResult<IEnumerable<Catalog>>> GetPlantCatalogs()
         {
-            return await _context.PlantCatalogs.ToListAsync();
+            return await _context.Catalogs.ToListAsync();
         }
 
         // GET api/<Catalog>/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> PutCatalog(int id, PlantCatalog catalog)
+        public async Task<IActionResult> PutCatalog(int id, Catalog catalog)
         {
             if (id != catalog.Id)
             {
@@ -61,9 +61,9 @@ namespace HousePlantz.Controllers
 
         // POST api/<Catalog>
         [HttpPost]
-        public async Task<ActionResult<Plant>> PostPlantCatalog(PlantCatalog catalog)
+        public async Task<ActionResult<Plant>> PostPlantCatalog(Catalog catalog)
         {
-            _context.PlantCatalogs.Add(catalog);
+            _context.Catalogs.Add(catalog);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetPlantCatalog", new { id = catalog.Id }, catalog);
@@ -79,13 +79,13 @@ namespace HousePlantz.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePlantCatalog(int id)
         {
-            var catalog = await _context.PlantCatalogs.FindAsync(id);
+            var catalog = await _context.Catalogs.FindAsync(id);
             if (catalog == null)
             {
                 return NotFound();
             }
 
-            _context.PlantCatalogs.Remove(catalog);
+            _context.Catalogs.Remove(catalog);
             await _context.SaveChangesAsync();
 
             return NoContent();

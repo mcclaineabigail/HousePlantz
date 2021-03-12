@@ -14,7 +14,8 @@ namespace HousePlantz.Data.Models
         public string Image { get; set; }
         public string Water { get; set; }
         public string Notes { get; set; }
-        public string Color { get; set; }
         public string NickName { get; set; }
+        public Room Room { get; set; }        
+        public List<Catalog> Catalogs { get; set; }
     }
 }

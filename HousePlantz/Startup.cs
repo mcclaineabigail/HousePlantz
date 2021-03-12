@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HousePlantz.Data.Models;
+using HousePlantz.Data.Interfaces;
+using HousePlantz.Data.Repositories;
 
 namespace HousePlantz
 {
@@ -43,6 +45,8 @@ namespace HousePlantz
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HousePlantz", Version = "v1" });
             });
+
+            services.AddScoped<IPlantRepository, PlantRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,5 +72,7 @@ namespace HousePlantz
                 endpoints.MapControllers();
             });
         }
+
+       
     }
 }
