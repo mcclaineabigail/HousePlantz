@@ -47,7 +47,7 @@ const deleteCard = function(deletedPlant){
 }
 
 
-const patch = function(patchPlantNickName, patchJson){
+const patchText = function(patchPlantNickName, patchJson){
     fetch(`https://localhost:44313/api/text/${patchPlantNickName}`,{
     method: 'PATCH',
     body: JSON.stringify(patchJson),
@@ -59,6 +59,19 @@ const patch = function(patchPlantNickName, patchJson){
     .catch(error => console.log(error));   
 }
 
+const putRoom = function(selectedRoomId, roomJson){
+  fetch(`https://localhost:44313/api/rooms/${selectedRoomId}`,{
+    method: 'PUT',
+    body: JSON.stringify(roomJson),
+    headers: {
+      'Content-Type': 'application/json-patch+json'
+    }   
+  })
+    .then(response => response.json())
+    .catch(error => console.log(error));   
+}
+
+
 const put = function(changedPlant, id){
     fetch(`https://localhost:44313/api/text/${id}`,{
     method: 'PUT',
@@ -69,9 +82,9 @@ const put = function(changedPlant, id){
   })
     .then(response => response.json())
     .catch(error => console.log(error))
-    .then(location.reload());  
+    //.then(location.reload());  
 }
 
 
 
-export { postPlantToCatalog, deleteCard, fetchPlantFromRepository, patch, put }
+export { postPlantToCatalog, deleteCard, fetchPlantFromRepository, patchText, putRoom, put }

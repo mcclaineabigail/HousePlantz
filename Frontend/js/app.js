@@ -1,4 +1,4 @@
-import { deleteCard, fetchPlantFromRepository, patch} from "/js/dynamic.js"
+import { deleteCard, fetchPlantFromRepository, patchText, putRoom} from "/js/dynamic.js"
 import { toggleDark} from "/js/menu.js"
 import { Room } from "/js/room.js"
 
@@ -71,32 +71,50 @@ slider.addEventListener("change", () => {
 });
 
 
-const rooms = [];
-const roomDD = document.getElementById("room-name");
-const colorDD = document.getElementById("room-color");
-const roomList = document.getElementById("rooms-list");
-const roomsChange = document.getElementById("change-dropdown-room");
-
+const colorChoice = document.getElementById("room-color");
 const addRoomButton = document.getElementById("add-room-button");
 
 
-const addRoom = function() {
-  let newRoom = new Room(roomDD.value, roomDD.value, colorDD.value);
-  rooms.push(newRoom);
-  let addedRoom = document.createElement("li");
-  addedRoom.innerText = roomDD.value;
-  addedRoom.classList.add(colorDD.value);
-  roomList.appendChild(addedRoom);
-  let roomToAdd = document.createElement("option");
-  roomToAdd.innerText= roomDD.value;
-  roomToAdd.id= roomDD.value;
-  roomToAdd.value = roomDD.value + "-" + colorDD.value;
-  roomsChange.appendChild(roomToAdd);
-  let optionToRemove = document.getElementById(roomDD.value);
-  optionToRemove.remove();
-}
+const setRoom = function() {
+  var selectedRoomName = "";
+  var selectedRoomId = ""
+  var radioButtons = document.getElementsByName("room-choice");
+    for(var i = 0; i < radioButtons.length; i++)
+    {
+        if(radioButtons[i].checked == true)
+        {
+          selectedRoomName = radioButtons[i].value
+          selectedRoomId = radioButtons[i].id
+        }
+    }
+    var roomJson = 
+      {
+        "id": selectedRoomId,
+        "roomName": selectedRoomName,
+        "color": colorChoice.value
+      }
+  ;
 
-addRoomButton.addEventListener("click", addRoom);
+
+  putRoom(selectedRoomId, roomJson);
+
+  // let selectedRoomIcon = document.getElementById(selectedRoom)
+  // selectedRoom.src = `/rooms/${selectedRoom}-${colorDD.value}.png`;
+};
+
+addRoomButton.addEventListener("click", setRoom);
+
+
+
+
+
+
+
+
+
+
+
+
 
 const changeRoomButton = document.getElementById("change-room-button");
 const plantToChange = document.getElementById("change-dropdown-plant");
@@ -107,13 +125,13 @@ changeRoomButton.addEventListener("click", () => {
   let room = roomArray[0]
   let color = roomArray[1]
 
-  console.log(room + " + " + color );
   const colorPatch = [{
     "path": "/color",
     "op": "replace",
     "value": color
 }];
-  patch(plantToChange.value, colorPatch);
+
+  patchRoom(plantToChange.value, colorPatch);
   console.log(plantToChange.value);
 
   let changedCard = document.getElementById("card-front-" + plantToChange.value);

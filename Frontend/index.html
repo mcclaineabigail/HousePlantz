@@ -22,30 +22,20 @@
                             <div class="inner" id="inner-add">
                                 <p class="text" id="add-text">Please add a room that you will be keeping your plants in. Then choose a color that you will want to color coordinate with.</p>
                                 <label for="room"></label>
-                                <div class="dropdowns">
-                                    <select class="dropdown" id="room-name" size="1" placeholder="Select Room">
-                                    <option class="choose-room" value="" disabled selected>Select Color</option>
-                                    <option class="choose-room" id="Living Room" value="Living Room" >Living Room</option>
-                                    <option class="choose-room" id="Kitchen" value="Kitchen" >Kitchen</option>
-                                    <option class="choose-room" id="Bathroom" value="Bathroom" >Bathroom</option>
-                                    <option class="choose-room" id="Sun Room" value="Sun Room" >Sun Room</option>
-                                    <option class="choose-room" id="Bathroom" value="Bathroom" >Bathroom</option>
-                                    <option class="choose-room" id="Bedroom" value="Bedroom" >Bedroom 1</option>
-                                    <option class="choose-room" id="Bedroom" value="Bedroom" >Bedroom 2</option>
-                                    <option class="choose-room" id="Bedroom" value="Bedroom" >Bedroom 3</option>
-                                </select> 
-                                <select class="dropdown" id="room-color" size="1" placeholder="Select Card Color">
-                                    <option class="choose-room" value="" disabled selected>Select Color</option>
-                                    <option class="choose-room" value="red" >Red</option>
-                                    <option class="choose-room" value="orange" >Orange</option>
-                                    <option class="choose-room" value="yellow" >Yellow</option>
-                                    <option class="choose-room" value="green" >Green</option>
-                                    <option class="choose-room" value="blue" >Blue</option>
-                                    <option class="choose-room" value="purple" >Purple</option>
-                                    <option class="choose-room" value="gray" >Gray</option>
-                                </select>
-                            </div>
-                                <button class="menu-button" id="add-room-button">Submit</button>
+                                <form class="dropdowns">
+                                    <div id="set-room-color"></div>                                    
+                                    <select class="dropdown" id="room-color" size="1" placeholder="Select Card Color">
+                                        <option class="choose-room" value="" disabled selected>Select Color</option>
+                                        <option class="choose-room" value="red" >Red</option>
+                                        <option class="choose-room" value="orange" >Orange</option>
+                                        <option class="choose-room" value="yellow" >Yellow</option>
+                                        <option class="choose-room" value="green" >Green</option>
+                                        <option class="choose-room" value="blue" >Blue</option>
+                                        <option class="choose-room" value="purple" >Purple</option>
+                                        <option class="choose-room" value="gray" >Gray</option>
+                                    </select>
+                                    <button class="menu-button" id="add-room-button">Submit</button>
+                                </form>                                
                                 <ul id="rooms-list"></ul>
                             </div>
                         </div>

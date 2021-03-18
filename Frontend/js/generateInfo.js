@@ -26,6 +26,16 @@ fetch("https://localhost:44313/api/plants", {
 .then((plantOptions) => fillAddDropDown(plantOptions))
 .catch((error) => console.log(error));
 
+fetch("https://localhost:44313/api/rooms", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+.then((response) => response.json())
+.then((rooms) => fillRoomDropDown(rooms))
+.catch((error) => console.log(error));
+
 const fillAddDropDown = function(plants) {
     plants.forEach((plant) => {
         let option = document.createElement("option");
@@ -64,7 +74,7 @@ let makeCard = function(plant){
     
 }
 
-const createCardFront = function (plant, flipCardInner, flipCardOuter) {
+let createCardFront = function (plant, flipCardInner, flipCardOuter) {
     let cardFront = document.createElement("div");
     cardFront.classList.add("flip-card-front")
     cardFront.classList.add("standard");
@@ -118,7 +128,7 @@ const createCardFront = function (plant, flipCardInner, flipCardOuter) {
 }
 
 
-const createCardBack = function (plant, flipCardInner, flipCardOuter) {
+let createCardBack = function (plant, flipCardInner, flipCardOuter) {
     let cardBack = document.createElement("div");
         cardBack.classList.add("flip-card-back");
     let cardBackInner = document.createElement("div");
@@ -198,6 +208,39 @@ const fillDeletePlantDropdown = function(plant){
     deleteOption.value = plant.nickName;
     deleteOption.id = ("delete-" + plant.nickName);
     deleteDropdown.appendChild(deleteOption);
+}
+
+const fillRoomDropDown = function(rooms){
+    rooms.forEach(room => {
+        fillSetRoomColorModal(room);
+        fillSetPlantRoomModal(room);
+    })
+}
+
+const fillSetRoomColorModal = function(room){
+    let setRoomColorDiv = document.getElementById("set-room-color")
+    let labelWrapper = document.createElement("label")
+    let roomRadioInput = document.createElement("input")
+        roomRadioInput.id = room.id;
+        roomRadioInput.value = room.roomName;
+        roomRadioInput.name = "room-choice";
+        roomRadioInput.type = "radio"
+    let setRoomImage = document.createElement("img");
+        setRoomImage.classList.add("set-room-icon")
+        setRoomImage.alt = room.roomName;
+        setRoomImage.src = `/rooms/${room.roomName}-${room.color}.png`;
+        
+    labelWrapper.appendChild(roomRadioInput)
+    labelWrapper.appendChild(setRoomImage)
+    setRoomColorDiv.appendChild(labelWrapper)
+}
+
+const fillSetPlantRoomModal = function(room){
+let assignroomDD = document.getElementById("change-dropdown-room")
+let roomOption = document.createElement("option")
+    roomOption.innerText = room.roomName;
+    roomOption.value = room.id;
+assignroomDD.appendChild(roomOption)
 }
 
 
