@@ -23,4 +23,39 @@ const tagNameLoop = function(elements, _color){
         };
 }
 
-export {toggleDark};
+const modalFunctions = function(){
+    var addModal = document.getElementById("outer-add");
+    var addButton = document.getElementById("button-add");
+    var addSpan = document.getElementById("close-add");
+    var displayModal = document.getElementById("outer-display");
+    var displayButton = document.getElementById("button-display");
+    var displaySpan = document.getElementById("close-display");
+    var changeModal = document.getElementById("outer-change");
+    var changeButton = document.getElementById("button-change");
+    var changeSpan = document.getElementById("close-change");
+    
+    addButton.onclick = function() {
+        addModal.style.display = "block";}
+    addSpan.onclick = function() {
+        addModal.style.display = "none";}
+    window.onclick = function(event) {
+      if (event.target == addModal) {
+        addModal.style.display = "none";}}
+    changeButton.onclick = function() {
+      changeModal.style.display = "block";}
+    changeSpan.onclick = function() {
+        changeModal.style.display = "none";}
+    window.onclick = function(event) {
+      if (event.target == changeModal) {
+        changeModal.style.display = "none";}}
+    displayButton.onclick = function() {
+      displayModal.style.display = "block";}
+    displaySpan.onclick = function() {
+        displayModal.style.display = "none";}
+    window.onclick = function(event) {
+      if (event.target == displayModal) {
+        displayModal.style.display = "none";}
+    };  
+}
+
+export { toggleDark, modalFunctions };

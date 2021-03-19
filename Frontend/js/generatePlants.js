@@ -1,12 +1,9 @@
-import { put } from "/js/dynamic.js"
-
 const ownedSection = document.getElementById("owned");
 const addDropdown = document.getElementById("add-dropdown");
 const deleteDropdown = document.getElementById("delete-dropdown");
-const changeRoomDropdown = document.getElementById("change-dropdown-plant")
+const changeRoomPlantDropdown = document.getElementById("change-dropdown-plant")
 
 fetch("https://localhost:44313/api/text", {
-//fetch("https://plantcatalog.azurewebsites.net/api/text", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -15,6 +12,8 @@ fetch("https://localhost:44313/api/text", {
 .then((response) => response.json())
 .then((plants) => displayPlants(plants))
 .catch((error) => console.log(error));
+
+
 
 fetch("https://localhost:44313/api/plants", {
         method: "GET",
@@ -26,26 +25,7 @@ fetch("https://localhost:44313/api/plants", {
 .then((plantOptions) => fillAddDropDown(plantOptions))
 .catch((error) => console.log(error));
 
-fetch("https://localhost:44313/api/rooms", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    })
-.then((response) => response.json())
-.then((rooms) => fillRoomDropDown(rooms))
-.catch((error) => console.log(error));
 
-const fillAddDropDown = function(plants) {
-    plants.forEach((plant) => {
-        let option = document.createElement("option");
-        option.classList.add("choose-plant");
-        option.innerText= plant.name;
-        option.value = plant.id;
-        addDropdown.appendChild(option);
-    });
-    return addDropdown;
-}
 
 
 const displayPlants = function(plants) {
@@ -58,30 +38,29 @@ const displayPlants = function(plants) {
 
 let makeCard = function(plant){
     let flipCardOuter = document.createElement("div");
-    flipCardOuter.classList.add("flip-card");
-    flipCardOuter.id = plant.nickName;
+        flipCardOuter.classList.add("flip-card");
+        flipCardOuter.id = plant.nickName;
     let flipCardInner = document.createElement("div");
-    flipCardInner.classList.add("flip-card-inner");
+        flipCardInner.classList.add("flip-card-inner");
 
-    createCardFront(plant, flipCardInner, flipCardOuter)
-    createCardBack(plant, flipCardInner, flipCardOuter);
+    createCardFront_1(plant, flipCardInner, flipCardOuter)
+    createCardBack_2(plant, flipCardInner, flipCardOuter);
        
     flipCardOuter.appendChild(flipCardInner);
     ownedSection.appendChild(flipCardOuter);
 
-    fillChangeRoomDropdown(plant)
-    fillDeletePlantDropdown(plant)
-    
+    fillChangeRoomDropdown_3(plant)
+    fillDeletePlantDropdown_4(plant)
 }
 
-let createCardFront = function (plant, flipCardInner, flipCardOuter) {
+let createCardFront_1 = function (plant, flipCardInner, flipCardOuter) {
     let cardFront = document.createElement("div");
-    cardFront.classList.add("flip-card-front")
-    cardFront.classList.add("standard");
-    cardFront.id = ("card-front-" + plant.nickName);
+        cardFront.classList.add("flip-card-front")
+        cardFront.classList.add("standard");
+        cardFront.id = ("card-front-" + plant.nickName);
     
     let titleAside = document.createElement("aside");
-    titleAside.classList.add("plant-header")
+        titleAside.classList.add("plant-header")
     let names = document.createElement("div")
         names.classList.add("names");
     let plantName = document.createElement("h2");
@@ -128,7 +107,7 @@ let createCardFront = function (plant, flipCardInner, flipCardOuter) {
 }
 
 
-let createCardBack = function (plant, flipCardInner, flipCardOuter) {
+let createCardBack_2 = function (plant, flipCardInner, flipCardOuter) {
     let cardBack = document.createElement("div");
         cardBack.classList.add("flip-card-back");
     let cardBackInner = document.createElement("div");
@@ -189,59 +168,36 @@ let createCardBack = function (plant, flipCardInner, flipCardOuter) {
     flipCardInner.appendChild(cardBack);
 }
 
-
-
-const fillChangeRoomDropdown = function(plant){
-let addOption = document.createElement("option");
+const fillChangeRoomDropdown_3 = function(plant){
+    let addOption = document.createElement("option");
         addOption.classList.add("choose-plant");
         addOption.innerText= plant.nickName;
         addOption.value = plant.nickName;
         addOption.id = ("change-room-" + plant.id);
-        changeRoomDropdown.appendChild(addOption);    
+    changeRoomPlantDropdown.appendChild(addOption);    
 }
-
-
-const fillDeletePlantDropdown = function(plant){
+    
+    
+const fillDeletePlantDropdown_4 = function(plant){
     let deleteOption = document.createElement("option");
-    deleteOption.classList.add("choose-plant");
-    deleteOption.innerText= plant.nickName;
-    deleteOption.value = plant.nickName;
-    deleteOption.id = ("delete-" + plant.nickName);
+        deleteOption.classList.add("choose-plant");
+        deleteOption.innerText= plant.nickName;
+        deleteOption.value = plant.nickName;
+        deleteOption.id = ("delete-" + plant.nickName);
     deleteDropdown.appendChild(deleteOption);
 }
 
-const fillRoomDropDown = function(rooms){
-    rooms.forEach(room => {
-        fillSetRoomColorModal(room);
-        fillSetPlantRoomModal(room);
-    })
+
+
+const fillAddDropDown = function(plants) {
+    plants.forEach((plant) => {
+        let option = document.createElement("option");
+            option.classList.add("choose-plant");
+            option.innerText= plant.name;
+            option.value = plant.id;
+        addDropdown.appendChild(option);
+    });
+    return addDropdown;
 }
 
-const fillSetRoomColorModal = function(room){
-    let setRoomColorDiv = document.getElementById("set-room-color")
-    let labelWrapper = document.createElement("label")
-    let roomRadioInput = document.createElement("input")
-        roomRadioInput.id = room.id;
-        roomRadioInput.value = room.roomName;
-        roomRadioInput.name = "room-choice";
-        roomRadioInput.type = "radio"
-    let setRoomImage = document.createElement("img");
-        setRoomImage.classList.add("set-room-icon")
-        setRoomImage.alt = room.roomName;
-        setRoomImage.src = `/rooms/${room.roomName}-${room.color}.png`;
-        
-    labelWrapper.appendChild(roomRadioInput)
-    labelWrapper.appendChild(setRoomImage)
-    setRoomColorDiv.appendChild(labelWrapper)
-}
-
-const fillSetPlantRoomModal = function(room){
-let assignroomDD = document.getElementById("change-dropdown-room")
-let roomOption = document.createElement("option")
-    roomOption.innerText = room.roomName;
-    roomOption.value = room.id;
-assignroomDD.appendChild(roomOption)
-}
-
-
-export { makeCard , fillAddDropDown, displayPlants}
+export { makeCard , fillAddDropDown, displayPlants }

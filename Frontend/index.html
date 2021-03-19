@@ -23,7 +23,7 @@
                                 <p class="text" id="add-text">Please add a room that you will be keeping your plants in. Then choose a color that you will want to color coordinate with.</p>
                                 <label for="room"></label>
                                 <form class="dropdowns">
-                                    <div id="set-room-color"></div>                                    
+                                    <div id="select-room"></div>                                    
                                     <select class="dropdown" id="room-color" size="1" placeholder="Select Card Color">
                                         <option class="choose-room" value="" disabled selected>Select Color</option>
                                         <option class="choose-room" value="red" >Red</option>
@@ -35,8 +35,8 @@
                                         <option class="choose-room" value="gray" >Gray</option>
                                     </select>
                                     <button class="menu-button" id="add-room-button">Submit</button>
-                                </form>                                
-                                <ul id="rooms-list"></ul>
+                                </form> 
+                                <button id="reset-rooms">Reset Room Colors</button>
                             </div>
                         </div>
                     </div>
@@ -99,4 +99,5 @@
 </main>  
 </body>
 <script src="/js/app.js" type="module"></script>
+<script src="/js/dynamic.js" type="module"></script>
 </html>

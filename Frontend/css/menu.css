@@ -230,10 +230,13 @@ li{
   background-color: var(--translucent);
 }
 
-.set-room-icon{
-  width: 200px;
+#select-room label{
+  margin: 0px 15px 0px 15px;
 }
 
+.set-room-icon{
+  width: 150px;
+}
 
 [type=radio] { 
   position: absolute;
