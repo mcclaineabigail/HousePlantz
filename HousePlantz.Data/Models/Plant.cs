@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO.Enumeration;
 
 namespace HousePlantz.Data.Models
 {
@@ -18,4 +19,6 @@ namespace HousePlantz.Data.Models
         public Room Room { get; set; }
         public List<Catalog> Catalogs { get; set; }
     }
+
+
 }

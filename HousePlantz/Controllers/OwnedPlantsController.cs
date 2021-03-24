@@ -34,7 +34,7 @@ namespace HousePlantz.Controllers
 
 
         [HttpGet("{catalogId}/{plantId}")]
-        public async Task<ActionResult<Plant>> GetIndvPlantFromCatalog(int catalogId, int plantId)
+        public ActionResult<Plant> GetIndvPlantFromCatalog(int catalogId, int plantId)
         {
             var catalogs = _context.Catalogs.Include(catalog => catalog.Plants);
             var catalog = catalogs.FirstOrDefault(x => x.Id == catalogId);
