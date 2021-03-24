@@ -1,212 +1,208 @@
-@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
 
 :root {
-    --dark-font: rgb(32, 23, 34);
-    --light-font: antiquewhite;
-    --background: rgb(255, 250, 242);
-    --main-color: rgba(190, 141, 224, 0.842);
-    --deep-color: rgb(88, 62, 94);
-    --dark-color: rgb(71, 52, 71);
-    --translucent: rgba(255, 255, 255, 0.726);
-    --border-width: 20px;
-    --box-shadow:-5px 5px rgba(0, 0, 0, 0.253);
-    --red: rgba(255, 95, 74, 0.842);
-    --orange: rgba(255, 176, 111, 0.842);
-    --yellow: rgba(253, 251, 131, 0.842);
-    --green: rgba(147, 223, 170, 0.842);
-    --blue: rgba(147, 173, 223, 0.842);
-    --purple: rgba(190, 141, 224, 0.842);
-    --gray: rgba(150, 150, 150, 0.842);
+  --dark-font: rgb(32, 23, 34);
+  --light-font: antiquewhite;
+  --background: rgb(255, 250, 242);
+  --main-color: rgba(98, 133, 78, 0.842);
+  --deep-color: rgb(88, 62, 94);
+  --dark-color: rgb(71, 52, 71);
+  --translucent: rgba(255, 255, 255, 0.726);
+  --border-width: 20px;
+  --box-shadow: -5px 5px rgba(0, 0, 0, 0.253);
+  --red: rgba(255, 95, 74, 0.842);
+  --orange: rgba(255, 176, 111, 0.842);
+  --yellow: rgba(253, 251, 131, 0.842);
+  --green: rgba(147, 223, 170, 0.842);
+  --blue: rgba(147, 173, 223, 0.842);
+  --purple: rgba(190, 141, 224, 0.842);
+  --gray: rgba(150, 150, 150, 0.842);
 }
 
-
-
-body, select, input, button {
-    font-family: 'Courgette', cursive;
-    color: var(--dark-font);
+body,
+select,
+input,
+button {
+  font-family: "Courgette", cursive;
+  color: var(--dark-font);
 }
 
 header {
-    margin: 50px;
-    display: flex;
-    justify-content: center;
-    border-style: double;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: var(--main-color);
-    box-shadow: var(--box-shadow);
+  margin: 50px;
+  display: flex;
+  justify-content: center;
+  border-style: double;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--main-color);
+  box-shadow: var(--box-shadow);
 }
 
-
-
-
 body {
-    max-width: 100%;
-    margin: 0px;
-    margin-bottom: 200px;
-    background-image: url(/images/background.jpg);
-    background-size: cover;
+  max-width: 100%;
+  margin: 0px;
+  margin-bottom: 200px;
+  background-image: url(/images/background.jpg);
+  background-size: cover;
 }
 
 #owned {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 300px);
-    grid-template-rows: 475px;
-    grid-gap: 50px;
-    justify-content: center;
-    margin-bottom: 150px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  grid-template-rows: 475px;
+  grid-gap: 50px;
+  justify-content: center;
+  margin-bottom: 150px;
 }
 
 /*-----------------------------------------------------*/
 
 .plant-header {
-    display: grid;
-    grid-template-columns: 7fr 4fr;
-    align-items: center;
-    height: 25%;
+  display: grid;
+  grid-template-columns: 7fr 4fr;
+  align-items: center;
+  height: 25%;
 }
 
-.names{
-    display: inline-block;
+.names {
+  display: inline-block;
 }
 
-.names h2{
-    margin-bottom: 5px;
-    padding: o;
-} 
+.names h2 {
+  margin-bottom: 5px;
+  padding: o;
+}
 
-.plant-type{
-    text-align: end;
-    padding-right: 15px;
-    margin-top: 0;
+.plant-type {
+  text-align: end;
+  padding-right: 15px;
+  margin-top: 0;
 }
 
 .plant-info {
-    display: grid;
-    justify-items: center;
+  display: grid;
+  justify-items: center;
 }
 
 .image {
-    width: 80%;
-    border: 5px dotted var(--dark-color);
+  width: 80%;
+  border: 5px dotted var(--dark-color);
 }
 
 .sun {
-    width: 90%;
-    display: flex;
-    justify-self: start;
+  width: 90%;
+  display: flex;
+  justify-self: start;
 }
-
 
 /*UI--------------------------------*/
 
 .selection {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    height: 50px;
-    margin-top: 50px;
-    column-gap: 20px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 50px;
+  margin-top: 50px;
+  column-gap: 20px;
 }
 
-select, #add-input {
-    display: inline-block;
-    border-radius: 10px;
-    box-shadow: var(--box-shadow);
-    width: 250px;
-    width: 250px;
-    font-size: large;
-    padding-left: 10px;
+select,
+#add-input {
+  display: inline-block;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  width: 250px;
+  width: 250px;
+  font-size: large;
+  padding-left: 10px;
 }
 
 .dropdown {
-    background-color: var(--main-color);
+  background-color: var(--main-color);
 }
 
 .button {
-    background-color: var(--translucent);
-    border-color: var(--dark-color);
-    padding: 5px;
-    border-radius: 5px;
-    box-shadow: var(--box-shadow);
-    font-size: large;
-    width: 80px;
+  background-color: var(--translucent);
+  border-color: var(--dark-color);
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+  font-size: large;
+  width: 80px;
 }
-
-
 
 /*-----------------------------------------*/
 
-
 .flip-card {
-    background-color: transparent;
-    width: 100%;
-    height: 450px;
-    perspective: 1000px;  
+  background-color: transparent;
+  width: 100%;
+  height: 450px;
+  perspective: 1000px;
 }
-  
+
 .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 480px;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    border-radius: 10px;
+  position: relative;
+  width: 100%;
+  height: 480px;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  border-radius: 10px;
 }
-  
+
 .clicked .flip-card-inner {
-    transform: rotateY(180deg);
-}
-  
-.flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 480px;
-    -webkit-backface-visibility: hidden; /* Safari */
-    backface-visibility: hidden;
-    justify-items: center;
-    border-style: double;
-    border-radius: 10px;
-    box-shadow: var(--box-shadow);
+  transform: rotateY(180deg);
 }
 
-  
+.flip-card-front,
 .flip-card-back {
-    transform: rotateY(180deg);
-    background-color: rgba(212, 212, 212, 0.466);
+  position: absolute;
+  width: 100%;
+  height: 480px;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  justify-items: center;
+  border-style: double;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
 }
 
-.back-div{
-      display: grid;
+.flip-card-back {
+  transform: rotateY(180deg);
+  background-color: rgba(212, 212, 212, 0.466);
 }
 
-.back-div label{
-    margin: 30px 0px 5px 0px;
-    font-size: large;
+.back-div {
+  display: grid;
 }
 
-.back-div input{
+.back-div label {
+  margin: 30px 0px 5px 0px;
+  font-size: large;
+}
+
+.back-div input {
   text-align: center;
   font-size: medium;
   margin: 0 20px 0 20px;
 }
 
-.back-div button{
-    justify-self: center;
-    margin: 30px;
-    font-size: medium;}
-
-.flip-icon{
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    width: 30px;
+.back-div button {
+  justify-self: center;
+  margin: 30px;
+  font-size: medium;
 }
 
-.room-icon{
-    width: 150px;
-    position: absolute;
-    bottom: 50px;
-    right: 80px;
+.flip-icon {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 30px;
+}
+
+.room-icon {
+  width: 150px;
+  position: absolute;
+  bottom: 50px;
+  right: 80px;
 }

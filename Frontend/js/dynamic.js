@@ -105,9 +105,6 @@ let resetRooms = function(){
 .then((response) => response.json())
 .then((rooms) => resetColorToStandard(rooms))
 .catch((error) => console.log(error))
-.then(location.reload());  
-
-
 };
 
 let resetColorToStandard = function(rooms){

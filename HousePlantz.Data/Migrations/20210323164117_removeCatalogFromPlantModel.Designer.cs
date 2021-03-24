@@ -4,35 +4,22 @@ using HousePlantz.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HousePlantz.Data.Migrations
 {
     [DbContext(typeof(PlantCatalogContext))]
-    partial class PlantCatalogContextModelSnapshot : ModelSnapshot
+    [Migration("20210323164117_removeCatalogFromPlantModel")]
+    partial class removeCatalogFromPlantModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("CatalogPlant", b =>
-                {
-                    b.Property<long>("CatalogsId")
-                        .HasColumnType("bigint");
-
-                    b.Property<int>("PlantsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CatalogsId", "PlantsId");
-
-                    b.HasIndex("PlantsId");
-
-                    b.ToTable("CatalogPlant");
-                });
 
             modelBuilder.Entity("HousePlantz.Data.Models.Catalog", b =>
                 {
@@ -55,6 +42,9 @@ namespace HousePlantz.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long?>("CatalogId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
@@ -79,6 +69,8 @@ namespace HousePlantz.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CatalogId");
+
                     b.HasIndex("RoomId");
 
                     b.ToTable("Plants");
@@ -102,28 +94,22 @@ namespace HousePlantz.Data.Migrations
                     b.ToTable("Rooms");
                 });
 
-            modelBuilder.Entity("CatalogPlant", b =>
-                {
-                    b.HasOne("HousePlantz.Data.Models.Catalog", null)
-                        .WithMany()
-                        .HasForeignKey("CatalogsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("HousePlantz.Data.Models.Plant", null)
-                        .WithMany()
-                        .HasForeignKey("PlantsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("HousePlantz.Data.Models.Plant", b =>
                 {
+                    b.HasOne("HousePlantz.Data.Models.Catalog", null)
+                        .WithMany("Plants")
+                        .HasForeignKey("CatalogId");
+
                     b.HasOne("HousePlantz.Data.Models.Room", "Room")
                         .WithMany()
                         .HasForeignKey("RoomId");
 
                     b.Navigation("Room");
+                });
+
+            modelBuilder.Entity("HousePlantz.Data.Models.Catalog", b =>
+                {
+                    b.Navigation("Plants");
                 });
 #pragma warning restore 612, 618
         }

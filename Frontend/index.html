@@ -1,103 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/menu.css">
-    <link rel="stylesheet" href="/css/dark.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/menu.css" />
+    <link rel="stylesheet" href="/css/dark.css" />
     <title>Document</title>
-</head>
-<body id="container">
-
-    <header>
-        <div class="dropdown-menu">
-            <h1 class="elipses">⋮</h1>
-            <div id="menu-content" class="dropdown-content">
-                <p class="dropdown-choice" id="button-add">Add Room</p>
-                    <div class="outer" id="outer-add">
-                        <div class="middle" id="middle-add">
-                            <span class="close" id="close-add">&times;</span>
-                            <div class="inner" id="inner-add">
-                                <p class="text" id="add-text">Please add a room that you will be keeping your plants in. Then choose a color that you will want to color coordinate with.</p>
-                                <label for="room"></label>
-                                <form class="dropdowns">
-                                    <div id="select-room"></div>                                    
-                                    <select class="dropdown" id="room-color" size="1" placeholder="Select Card Color">
-                                        <option class="choose-room" value="" disabled selected>Select Color</option>
-                                        <option class="choose-room" value="red" >Red</option>
-                                        <option class="choose-room" value="orange" >Orange</option>
-                                        <option class="choose-room" value="yellow" >Yellow</option>
-                                        <option class="choose-room" value="green" >Green</option>
-                                        <option class="choose-room" value="blue" >Blue</option>
-                                        <option class="choose-room" value="purple" >Purple</option>
-                                        <option class="choose-room" value="gray" >Gray</option>
-                                    </select>
-                                    <button class="menu-button" id="add-room-button">Submit</button>
-                                </form> 
-                                <button id="reset-rooms">Reset Room Colors</button>
-                            </div>
-                        </div>
-                    </div>
-                <p class="dropdown-choice" id="button-change">Change Room</p>
-                    <div class="outer" id="outer-change">
-                        <div class="middle" id="middle-change">
-                            <span class="close" id="close-change">&times;</span>
-                            <div class="inner" id="inner-change">
-                                <p  class="text" id="change-text">If you would like to change the room that a plant is in, select it from the drop down and assign a new room placement. If there are no room placements, please return to the menu and create a room.</p> 
-                                <div class="dropdowns">
-                                    <select class="dropdown" id="change-dropdown-plant" size="1" placeholder="Select Plant">
-                                        <option class="choose-plant" value="" disabled selected>Select Plant</option>
-                                    </select>
-                                    <select class="dropdown" id="change-dropdown-room" size="1" placeholder="Select Room">
-                                        <option class="choose-plant" value="" disabled selected>SelectNew Room</option>
-                                    </select>
-                                    <button class="menu-button" id="change-room-button">Submit</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <p class="dropdown-choice" id="button-display">Display</p>
-                    <div class="outer" id="outer-display">
-                        <div class="middle" id="middle-display">
-                            <span class="close" id="close-display">&times;</span>
-                            <div class="inner" id="inner-display">
-                            <p>Toggle Light Mode and Dark Mode</p>
-                            <label class="switch">
-                                <input id="slider" type="checkbox">
-                                <span class="slider round"></span>
-                            </label>
-
-                            </div>
-                        </div>
-                    </div>
+  </head>
+  <body id="container">
+    <header id="header">
+      <div class="dropdown-menu">
+        <h1 class="elipses">⋮</h1>
+        <div id="menu-content" class="dropdown-content">
+          <p class="dropdown-choice" id="button-add">Add Room</p>
+          <div class="outer" id="outer-add">
+            <div class="middle" id="middle-add">
+              <span class="close" id="close-add">&times;</span>
+              <div class="inner" id="inner-add">
+                <p class="text" id="add-text">
+                  Please add a room that you will be keeping your plants in.
+                  Then choose a color that you will want to color coordinate
+                  with.
+                </p>
+                <label for="room"></label>
+                <form class="dropdowns">
+                  <div id="select-room"></div>
+                  <select
+                    class="dropdown"
+                    id="room-color"
+                    size="1"
+                    placeholder="Select Card Color"
+                  >
+                    <option class="choose-room" value="" disabled selected>
+                      Select Color
+                    </option>
+                    <option class="choose-room" value="red">Red</option>
+                    <option class="choose-room" value="orange">Orange</option>
+                    <option class="choose-room" value="yellow">Yellow</option>
+                    <option class="choose-room" value="green">Green</option>
+                    <option class="choose-room" value="blue">Blue</option>
+                    <option class="choose-room" value="purple">Purple</option>
+                    <option class="choose-room" value="gray">Gray</option>
+                  </select>
+                  <button class="menu-button" id="add-room-button">
+                    Submit
+                  </button>
+                </form>
+                <button id="reset-rooms">Reset Room Colors</button>
+              </div>
             </div>
+          </div>
+          <p class="dropdown-choice" id="button-change">Change Room</p>
+          <div class="outer" id="outer-change">
+            <div class="middle" id="middle-change">
+              <span class="close" id="close-change">&times;</span>
+              <div class="inner" id="inner-change">
+                <p class="text" id="change-text">
+                  If you would like to change the room that a plant is in,
+                  select it from the drop down and assign a new room placement.
+                  If there are no room placements, please return to the menu and
+                  create a room.
+                </p>
+                <div class="dropdowns">
+                  <select
+                    class="dropdown"
+                    id="change-dropdown-plant"
+                    size="1"
+                    placeholder="Select Plant"
+                  >
+                    <option class="choose-plant" value="" disabled selected>
+                      Select Plant
+                    </option>
+                  </select>
+                  <select
+                    class="dropdown"
+                    id="change-dropdown-room"
+                    size="1"
+                    placeholder="Select Room"
+                  >
+                    <option class="choose-plant" value="" disabled selected>
+                      SelectNew Room
+                    </option>
+                  </select>
+                  <button class="menu-button" id="change-room-button">
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="dropdown-choice" id="button-display">Display</p>
+          <div class="outer" id="outer-display">
+            <div class="middle" id="middle-display">
+              <span class="close" id="close-display">&times;</span>
+              <div class="inner" id="inner-display">
+                <p>Toggle Light Mode and Dark Mode</p>
+                <label class="switch">
+                  <input id="slider" type="checkbox" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+          </div>
         </div>
-        <h1>House Plant Catalog</h1>
+      </div>
+      <h1>House Plant Catalog</h1>
     </header>
-<main>
+    <main>
+      <section id="owned"></section>
 
-    <section id="owned">            
-    </section>
-
-    <section class="selection">
-        <select class="dropdown" id="add-dropdown" size="1" placeholder="Select New Plant">
-            <option class="choose-plant" value="" disabled selected>Select Plant to Add</option>
+      <section class="selection">
+        <select
+          class="dropdown"
+          id="add-dropdown"
+          size="1"
+          placeholder="Select New Plant"
+        >
+          <option class="choose-plant" value="" disabled selected>
+            Select Plant to Add
+          </option>
         </select>
-        <input type="text" id="add-input" placeholder="Plant Nickname">
+        <input type="text" id="add-input" placeholder="Plant Nickname" />
         <button class="button" id="submit">Submit</button>
-    </section>
+      </section>
 
-    <section class="selection">
-        <select class="dropdown" id="delete-dropdown" size="1" placeholder="Select Plant to Remove">
-            <option class="choose-plant" value="" disabled selected>Select Plant To Delete</option>
+      <section class="selection">
+        <select
+          class="dropdown"
+          id="delete-dropdown"
+          size="1"
+          placeholder="Select Plant to Remove"
+        >
+          <option class="choose-plant" value="" disabled selected>
+            Select Plant To Delete
+          </option>
         </select>
         <button class="button" id="delete">Delete</button>
-    </section>
-
-</main>  
-</body>
-<script src="/js/app.js" type="module"></script>
-<script src="/js/dynamic.js" type="module"></script>
+      </section>
+    </main>
+  </body>
+  <script src="/js/app.js" type="module"></script>
+  <script src="/js/dynamic.js" type="module"></script>
 </html>

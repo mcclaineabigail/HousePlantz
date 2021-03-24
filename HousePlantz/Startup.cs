@@ -31,13 +31,15 @@ namespace HousePlantz
         {
 
             services.AddControllers()
-                    .AddNewtonsoftJson();
+                    .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddDbContext<PlantCatalogContext>();
-            services.AddCors(options => {
-                options.AddDefaultPolicy(builder => { 
-                builder.AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader();
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader();
                 });
             });
 
@@ -73,6 +75,6 @@ namespace HousePlantz
             });
         }
 
-       
+
     }
 }

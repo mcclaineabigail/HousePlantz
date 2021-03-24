@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HousePlantz.Data.Models;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace HousePlantz.Controllers
 {
@@ -69,6 +70,33 @@ namespace HousePlantz.Controllers
                 }
             }
 
+            return NoContent();
+        }
+
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> Patch(int id, [FromBody] JsonPatchDocument<Room> patchEntity)
+        {
+            var room = await _context.Rooms.FindAsync(id);
+
+            patchEntity.ApplyTo(room, ModelState);
+
+            _context.Entry(room).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!RoomExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
             return NoContent();
         }
 
