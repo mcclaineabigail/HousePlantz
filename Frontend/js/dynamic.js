@@ -94,7 +94,7 @@ const setRoomColor = function() {
 };
 
 
-
+//TODO: Send this to the backend
 let resetRooms = function(){
     fetch("https://localhost:44313/api/rooms", {
         method: "GET",

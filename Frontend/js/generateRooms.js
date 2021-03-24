@@ -29,7 +29,6 @@ const fillSetRoomColorModal = function(room){
         setRoomImage.classList.add("set-room-icon")
         setRoomImage.alt = room.roomName;
         setRoomImage.src = `/rooms/${room.roomName}-${room.color}.png`;
-        
     labelWrapper.appendChild(roomRadioInput)
     labelWrapper.appendChild(setRoomImage)
     setRoomColorDiv.appendChild(labelWrapper)

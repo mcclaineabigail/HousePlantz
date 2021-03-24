@@ -6,41 +6,42 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HousePlantz.Data.Models;
-using Microsoft.AspNetCore.JsonPatch;
 
 namespace HousePlantz.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CatalogsController : ControllerBase
+    public class OwnedPlantsController : ControllerBase
     {
         private readonly PlantCatalogContext _context;
 
-        public CatalogsController(PlantCatalogContext context)
+        public OwnedPlantsController(PlantCatalogContext context)
         {
             _context = context;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Catalog>>> GetCatalogs()
-        {
-            return await _context.Catalogs.Include(catalog => catalog.Plants).ToListAsync();
-        }
-
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Catalog>> GetCatalog(int id)
+        public ActionResult<IEnumerable<Plant>> GetCatalog(int id)
         {
-            var catalog = await _context.Catalogs.FindAsync(id);
+            var catalogs = _context.Catalogs.Include(catalog => catalog.Plants);
+            var catalog = catalogs.FirstOrDefault(x => x.Id == id);
 
-            if (catalog == null)
-            {
-                return NotFound();
-            }
-
-            return catalog;
+            return catalog.Plants;
         }
 
+
+
+
+        [HttpGet("{catalogId}/{plantId}")]
+        public async Task<ActionResult<Plant>> GetIndvPlantFromCatalog(int catalogId, int plantId)
+        {
+            var catalogs = _context.Catalogs.Include(catalog => catalog.Plants);
+            var catalog = catalogs.FirstOrDefault(x => x.Id == catalogId);
+
+            return catalog.Plants.FirstOrDefault(x => x.Id == plantId);
+
+        }
 
 
         [HttpPost]
@@ -86,18 +87,40 @@ namespace HousePlantz.Controllers
             catch (DbUpdateConcurrencyException)
             {
                 if (!CatalogExists(id))
-                {
-                    return NotFound();
-                }
+                { return NotFound(); }
                 else
-                {
-                    throw;
-                }
+                { throw; }
             }
 
             return NoContent();
         }
 
+        [HttpPatch("catalog{id}/{plantId}")]
+        public async Task<IActionResult> Patch(int id, int plantId)
+        {
+            var catalog = await _context.Catalogs.FindAsync(id);
+            var plantToAdd = await _context.Plants.FindAsync(plantId);
+
+            if (catalog.Plants == null)
+            {
+                catalog.Plants = new List<Plant>();
+            }
+
+            catalog.Plants.Add(plantToAdd);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!CatalogExists(id))
+                { return NotFound(); }
+                else
+                { throw; }
+            }
+            return NoContent();
+        }
 
 
 
