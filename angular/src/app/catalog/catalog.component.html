@@ -1,0 +1,49 @@
+<section id="owned">
+  <div *ngFor="let plant of plantCatalog" class="flip-card" id="undefined">
+    <div class="flip-card-inner">
+      <div class="flip-card-front standard" id="card-front-undefined">
+        <aside class="plant-header">
+          <div class="names">
+            <h2 class="plant-name">{{ plant.nickname }}</h2>
+            <p class="plant-type">{{ plant.name }}</p>
+          </div>
+          <img
+            src="https://github.com/mcclaineabigail/PlantCatalog/blob/main/HousePlantz.Data/Images/light/bright.png?raw=true"
+            alt="light needs"
+            class="sun"
+          />
+        </aside>
+        <aside class="plant-info">
+          <img
+            class="image"
+            alt="Plant Image"
+            src="https://github.com/mcclaineabigail/PlantCatalog/blob/main/HousePlantz.Data/Images/plant-images/columnea.PNG?raw=true"
+          />
+          <p class="water">{{ plant.water }}</p>
+          <p class="notes">{{ plant.notes }}</p>
+          <img
+            src="https://static.thenounproject.com/png/267318-200.png"
+            alt="flip card"
+            class="flip-icon"
+          />
+        </aside>
+      </div>
+      <div class="flip-card-back">
+        <div class="back-div">
+          <button class="button">Make Changes</button>
+          <img
+            class="room-icon"
+            id="room-icon-undefined"
+            alt="Room"
+            src="../../assets/Kitchen-red.png"
+          />
+        </div>
+        <img
+          src="https://static.thenounproject.com/png/267318-200.png"
+          alt="flip card"
+          class="flip-icon"
+        />
+      </div>
+    </div>
+  </div>
+</section>
