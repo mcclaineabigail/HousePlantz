@@ -9,8 +9,10 @@ namespace HousePlantz.Data.Models
     public class OwnedPlant
     {
         public int Id { get; set; }
-        public Plant Plant { get; set; }
         public string NickName { get; set; }
+        public int PlantId { get; set; }
+        public Plant Plant { get; set; }
+        public int RoomId { get; set; }
         public Room Room { get; set; }
 
     }

@@ -45,30 +45,30 @@ namespace HousePlantz.Controllers
 
 
 
-        [HttpPost]
-        public async Task<ActionResult<OwnedPlant>> PostCatalog(Catalog catalog)
+        [HttpPost] //This is not working, see Swagger Error Message
+        public async Task<ActionResult<OwnedPlant>> AddPlantToCatalog(OwnedPlant oPlant)
         {
-            _context.Catalogs.Add(catalog);
+            _context.OwnedPlants.Add(oPlant);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCatalog", new { id = catalog.Id }, catalog);
+            return CreatedAtAction("GetCatalog", new { id = oPlant.Id }, oPlant);
         }
 
 
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeleteCatalog(int id)
-        //{
-        //    var catalog = await _context.Catalogs.FindAsync(id);
-        //    if (catalog == null)
-        //    {
-        //        return NotFound();
-        //    }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> deletePlantFromCatalog(int id)
+        {
+            var oPlant = await _context.OwnedPlants.FindAsync(id);
+            if (oPlant == null)
+            {
+                return NotFound();
+            }
 
-        //    _context.Catalogs.Remove(catalog);
-        //    await _context.SaveChangesAsync();
+            _context.OwnedPlants.Remove(oPlant);
+            await _context.SaveChangesAsync();
 
-        //    return NoContent();
-        //}
+            return NoContent();
+        }
 
 
         //[HttpPut("{id}")]
