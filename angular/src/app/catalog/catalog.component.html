@@ -1,6 +1,6 @@
 <section id="owned">
   <div
-    *ngFor="let plant of plantCatalog"
+    *ngFor="let oPlant of catalog"
     class="flip-card"
     [ngClass]="toggleClass ? 'clicked' : ''"
   >
@@ -8,8 +8,8 @@
       <div class="flip-card-front standard" id="card-front-undefined">
         <aside class="plant-header">
           <div class="names">
-            <h2 class="plant-name">{{ plant.nickName }}</h2>
-            <p class="plant-type">{{ plant.plant.name }}</p>
+            <h2 class="plant-name">{{ oPlant.nickName }}</h2>
+            <p class="plant-type">{{ oPlant.plant.name }}</p>
           </div>
           <img
             src="https://github.com/mcclaineabigail/PlantCatalog/blob/main/HousePlantz.Data/Images/light/bright.png?raw=true"
@@ -20,11 +20,11 @@
         <aside class="plant-info">
           <img
             class="image"
-            alt="Plant Image"
+            title= {{oPlant.plant.name}}
             src="https://github.com/mcclaineabigail/PlantCatalog/blob/main/HousePlantz.Data/Images/plant-images/columnea.PNG?raw=true"
           />
-          <p class="water">{{ plant.plant.water }}</p>
-          <p class="notes">{{ plant.plant.notes }}</p>
+          <p class="water">{{ oPlant.plant.water }}</p>
+          <p class="notes">{{ oPlant.plant.notes }}</p>
           <img
             src="https://static.thenounproject.com/png/267318-200.png"
             alt="flip card"
