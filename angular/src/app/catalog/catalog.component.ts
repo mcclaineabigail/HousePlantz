@@ -32,5 +32,8 @@ export class CatalogComponent implements OnInit {
   flipCard(): void{
     this.toggleClass = !this.toggleClass;
   }
+  getRoomAddress(): string{
+    return ""
+  }
 
 }
