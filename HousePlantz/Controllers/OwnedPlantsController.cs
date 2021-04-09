@@ -22,35 +22,31 @@ namespace HousePlantz.Controllers
 
 
         [HttpGet]
-        public ActionResult<Catalog> GetCatalog()
+        public async Task<ActionResult<IEnumerable<OwnedPlant>>> GetAllOwnedPlants()
         {
-            var catalogs = _context.Catalogs.Include(catalog => catalog.Plants).ToList();
-            var catalog = catalogs.FirstOrDefault();
-            //foreach (OwnedPlant op in catalog)
-            //{
+            return await _context.OwnedPlants
+                                        .Include(oPlant => oPlant.Plant)
+                                        .Include(oPlant => oPlant.Room)
+                                        .ToListAsync();
+        }
 
-            //}
+        [HttpGet("{id}")]
+        public async Task<ActionResult<OwnedPlant>> GetOwnedPlant(int id)
+        {
+            var oPlants = await _context.OwnedPlants
+                                         .Include(oPlant => oPlant.Plant)
+                                         .Include(oPlant => oPlant.Room)
+                                         .ToListAsync();
 
-
-            return catalog;
+            return oPlants.FirstOrDefault(x => x.Id == id);
         }
 
 
 
-
-        [HttpGet("{plantId}")]
-        public ActionResult<OwnedPlant> GetIndvPlantFromCatalog(int plantId)
-        {
-            var catalogs = _context.Catalogs.Include(catalog => catalog.Plants).ToList();
-            var catalog = catalogs.FirstOrDefault();
-
-            return catalog.Plants.FirstOrDefault(x => x.Id == plantId);
-
-        }
 
 
         [HttpPost]
-        public async Task<ActionResult<Catalog>> PostCatalog(Catalog catalog)
+        public async Task<ActionResult<OwnedPlant>> PostCatalog(Catalog catalog)
         {
             _context.Catalogs.Add(catalog);
             await _context.SaveChangesAsync();
@@ -59,80 +55,80 @@ namespace HousePlantz.Controllers
         }
 
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCatalog(int id)
-        {
-            var catalog = await _context.Catalogs.FindAsync(id);
-            if (catalog == null)
-            {
-                return NotFound();
-            }
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> DeleteCatalog(int id)
+        //{
+        //    var catalog = await _context.Catalogs.FindAsync(id);
+        //    if (catalog == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            _context.Catalogs.Remove(catalog);
-            await _context.SaveChangesAsync();
+        //    _context.Catalogs.Remove(catalog);
+        //    await _context.SaveChangesAsync();
 
-            return NoContent();
-        }
-
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCatalog(int id, Catalog catalog)
-        {
-            if (id != catalog.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(catalog).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CatalogExists(id))
-                { return NotFound(); }
-                else
-                { throw; }
-            }
-
-            return NoContent();
-        }
-
-        [HttpPatch("catalog{id}/{plantId}")]
-        public async Task<IActionResult> Patch(int id, int plantId)
-        {
-            var catalog = await _context.Catalogs.FindAsync(id);
-            var plantToAdd = await _context.OwnedPlants.FindAsync(plantId);
-
-            if (catalog.Plants == null)
-            {
-                catalog.Plants = new List<OwnedPlant>();
-            }
-
-            catalog.Plants.Add(plantToAdd);
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CatalogExists(id))
-                { return NotFound(); }
-                else
-                { throw; }
-            }
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
 
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutCatalog(int id, Catalog catalog)
+        //{
+        //    if (id != catalog.Id)
+        //    {
+        //        return BadRequest();
+        //    }
+
+        //    _context.Entry(catalog).State = EntityState.Modified;
+
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!CatalogExists(id))
+        //        { return NotFound(); }
+        //        else
+        //        { throw; }
+        //    }
+
+        //    return NoContent();
+        //}
+
+        //[HttpPatch("catalog{id}/{plantId}")]
+        //public async Task<IActionResult> Patch(int id, int plantId)
+        //{
+        //    var catalog = await _context.Catalogs.FindAsync(id);
+        //    var plantToAdd = await _context.OwnedPlants.FindAsync(plantId);
+
+        //    if (catalog.Plants == null)
+        //    {
+        //        catalog.Plants = new List<OwnedPlant>();
+        //    }
+
+        //    catalog.Plants.Add(plantToAdd);
+
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!CatalogExists(id))
+        //        { return NotFound(); }
+        //        else
+        //        { throw; }
+        //    }
+        //    return NoContent();
+        //}
 
 
-        private bool CatalogExists(int id)
-        {
-            return _context.Catalogs.Any(e => e.Id == id);
-        }
+
+
+        //private bool CatalogExists(int id)
+        //{
+        //    return _context.Catalogs.Any(e => e.Id == id);
+        //}
     }
 }
