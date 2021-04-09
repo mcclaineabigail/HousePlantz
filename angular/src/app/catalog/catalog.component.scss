@@ -17,7 +17,8 @@
   align-items: center;
   height: 25%;
 }
-
+//http://localhost:4200/assets/rooms/Bedroom-gray.png
+//http://localhost:4200/assets/rooms/Sun%20Room-yellow.png
 .names {
   display: inline-block;
 }
@@ -164,4 +165,28 @@ input {
   box-shadow: x.$box-shadow;
   font-size: large;
   width: 80px;
+}
+
+/*--Coloring Cards----------------*/
+
+.red{
+  background-color: x.$red;
+}
+.orange{
+  background-color: x.$orange;
+}
+.yellow{
+  background-color: x.$yellow;
+}
+.green{
+  background-color: x.$green;
+}
+.blue{
+  background-color: x.$blue;
+}
+.purple{
+  background-color: x.$purple;
+}
+.gray{
+  background-color: x.$gray;
 }

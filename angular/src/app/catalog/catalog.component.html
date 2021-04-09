@@ -5,7 +5,7 @@
     [ngClass]="toggleClass ? 'clicked' : ''"
   >
     <div class="flip-card-inner">
-      <div class="flip-card-front standard" id="card-front-undefined">
+      <div class="flip-card-front" class= {{oPlant.room.color}}>
         <aside class="plant-header">
           <div class="names">
             <h2 class="plant-name">{{ oPlant.nickName }}</h2>
