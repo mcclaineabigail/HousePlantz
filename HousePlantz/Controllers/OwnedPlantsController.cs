@@ -21,23 +21,28 @@ namespace HousePlantz.Controllers
         }
 
 
-        [HttpGet("{id}")]
-        public ActionResult<IEnumerable<Plant>> GetCatalog(int id)
+        [HttpGet]
+        public ActionResult<Catalog> GetCatalog()
         {
-            var catalogs = _context.Catalogs.Include(catalog => catalog.Plants);
-            var catalog = catalogs.FirstOrDefault(x => x.Id == id);
+            var catalogs = _context.Catalogs.Include(catalog => catalog.Plants).ToList();
+            var catalog = catalogs.FirstOrDefault();
+            //foreach (OwnedPlant op in catalog)
+            //{
 
-            return catalog.Plants;
+            //}
+
+
+            return catalog;
         }
 
 
 
 
-        [HttpGet("{catalogId}/{plantId}")]
-        public ActionResult<Plant> GetIndvPlantFromCatalog(int catalogId, int plantId)
+        [HttpGet("{plantId}")]
+        public ActionResult<OwnedPlant> GetIndvPlantFromCatalog(int plantId)
         {
-            var catalogs = _context.Catalogs.Include(catalog => catalog.Plants);
-            var catalog = catalogs.FirstOrDefault(x => x.Id == catalogId);
+            var catalogs = _context.Catalogs.Include(catalog => catalog.Plants).ToList();
+            var catalog = catalogs.FirstOrDefault();
 
             return catalog.Plants.FirstOrDefault(x => x.Id == plantId);
 
@@ -99,11 +104,11 @@ namespace HousePlantz.Controllers
         public async Task<IActionResult> Patch(int id, int plantId)
         {
             var catalog = await _context.Catalogs.FindAsync(id);
-            var plantToAdd = await _context.Plants.FindAsync(plantId);
+            var plantToAdd = await _context.OwnedPlants.FindAsync(plantId);
 
             if (catalog.Plants == null)
             {
-                catalog.Plants = new List<Plant>();
+                catalog.Plants = new List<OwnedPlant>();
             }
 
             catalog.Plants.Add(plantToAdd);

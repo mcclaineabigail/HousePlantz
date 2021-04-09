@@ -1,3 +1,5 @@
+@use '../base' as x;
+
 #owned {
   display: grid;
   grid-template-columns: repeat(auto-fit, 300px);
@@ -38,7 +40,7 @@
 
 .image {
   width: 80%;
-  border: 5px dotted var(--dark-color);
+  border: 5px dotted x.$dark-main;
 }
 
 .sun {
@@ -47,41 +49,6 @@
   justify-self: start;
 }
 
-/*UI--------------------------------*/
-
-.selection {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  height: 50px;
-  margin-top: 50px;
-  column-gap: 20px;
-}
-
-select,
-#add-input {
-  display: inline-block;
-  border-radius: 10px;
-  box-shadow: var(--box-shadow);
-  width: 250px;
-  width: 250px;
-  font-size: large;
-  padding-left: 10px;
-}
-
-.dropdown {
-  background-color: var(--main-color);
-}
-
-.button {
-  background-color: var(--translucent);
-  border-color: var(--dark-color);
-  padding: 5px;
-  border-radius: 5px;
-  box-shadow: var(--box-shadow);
-  font-size: large;
-  width: 80px;
-}
 
 /*-----------------------------------------*/
 
@@ -116,12 +83,13 @@ select,
   justify-items: center;
   border-style: double;
   border-radius: 10px;
-  box-shadow: var(--box-shadow);
+  background-color: x.$translucent;
+  box-shadow: x.$box-shadow;
 }
 
 .flip-card-back {
   transform: rotateY(180deg);
-  background-color: rgba(212, 212, 212, 0.466);
+  background-color: x.$gray;
 }
 
 .back-div {
@@ -157,4 +125,43 @@ select,
   position: absolute;
   bottom: 50px;
   right: 80px;
+}
+
+/*UI--------------------------------*/
+
+.selection {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 50px;
+  margin-top: 50px;
+  column-gap: 20px;
+}
+
+select,
+input {
+  display: inline-block;
+  border-radius: 10px;
+  box-shadow: x.$box-shadow;
+  width: 250px;
+  width: 250px;
+  font-size: large;
+  padding-left: 10px;
+  background-color: x.$mid-main;
+  color: x.$light-font;
+  font-family: x.$font;
+}
+
+#add-input {
+  background-color: x.$light-main;
+}
+
+.button {
+  background-color: x.$translucent;
+  border-color: x.$dark-main;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: x.$box-shadow;
+  font-size: large;
+  width: 80px;
 }

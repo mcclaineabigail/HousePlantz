@@ -48,7 +48,7 @@ namespace HousePlantz
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HousePlantz", Version = "v1" });
             });
 
-            services.AddScoped<IPlantRepository, PlantRepository>();
+            //services.AddScoped<IPlantRepository, PlantRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,11 +1,15 @@
 <section id="owned">
-  <div *ngFor="let plant of plantCatalog" class="flip-card" id="undefined">
+  <div
+    *ngFor="let plant of plantCatalog"
+    class="flip-card"
+    [ngClass]="toggleClass ? 'clicked' : ''"
+  >
     <div class="flip-card-inner">
       <div class="flip-card-front standard" id="card-front-undefined">
         <aside class="plant-header">
           <div class="names">
-            <h2 class="plant-name">{{ plant.nickname }}</h2>
-            <p class="plant-type">{{ plant.name }}</p>
+            <h2 class="plant-name">{{ plant.nickName }}</h2>
+            <p class="plant-type">{{ plant.plant.name }}</p>
           </div>
           <img
             src="https://github.com/mcclaineabigail/PlantCatalog/blob/main/HousePlantz.Data/Images/light/bright.png?raw=true"
@@ -19,12 +23,13 @@
             alt="Plant Image"
             src="https://github.com/mcclaineabigail/PlantCatalog/blob/main/HousePlantz.Data/Images/plant-images/columnea.PNG?raw=true"
           />
-          <p class="water">{{ plant.water }}</p>
-          <p class="notes">{{ plant.notes }}</p>
+          <p class="water">{{ plant.plant.water }}</p>
+          <p class="notes">{{ plant.plant.notes }}</p>
           <img
             src="https://static.thenounproject.com/png/267318-200.png"
             alt="flip card"
             class="flip-icon"
+            (click)="flipCard()"
           />
         </aside>
       </div>
@@ -36,14 +41,45 @@
             id="room-icon-undefined"
             alt="Room"
             src="../../assets/Kitchen-red.png"
+            onclick="flip-card"
           />
         </div>
         <img
           src="https://static.thenounproject.com/png/267318-200.png"
           alt="flip card"
           class="flip-icon"
+          (click)="flipCard()"
         />
       </div>
     </div>
   </div>
+</section>
+
+<section class="selection">
+  <select
+    class="dropdown"
+    id="add-dropdown"
+    size="1"
+    placeholder="Select New Plant"
+  >
+    <option class="choose-plant" value="" disabled selected>
+      Select Plant to Add
+    </option>
+  </select>
+  <input type="text" id="add-input" placeholder="Plant Nickname" />
+  <button class="button" id="submit">Submit</button>
+</section>
+
+<section class="selection">
+  <select
+    class="dropdown"
+    id="delete-dropdown"
+    size="1"
+    placeholder="Select Plant to Remove"
+  >
+    <option class="choose-plant" value="" disabled selected>
+      Select Plant To Delete
+    </option>
+  </select>
+  <button class="button" id="delete">Delete</button>
 </section>

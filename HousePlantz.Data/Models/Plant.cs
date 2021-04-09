@@ -9,15 +9,11 @@ namespace HousePlantz.Data.Models
     {
 
         public int Id { get; set; }
-
         public string Name { get; set; }
         public string Sun { get; set; }
         public string Image { get; set; }
         public string Water { get; set; }
         public string Notes { get; set; }
-        public string NickName { get; set; }
-        public Room Room { get; set; }
-        public List<Catalog> Catalogs { get; set; }
     }
 
 

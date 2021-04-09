@@ -8,7 +8,7 @@ namespace HousePlantz.Data.Models
     {
         public int Id { get; set; }
         public string User { get; set; }
-        public List<Plant> Plants { get; set; }
+        public List<OwnedPlant> Plants { get; set; }
 
     }
 }

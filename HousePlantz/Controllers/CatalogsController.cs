@@ -21,24 +21,35 @@ namespace HousePlantz.Controllers
             _context = context;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Catalog>>> GetCatalogs()
+        [HttpGet]//Only one catalog at the moment, so code is written to retreive catalog 1
+        public async Task<ActionResult<Catalog>> GetCatalogs()
         {
-            return await _context.Catalogs.Include(catalog => catalog.Plants).ToListAsync();
-        }
-
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Catalog>> GetCatalog(int id)
-        {
-            var catalog = await _context.Catalogs.FindAsync(id);
+            var catalog = _context.Catalogs.Include(catalog => catalog.Plants).FirstOrDefaultAsync();
 
             if (catalog == null)
             {
                 return NotFound();
             }
 
-            return catalog;
+            return await catalog;
+
+
+
+            //return await _context.Catalogs.Include(catalog => catalog.Plants).ToListAsync();
+        }
+
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Catalog>> GetCatalog(int id)
+        {
+            var catalog = _context.Catalogs.Include(catalog => catalog.Plants).FirstOrDefaultAsync(x => x.Id == id);
+
+            if (catalog == null)
+            {
+                return NotFound();
+            }
+
+            return await catalog;
         }
 
 

@@ -4,14 +4,16 @@ using HousePlantz.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HousePlantz.Data.Migrations
 {
     [DbContext(typeof(PlantCatalogContext))]
-    partial class PlantCatalogContextModelSnapshot : ModelSnapshot
+    [Migration("20210324172407_ownedPlantModel")]
+    partial class ownedPlantModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,7 +113,7 @@ namespace HousePlantz.Data.Migrations
 
             modelBuilder.Entity("HousePlantz.Data.Models.OwnedPlant", b =>
                 {
-                    b.HasOne("HousePlantz.Data.Models.Catalog", null)
+                    b.HasOne("HousePlantz.Data.Models.Catalog", "Catalog")
                         .WithMany("Plants")
                         .HasForeignKey("CatalogId");
 
@@ -122,6 +124,8 @@ namespace HousePlantz.Data.Migrations
                     b.HasOne("HousePlantz.Data.Models.Room", "Room")
                         .WithMany()
                         .HasForeignKey("RoomId");
+
+                    b.Navigation("Catalog");
 
                     b.Navigation("Plant");
 

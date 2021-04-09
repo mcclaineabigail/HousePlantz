@@ -9,6 +9,7 @@ namespace HousePlantz.Data.Models
     public class PlantCatalogContext : DbContext
     {
         public DbSet<Plant> Plants { get; set; }
+        public DbSet<OwnedPlant> OwnedPlants { get; set; }
         public DbSet<Catalog> Catalogs { get; set; }
         public DbSet<Room> Rooms { get; set; }
 

@@ -34,7 +34,7 @@ namespace HousePlantz.Controllers
 
             var newText = System.Text.Json.JsonSerializer.Serialize(plantList, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
 
-            
+
 
             using var sw = new StreamWriter(filePath);
             sw.WriteLine(newText);
@@ -58,11 +58,11 @@ namespace HousePlantz.Controllers
 
 
         [HttpPatch("{NickName}")]
-        public IActionResult Patch(string nickName, [FromBody] JsonPatchDocument<Plant> patchEntity)
+        public IActionResult Patch(int id, [FromBody] JsonPatchDocument<Plant> patchEntity)
         {
             var plantList = JsonConvert.DeserializeObject<List<Plant>>(fileText);
 
-            var entity = plantList.FirstOrDefault(x => x.NickName == nickName);
+            var entity = plantList.FirstOrDefault(x => x.Id == id);
             if (entity == null)
             { return NotFound(); }
 
@@ -77,11 +77,11 @@ namespace HousePlantz.Controllers
         }
 
         [HttpDelete("{NickName}")]
-        public Plant Delete(string nickName)
+        public Plant Delete(int id)
         {
             var plantList = JsonConvert.DeserializeObject<List<Plant>>(fileText);
 
-            var plantToRemove = plantList.FirstOrDefault(x => x.NickName == nickName);
+            var plantToRemove = plantList.FirstOrDefault(x => x.Id == id);
             plantList.Remove(plantToRemove);
             var newText = System.Text.Json.JsonSerializer.Serialize(plantList, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
 

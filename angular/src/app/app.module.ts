@@ -5,25 +5,25 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { CatalogComponent } from './catalog/catalog.component';
-import { WelcomeComponent } from './welcome/welcome.component';
 import { RoomsComponent } from './rooms/rooms.component';
+import { DisplayComponent } from './display/display.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CatalogComponent,
-    WelcomeComponent,
     RoomsComponent,
+    DisplayComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([
-      { path: 'welcome', component: WelcomeComponent },
       { path: 'rooms', component: RoomsComponent },
       { path: 'catalog', component: CatalogComponent},
-      { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-      { path: '*', redirectTo: 'welcome', pathMatch: 'full' }
+      { path: 'display', component: DisplayComponent},
+      { path: '', redirectTo: 'catalog', pathMatch: 'full' },
+      { path: '*', redirectTo: 'catalog', pathMatch: 'full' }
     ]),
   ],
   providers: [],

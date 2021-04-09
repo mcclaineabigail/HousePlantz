@@ -1,0 +1,13 @@
+@use 'app/base' as x;
+
+
+body {
+  font-family: x.$font;
+  color: x.$dark-font;
+  background-image: url("/src/assets/background.jpg");
+  background-size: cover;
+}
+
+a {
+    text-decoration: none;
+  }

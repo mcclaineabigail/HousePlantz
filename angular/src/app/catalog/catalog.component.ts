@@ -6,7 +6,7 @@ import { IOwnedPlant } from './models/ownedPlant';
 @Component({
   selector: 'hp-catalog',
   templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.css']
+  styleUrls: ['./catalog.component.scss']
 })
 export class CatalogComponent implements OnInit {
   plantCatalog: IOwnedPlant[] = [
@@ -64,6 +64,7 @@ export class CatalogComponent implements OnInit {
   ]
   sub!: Subscription;
   errorMessage: string = '';
+  toggleClass: boolean = false;
 
   constructor(private catalogService: CatalogService) { }
 
@@ -72,6 +73,10 @@ export class CatalogComponent implements OnInit {
     //   next: plantCatalog => this.plantCatalog = plantCatalog,
     //   error: err => this.errorMessage = err
     //})
+  }
+
+  flipCard(): void{
+    this.toggleClass = !this.toggleClass;
   }
 
 }

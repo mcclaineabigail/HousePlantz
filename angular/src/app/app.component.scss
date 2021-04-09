@@ -1,0 +1,167 @@
+@use 'base' as x;
+
+header {
+  margin: 50px;
+  justify-content: center;
+  display: grid;
+  border-style: double;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: x.$translucent;
+  box-shadow: x.$box-shadow;
+}
+
+h1{
+  font-size: 50px;
+  text-shadow: -2px 2px rgb(174, 0, 255);
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  max-width: 100%;
+  margin: 0px;
+  margin-bottom: 200px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  left: 100px;
+  display: inline-block;
+}
+
+.nav{
+  padding: 10px 10px 10px 10px;
+  text-decoration: none;
+}
+
+.nav:hover {
+  background-color: x.$light-main;
+  border-radius: 5px;
+}
+
+/* Slider ---------------------------------------------------*/
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--deep-color);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--main-color);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: white;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 2px var(--dark-color);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/*-----------------------------------------------*/
+ul {
+  margin-right: 40px;
+}
+
+li {
+  list-style: none;
+  padding: 8px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.red {
+  background-color: var(--red);
+}
+.orange {
+  background-color: var(--orange);
+}
+.yellow {
+  background-color: var(--yellow);
+}
+.green {
+  background-color: var(--green);
+}
+.blue {
+  background-color: var(--blue);
+}
+.purple {
+  background-color: var(--purple);
+}
+.gray {
+  background-color: var(--gray);
+}
+
+.standard,
+.null {
+  background-color: var(--translucent);
+}
+
+#select-room label {
+  margin: 0px 15px 0px 15px;
+}
+
+.set-room-icon {
+  width: 150px;
+}
+
+[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+[type="radio"] + img {
+  cursor: pointer;
+}
+
+[type="radio"]:checked + img {
+  outline: 2px solid var(--dark-font);
+}
