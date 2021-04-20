@@ -3,8 +3,8 @@ import { IPlant } from './plant';
 import { IRoom } from './room';
 
 export interface IOwnedPlant {
-  id: number;
+  //id: number;
   nickName: string;
-  plant: IPlant;
-  room: IRoom;
+  plantId: number;
+  roomId: number;
 }

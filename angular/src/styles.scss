@@ -1,11 +1,56 @@
-@use 'app/base' as x;
+@use 'app/base' as xxx;
+@import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
 
+@import "~@angular/material/theming";
+@include mat-core();
+
+$angular-primary: mat-palette($mat-indigo);
+$angular-accent: mat-palette($mat-pink, A200, A100, A400);
+$angular-warn: mat-palette($mat-red);
+
+$angular-theme: mat-light-theme(
+  (
+    color: (
+      primary: $angular-primary,
+      accent: $angular-accent,
+      warn: $angular-warn,
+    ),
+  )
+);
+
+@include angular-material-theme($angular-theme);
+
+$angular-primary-dark: mat-palette($mat-orange);
+$angular-accent-dark: mat-palette($mat-yellow);
+$angular-warn-dark: mat-palette($mat-red);
+
+$angular-theme-dark: mat-dark-theme(
+  (
+    color: (
+      primary: $angular-primary-dark,
+      accent: $angular-accent-dark,
+      warn: $angular-warn-dark,
+    ),
+  )
+);
+
+.dark-theme-mode {
+  @include angular-material-theme($angular-theme-dark);
+}
 
 body {
-  font-family: x.$font;
-  color: x.$dark-font;
+  font-family: xxx.$font;
+  color: xxx.$dark-font;
 }
 
 a {
-    text-decoration: none;
-  }
+  text-decoration: none;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Courgette", "Helvetica Neue", sans-serif;
+}

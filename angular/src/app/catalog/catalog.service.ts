@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
@@ -9,22 +9,35 @@ import { IPlant } from './models/plant';
   providedIn: 'root',
 })
 export class CatalogService {
-   private catalogUrl = 'https://localhost:44313/api/ownedplants';
-   private plantUrl = 'https://localhost:44313/api/plants'
+   private getOwnedPlantUrl = 'https://localhost:44313/api/ownedplants';
+   private getPlantUrl = 'https://localhost:44313/api/plants'
     constructor(private http: HttpClient) {}
 
 
   getCatalog(): Observable<IOwnedPlant[]> {
-      return this.http.get<IOwnedPlant[]>(this.catalogUrl);
+      return this.http.get<IOwnedPlant[]>(this.getOwnedPlantUrl);
       tap(data => console.log('All', JSON.stringify(data))),
       catchError(this.handleError)
   }
 
   getPlantList(): Observable<IPlant[]>{
-    return this.http.get<IPlant[]>(this.plantUrl);
+    return this.http.get<IPlant[]>(this.getPlantUrl);
     tap(data => console.log('All', JSON.stringify(data))),
     catchError(this.handleError)
   }
+
+  addPlantToCatalog(plantToAdd: IOwnedPlant): Observable<IOwnedPlant>{
+    return this.http.post<IOwnedPlant>(this.getOwnedPlantUrl, plantToAdd, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+
+  deletePlant(id: number): Observable<void>{
+    return this.http.delete<void>(this.getOwnedPlantUrl+'/'+id);
+  }
+
   private handleError(err: HttpErrorResponse): Observable<never> {
       let errorMessage = '';
       if (err.error instanceof ErrorEvent) {
@@ -35,4 +48,4 @@ export class CatalogService {
       console.error(errorMessage);
       return throwError(errorMessage);
     }
-}
+}//MSSQL::/_localdb__MSSQLLocalDB/PlantCatalog/True/SqlView/dbo.DummyView.sql

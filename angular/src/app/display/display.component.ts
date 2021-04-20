@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {  Component,  OnInit,  ViewChild,  ViewChildren,  ElementRef,  QueryList,} from '@angular/core';
 
 @Component({
   selector: 'hp-display',
   templateUrl: './display.component.html',
-  styleUrls: ['./display.component.scss']
+  styleUrls: ['./display.component.scss'],
 })
 export class DisplayComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
-  }
 
+
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  
 }

@@ -2,26 +2,32 @@
   <div
     *ngFor="let oPlant of catalog"
     class="flip-card"
+    #card{{oPlant.id}}
     [ngClass]="toggleClass ? 'clicked' : ''"
   >
     <div class="flip-card-inner">
-      <div class="flip-card-front" class= {{oPlant.room.color}}>
+      <div class="flip-card-front" class="{{ oPlant.room.color }}">
         <aside class="plant-header">
           <div class="names">
             <h2 class="plant-name">{{ oPlant.nickName }}</h2>
             <p class="plant-type">{{ oPlant.plant.name }}</p>
           </div>
-          <img
-            src={{oPlant.plant.sun}}
-            alt="light needs"
-            class="sun"
-          />
+          <img src="{{ oPlant.plant.sun }}" alt="light needs" class="sun" />
         </aside>
         <aside class="plant-info">
-          <img class="image" title= {{oPlant.plant.name}} src= {{oPlant.plant.image}}/>
+          <img
+            class="image"
+            title="{{ oPlant.plant.name }}"
+            src="{{ oPlant.plant.image }}"
+          />
           <p class="water">{{ oPlant.plant.water }}</p>
           <p class="notes">{{ oPlant.plant.notes }}</p>
-          <img src="https://static.thenounproject.com/png/267318-200.png" alt="flip card" class="flip-icon" (click)="flipCard()"/>
+          <img
+            src="https://static.thenounproject.com/png/267318-200.png"
+            alt="flip card"
+            class="flip-icon"
+            (click)="flipCard()"
+          />
         </aside>
       </div>
       <div class="flip-card-back">
@@ -31,7 +37,13 @@
             class="room-icon"
             id="room-icon-undefined"
             alt="Room"
-            src= "{{'../../../../assets/rooms/' + oPlant.room.roomName + '-' + oPlant.room.color + '.png'}}"
+            src="{{
+              '../../../../assets/rooms/' +
+                oPlant.room.roomName +
+                '-' +
+                oPlant.room.color +
+                '.png'
+            }}"
             onclick="flip-card"
           />
         </div>
@@ -46,34 +58,55 @@
   </div>
 </section>
 
-<section class="selection">
+<form
+  #addOwnedPlantForm="ngForm"
+  (ngSubmit)="addOwnedPlant(addOwnedPlantForm.value)"
+  class="selection"
+>
   <select
     class="dropdown"
     id="add-dropdown"
     size="1"
+    name="plantId"
     placeholder="Select New Plant"
+    ngModel
   >
     <option class="choose-plant" value="" disabled selected>
       Select Plant to Add
     </option>
-    <option *ngFor="let plant of plants">{{plant.name}}</option>
+    <option *ngFor="let plant of plants" value="{{ plant.id }}">
+      {{ plant.name }}
+    </option>
   </select>
-  <input type="text" id="add-input" placeholder="Plant Nickname" />
+  <input
+    type="text"
+    id="add-input"
+    placeholder="Plant Nickname"
+    name="nickName"
+    ngModel
+  />
   <button class="button" id="submit">Submit</button>
-</section>
+</form>
 
-<section class="selection">
+<form
+  #deleteOwnedPlantForm="ngForm"
+  (ngSubmit)="deleteOwnedPlant(deleteOwnedPlantForm.value)"
+  class="selection"
+>
   <select
+    #delete
     class="dropdown"
     id="delete-dropdown"
     size="1"
+    name="plantId"
     placeholder="Select Plant to Remove"
   >
     <option class="choose-plant" value="" disabled selected>
       Select Plant To Delete
     </option>
-    <option *ngFor="let oPlant of catalog">{{oPlant.nickName}}</option>
-
+    <option value="{{ oPlant.id }}" *ngFor="let oPlant of catalog">
+      {{ oPlant.nickName }}
+    </option>
   </select>
   <button class="button" id="delete">Delete</button>
-</section>
+</form>
