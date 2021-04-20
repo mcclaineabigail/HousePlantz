@@ -15,8 +15,7 @@ const toggleDark = function(){
     header.classList.toggle(_switch)
     tagNameLoop(inputs, _accent);
     tagNameLoop(selects, _accent);
-    tagNameLoop(modals, _switch);
-    
+    tagNameLoop(modals, _switch);  
 }
 
 const tagNameLoop = function(elements, _color){

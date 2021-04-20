@@ -51,7 +51,8 @@ namespace HousePlantz.Controllers
             _context.OwnedPlants.Add(oPlant);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCatalog", new { id = oPlant.Id }, oPlant);
+
+            return CreatedAtAction("GetOwnedPlant", new { id = oPlant.Id }, await GetOwnedPlant(oPlant.Id));
         }
 
 
