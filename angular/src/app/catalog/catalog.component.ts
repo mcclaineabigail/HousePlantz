@@ -23,12 +23,12 @@ export class CatalogComponent implements OnInit {
 
   ngOnInit(): void {
     this.sub = this.catalogService.getPlantList().subscribe({
-      next: (plants) => (this.plants = plants),
-      error: (err) => (this.errorMessage = err),
+      next: plants => this.plants = plants,
+      error: err => this.errorMessage = err,
     });
     this.sub = this.catalogService.getCatalog().subscribe({
-      next: (catalog) => (this.catalog = catalog),
-      error: (err) => (this.errorMessage = err),
+      next: catalog => this.catalog = catalog,
+      error: err => this.errorMessage = err,
     });
   }
 

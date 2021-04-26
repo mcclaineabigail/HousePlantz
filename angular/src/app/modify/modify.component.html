@@ -1,1 +1,26 @@
-<p>modify works!</p>
+<div class="card">
+  <div class="card-header">Modify Plants</div>
+  <div class="card-body">
+    <div class="row"></div>
+    <div class="row">
+      <div class="col-md-6"></div>
+    </div>
+    <div class="table-responsive">
+      <table class="table" *ngIf="catalog.length">
+        <thead>
+          <tr>
+            <th>Plant</th>
+            <th>Room</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let op of catalog">
+            <td>{{ op.nickName }}</td>
+            <td>{{ op.room.roomName }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
