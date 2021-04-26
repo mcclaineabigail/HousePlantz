@@ -52,7 +52,6 @@
   justify-self: start;
 }
 
-
 /*-----------------------------------------*/
 
 .flip-card {
@@ -92,7 +91,7 @@
 
 .flip-card-back {
   transform: rotateY(180deg);
-  background-color: x.$gray;
+  background-color: x.$translucent;
 }
 
 .back-div {
@@ -171,24 +170,24 @@ input {
 
 /*--Coloring Cards----------------*/
 
-.red{
+.red {
   background-color: x.$red;
 }
-.orange{
+.orange {
   background-color: x.$orange;
 }
-.yellow{
+.yellow {
   background-color: x.$yellow;
 }
-.green{
+.green {
   background-color: x.$green;
 }
-.blue{
+.blue {
   background-color: x.$blue;
 }
-.purple{
+.purple {
   background-color: x.$purple;
 }
-.gray{
+.gray {
   background-color: x.$gray;
 }

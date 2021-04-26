@@ -8,4 +8,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   pageTitle = 'House Plant Catalog';
   isDarkTheme: boolean = false;
+
+  ngOnInit() {
+    this.isDarkTheme = localStorage.getItem('theme') === "Dark" ? true:false;
+  }
+  storeThemeSelection() {
+    localStorage.setItem('theme', this.isDarkTheme ? "Dark" : "Light");
+  }
 }

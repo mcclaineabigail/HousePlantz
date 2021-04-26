@@ -1,6 +1,5 @@
 <div
   class="container mat-app-background"
-  
   [ngClass]="{ 'dark-background': isDarkTheme }"
 >
   <header id="header">
@@ -13,13 +12,20 @@
         <a routerLinkActive="active" routerLink="/catalog">Catalog</a>
       </p>
       <p class="nav">
-        <a routerLinkActive="active" routerLink="/display">Display</a>
+        <a routerLinkActive="active" routerLink="/modify">Modify</a>
       </p>
     </div>
   </header>
   <router-outlet></router-outlet>
-  <div id="display-container" >
-    <mat-slide-toggle id="slide" [ngClass]="{ 'dark-theme-mode': isDarkTheme }" class="mat-app-background" [(ngModel)]="isDarkTheme" labelPosition="before">
+  <div id="display-container">
+    <mat-slide-toggle
+      id="slide"
+      [ngClass]="{ 'dark-theme-mode': isDarkTheme }"
+      class="mat-app-background"
+      [(ngModel)]="isDarkTheme"
+      labelPosition="before"
+      (change)="storeThemeSelection()"
+    >
       <mat-icon>bedtime</mat-icon>
     </mat-slide-toggle>
   </div>
