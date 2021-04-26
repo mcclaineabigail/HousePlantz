@@ -32,7 +32,7 @@
       </div>
       <div class="flip-card-back">
         <div class="back-div">
-          <button class="button">Make Changes</button>
+          <h2 class="plant-name">{{ oPlant.nickName }}</h2>
           <img
             class="room-icon"
             id="room-icon-undefined"
@@ -94,12 +94,12 @@
   class="selection"
 >
   <select
-    #delete
     class="dropdown"
     id="delete-dropdown"
     size="1"
-    name="plantId"
+    name="id"
     placeholder="Select Plant to Remove"
+    ngModel
   >
     <option class="choose-plant" value="" disabled selected>
       Select Plant To Delete

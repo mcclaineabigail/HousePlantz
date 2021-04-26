@@ -2,7 +2,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CatalogService } from './catalog.service';
 import { IOwnedPlant } from './models/ownedPlant';
+
 import { IPlant } from './models/plant';
+import { IResponse } from './models/response';
 
 @Component({
   selector: 'hp-catalog',
@@ -16,7 +18,6 @@ export class CatalogComponent implements OnInit {
   errorMessage: string = '';
   toggleClass: boolean = false;
   card: string = '';
-  @ViewChild('delete') deleteform: ElementRef;
 
   constructor(private catalogService: CatalogService) {}
 
@@ -40,19 +41,24 @@ export class CatalogComponent implements OnInit {
 
   addOwnedPlant(formValues: any): void {
     let newOwnedPlant: IOwnedPlant = <IOwnedPlant>formValues;
-    newOwnedPlant.roomId = 7;
-    console.log(newOwnedPlant);
+    newOwnedPlant.roomId = 16;
 
     this.catalogService.addPlantToCatalog(newOwnedPlant).subscribe(
-      //(data: IOwnedPlant) => console.log(data),
+      (data: IResponse<IOwnedPlant>) => {
+        console.log(data);
+        this.catalog.push(data.value);
+      },
       (err: any) => console.log(err)
     );
   }
 
-  deleteOwnedPlant(formValues: number): void {
-    var plantId = this.deleteform.nativeElement.value;
-    this.catalogService
-      .deletePlant(plantId)
-      .subscribe((err: any) => console.log(err));
+  deleteOwnedPlant(formValue: any): void {
+    this.catalogService.deletePlant(formValue.id).subscribe(
+      () => {
+        let OPIndex = this.catalog.findIndex((OP) => OP.id === formValue.id);
+        this.catalog.splice(OPIndex, 1);
+      },
+      (err: any) => console.log(err)
+    );
   }
 }
