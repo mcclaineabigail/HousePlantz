@@ -45,9 +45,15 @@ namespace HousePlantz.Controllers
 
 
 
-        [HttpPost] //This is not working, see Swagger Error Message
+        [HttpPost]
         public async Task<ActionResult<OwnedPlant>> AddPlantToCatalog(OwnedPlant oPlant)
         {
+            var modelPlant = _context.Plants.Find(oPlant.PlantId);
+            oPlant.Name = modelPlant.Name;
+            oPlant.Sun = modelPlant.Sun;
+            oPlant.Image = modelPlant.Image;
+            oPlant.Notes = modelPlant.Notes;
+            oPlant.Water = modelPlant.Water;
             _context.OwnedPlants.Add(oPlant);
             await _context.SaveChangesAsync();
 
